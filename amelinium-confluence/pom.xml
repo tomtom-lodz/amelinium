@@ -153,6 +153,11 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 		<!-- To get rid of warning: org.apache.axis.utils.JavaUtils - Unable to 
 			find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). 
