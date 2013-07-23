@@ -41,7 +41,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/backlog/update", method = RequestMethod.GET)
-	public String formHandler(@RequestParam String space, @RequestParam String title, @RequestParam(value = "allowMultilineFeatures", defaultValue = "false") boolean allowMultilineFeatures) {
+	public String formHandler(@RequestParam String space, @RequestParam String title, @RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures) {
 		backlogPageCorrector.correctBacklog(title, space, allowMultilineFeatures);
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + space + "/" + title;
 	}
@@ -59,7 +59,7 @@ public class MainController {
 
 	@RequestMapping(value = "/chart-and-backlog/update", method = RequestMethod.GET)
 	public String chartFormHandlerGet(@RequestParam String chartTitle, @RequestParam String chartSpace, @RequestParam String backlogTitle, @RequestParam String backlogSpace,
-			@RequestParam(value = "allowMultilineFeatures", defaultValue = "false") boolean allowMultilineFeatures) {
+			@RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures) {
 		chartPageCorrector.correctChart(chartTitle, chartSpace, backlogTitle, backlogSpace, allowMultilineFeatures);
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle;
 	}
