@@ -122,6 +122,54 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Confluence -->
+		<dependency>
+			<groupId>org.swift.common</groupId>
+			<artifactId>confluence-soap</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.swift.confluence.cli</groupId>
+			<artifactId>confluence-cli</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.swift.common</groupId>
+			<artifactId>cli-soap</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.swift.common</groupId>
+			<artifactId>cli</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.martiansoftware</groupId>
+			<artifactId>jsap</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<!-- To get rid of warning: org.apache.axis.utils.JavaUtils - Unable to 
+			find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). 
+			Attachment support is disabled. -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+			<scope>generate-sources</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.4</version>
+			<scope>generate-sources</scope>
+		</dependency>
+		
 		<!-- Project -->
 		<dependency>
 			<groupId>com.googlecode.amelinium</groupId>
