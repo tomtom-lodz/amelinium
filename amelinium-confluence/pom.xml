@@ -121,6 +121,14 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Project -->
+		<dependency>
+			<groupId>com.googlecode.amelinium</groupId>
+			<artifactId>amelinium-core</artifactId>
+			<version>0.2-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
