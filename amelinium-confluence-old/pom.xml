@@ -7,7 +7,7 @@
 		<version>0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>com.googlecode.amelinium</groupId>
-	<artifactId>amelinium-confluence</artifactId>
+	<artifactId>amelinium-confluence-old</artifactId>
 	<version>0.2-SNAPSHOT</version>
 	<name>amelinium confluence module</name>
 	<packaging>war</packaging>
