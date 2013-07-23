@@ -1,0 +1,64 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+<title>AMELINIUM Planning Tool</title>
+</head>
+<body>
+<c:out value="${pageContext.request.serverName}" /><br>
+
+<%-- <left><form:form method="POST" action="new"> --%>
+<%-- <form:input path="name"></form:input><br /> --%>
+<!-- <input type="submit" value="NEW PROJECT" name="form"></input> -->
+<!-- <!-- <input type="submit" value="Cancel" name="_cancel"></input><br /> --> -->
+<%-- </form:form></left> --%>
+
+<a href="${pageContext.request.contextPath}/web/projects/new">NEW PROJECT</a><br>
+<a href="/web/projects/new">NEW PROJECT</a><br>
+<br><br><b>PROJECT LIST</b>
+		<c:if test="${size!=0}">
+	<table cellpadding="5px" cellspacing="5px">
+		<tbody>
+			<tr>
+<!-- 				<th>Id</th> -->
+				<th>Name</th>
+				<th>Operations</th>
+				<th>Created</th>
+				<th>Last Modified</th>
+			</tr>
+			<c:forEach var="p" items="${projects}">
+				<tr>
+<%-- 					<td><c:out value="${p.id}" /></td> --%>
+					<td><c:out value="${p.name}" />&nbsp;&nbsp;</td>
+					
+					<td><a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/backlog/view">view
+							backlog</a> 
+							&nbsp;
+							<a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/chart/view">view
+							chart</a> 
+							&nbsp;&nbsp;
+							<a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/rename">rename</a>
+						&nbsp;&nbsp;
+						<a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/backlog/history/0">backlog history</a>
+						&nbsp;
+						<a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/chart/history/0">chart history</a>
+							&nbsp;&nbsp;
+							<a
+						href="${pageContext.request.contextPath}/web/project/<c:out value="${p.id}"/>/delete">delete
+							project</a></td>
+					<td><c:out value="${p.dtCreated}" /></td>
+					<td><c:out value="${p.dtLastModified}" /></td>
+				</tr>
+
+
+			</c:forEach>
+		</tbody>
+	</table>
+</c:if>
+</body>
+</html>

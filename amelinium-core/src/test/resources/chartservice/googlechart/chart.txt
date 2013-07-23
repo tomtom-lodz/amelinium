@@ -1,0 +1,92 @@
+|| Configuration || ||
+| *Current sprint (number)* | 14 |
+| Sprint length (days) | 7 |
+| Zeroeth sprint (date) | 23 Apr 2012 |
+| Compute ideal (number (0='all', 5='last 5') or false) | false |
+| Extend ideal (true, false) | true |
+| Add missing feature groups to chart (true, false) | false |
+| Add missing feature groups to roadmap (true, false) | true |
+| Names on roadmap from (backlog, chart, unchanged) | unchanged |
+| Story points estimated on the side (number) | 48 |
+
+{chart:type=xyLine|dataOrientation=vertical|width=800|height=500|title=ACME burnup chart|domainAxisTickUnit=1|colors=#448844,#5555BB,#008000,#808000,#ffcc00,#ff6600,#99BB99,#775577,#FFEE88}
+
+|| || burned story points ||
+| 0 | 0 |
+| 3 | 17 |
+| 6 | 39 |
+| 9 | 61 |
+| 10 | 65 |
+| 11 | 76 |
+| 12 | 81 |
+| 13 | 84 |
+| 14 | 87 |
+
+|| || xxx ||
+| 12 | 79 |
+| 13 | 84 |
+| 13 | 0 |
+
+|| || xxxxx xxxx ||
+| 12 | 119 |
+| 13 | 117 |
+| 14 | 80 |
+| 13 | 80 |
+| 13 | 0 |
+
+|| || xxx xx xxxxxxxxxxxx xxxxx 1 ||
+| 26 | 0 |
+| 26 | 173 |
+
+|| || xxxxx xxx ||
+| 0 | 130 |
+| 10 | 130 |
+| 11 | 141 |
+| 12 | 176 |
+| 13 | 181 |
+| 14 | 180 |
+| 28 | 180 |
+| 28 | 0 |
+
+|| || xxxxx xxx ||
+| 0 | 163 |
+| 10 | 163 |
+| 11 | 175 |
+| 12 | 210 |
+| 13 | 214 |
+| 14 | 213 |
+| 33 | 213 |
+| 33 | 0 |
+
+|| || xxxxx xxxxx ||
+| 0 | 178 |
+| 10 | 178 |
+| 11 | 190 |
+| 12 | 225 |
+| 13 | 229 |
+| 14 | 228 |
+| 35 | 228 |
+| 35 | 0 |
+
+|| || xxxxx xxxx ||
+| 0 | 203 |
+| 10 | 203 |
+| 11 | 215 |
+| 12 | 250 |
+| 13 | 254 |
+| 14 | 253 |
+| 39 | 253 |
+| 39 | 0 |
+
+|| || ideal ||
+| 0 | 0.0 |
+| 40 | 266.0 |
+{chart}
+
+h3. Roadmap
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| Group one | 28 | 04 Nov 2012 | unknown |
+| Group two | 33 | 09 Dec 2012 | unknown |
+| Group three | 35 | 23 Dec 2012 | unknown |
+| Group four | 39 | 20 Jan 2013 | unknown |

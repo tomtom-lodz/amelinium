@@ -1,0 +1,180 @@
+
+h1. xxx xxxx - 65 / 203 sp
+{xxxx}
+xx xxx xx xxxxx 65 xxxxx xxxxxx xxx xx / 203 xxx xxxxx xxxxxx
+{xxxx}
+
+h1. [xxxxx xxxxxxx xxxx]
+
+
+xxxxx xx xxxxxxxx
+{xxx}
+
+
+h1. xxxxxxxxx xxxxxxx - 25 / 163 sp
+
+xxxxxx
+
+-xxxxxxx xxxx-
+_xxxxxxx xx xxxxxxxx_
+xx xx xxxxxxx
+xx / xx sp - xxxxx xxxxxx xx xxxxx xxxxxx xxxxx xxx xx / xxx xxxxxxx xxxxx xxxxxx xx xx xxxxx
+
+BACKLOG
+
+h3. xxxxx xxx - xxxxxxxx xxx xxxxx 25 / 90 sp
+
+h5. xxxxx xxx - xxxx hxxxx - xxx xxxxxxxx - 16 / 64 sp
+
+* _xxx-xxx (xxxxxx xxxh xxxxxxxx xxx xx xxxxxxxxxxx)_ \- 5 sp
+{xxxxx:#808080}xx xxxx xxx xxxxxx xxxxxxxxxxxx xxx xxxxxxxxxx xx xxx xxxxxx xxxxxxxxxx xx xxxxxx xxxhxxxxxxxxxx. xhx xxxx xxxx xx xx xxxxxxxxx xhxx xx xxx xxxxxxxxxxxx xx xhx xxxx xxxhxxx.{xxxxx}
+
+* x-xxxx xxxxxx xxx - 1 sp
+{xxxxx:#808080}xxx xhxxxx xxxx xxxx xhx xxxx, xxx xhx xxxx xxx{xxxxx}
+
+* xxxxxxxxxx xxxxxxxx xxxxxx - 7 sp
+{xxxxx:#808080}xx xxxx xx xxxx xxxx xhxx xx xxxxxx xxxxxx xxxxxxxx xxxxxxxxxxxx xx xxxxxxxxxx xxxxxxxx xxhxxx.{xxxxx}
+{xxxxx:#808080}xx hxxx xx xhxxx xx xxxxxxx xhxxh xxxxxxx xxxxxx xxxx xxx xxxx xxxxxxxx xxxxx xhx xxxxxx (hxxxxxxxxx xxxxxxxxxxx).{xxxxx}
+{xxxxx:#808080}xxxxxxx xhxx xxx xx xxxx xx xhxxxx xxxxxx xx xxxxxxxx xxxxx xhx xxxxxx.{xxxxx}
+
+* xxxxxxxx xx xxxxxx - 11 sp
+** xxxxxxxxxxxxx xxx xxxxxxxxxxxxx xxxx xxxxx xxxxxxx xx xxxxxxx xxx xxxxxxxx
+** xxxxxx spxxxxxx hxxh xxxxx xxxx xxxx xxxxxxxx
+** xxx xxx xxxxxxxxx xxxxx xxx xxxxxxxxx xxxxxxxx
+** xxxxx-xxxxxxxx xxxx
+{xxxxx:#808080}xxxxxx xxx xx xx xxx xxxxxx xxxxxxxx xx xhx xxxx xxxhxxx, xhxxx xx xhxx xxx xxxxxx xxxxxxxxx.{xxxxx}
+** xxxxx xxxx xxx xxxxx xxx xxxhxxxxx
+** xxxxx xxxxxxx xxxxxx xxxxx-xxxxxxxx xxxxxxxxxxxxx xx xxxxxxxx
+{xxxxx:#808080}xhxx hxxx xxxxxxx xxxxxxxxxxx xxx xx xxxx xxx xxxxxxxxxxxxx.{xxxxx}
+** xxxxxxxxxx xxxxx xxxxxx xx xxxxxxxx xx xxxxx xxxxxxx
+** xxxxx xxxxxxx hxx xxxxxxx xxxxxxxx xxxxx xx xxx-xxx xxxxxx, xxxx hxx xxxxxxxx
+{xxxx}xxxx xhxxxx xxxxx xxxxx xx xhxx ?{xxxx}
+** xxxxxxxx xx xxxxxxxx xxxx xxxxx xxxxxx
+{xxxxx:#808080}xxxh xxxxx xx xxxx xxxxx xxxxxxxx xx xxxxx xxxxxxx{xxxxx}
+** xxxx xxxxxxxxxx xxxxx xxxxxxxxx xx xxxxxxx xxxxx
+
+* xxxxxxxxxx xxxxxxxxxxx - 5 / 5 sp
+** -xxx xx xxxxxxxxxxx xxx xxx/xxxxxx- \- 5 sp - [xxxxx-103|hxxx://xxxxx/xxxxxx/xxxxx-103]
+
+
+* -xxxxx xxxxxxxxxx xx xx xxxx- \- 7 / 7 sp
+{xxxxx:#808080}xhx xxxx xxxxx xx xxxx xxxxxxxxxxx xxxh xx xxxx. xxxx xhx xxxxxxx xx xhxx xxxx xxxxx xx xx xhxxxxx.{xxxxx}\*\* -x xxxx xxx xhxxx xxxxxxxx xxxxxx xx xxx xx xhx xxxxx xxxxxxxxxxx xxxxxx- (_[xxxxx-56|hxxx://xxxxx/xxxxxx/xxxxx-56]_) - 4 sp
+** -x xxxx xx hxxx xxxxxx xhxxxxx xxxx xx xxxxxxxx xx xxxx xxxhxxx- ([xxxxx-110|hxxx://xxxxx/xxxxxx/xxxxx-110])\- 3 sp
+
+* xxxxxx xxxxxxxxxxxx - 2 sp
+{xxxxx:#808080}xhxxx xxx xxx xxxxxxx xhxx xhxxx xxxxx xx xx xhxxh xxxxx xx xx xxxxxxxxx. xxxx xxxxxxx xx xxxxxxx xxxxxxxxxxx xxxxx xx xx xxxxxxx xxx xx xxxxxx xxxxx.{xxxxx}
+{xxxxx:#808080}xxxx xxxx xxxxxxx xxxxxxx, xxxx xx xxx xxx xxxxxxxxxxx xxxxx.{xxxxx}
+
+* xxx xxx xxxxx xxxxxx - 13 sp
+** xxxxxxx hxxxxx xxxxxx xxxxxxxxxxx - 4 sp - [xxxxx-150|hxxx://xxxxx/xxxxxx/xxxxx-150]
+{xxxxx:#808080}xxxxx xxxx xx hxxx x xxx xxxxxxxxxxx xxxxx xxxxxx xx xxxxx xxx xxxxx xxxxxxx hxxxxx xxx xxxxxx.{xxxxx}
+** xxx xxxxxxxxxxx xxxxx xxxxxx - 9 sp
+{xxxxx:#808080}xx xxxxxxxxxxx xhxx xxxx xxxx xxxxxxx xxxx xxx 2.3 xxx xxxx xxxxx xxxxxx. xxxxxxxxx xxxxxxxxxx xxxxx.{xxxxx}
+
+* xxxxxxxxxx xxxxxxx - 13 sp
+** -xxxxxxx xxxxx xxxxxxx xx xxxx- \- 4 sp - [xxxxx-141|hxxx://xxxxx/xxxxxx/xxxxx-141]
+{xxxxx:#808080}xxxxxx xx xxxxxxx xxxxxxxxx{xxxxx}
+{xxxxx:#808080}xxxxxxx xxxxxx xx xxxxxxxxxx{xxxxx}
+** xxxxxxx xx xxxx
+** xxxxxxxxx xxxxxxxxxx xxxxx
+** xxxxxxx xx xxxxxxx
+** xxx xxxxxxxxx xxxxxxxxxx xxxxx
+** xx-xxxxxxx
+** xxxxxxxxxxx xxxxx
+** xx xxxxxx xxx xxxx-xxx
+** xxxxxxxxxx xxxxxxx
+** xxxx xxxxxxx xxxxxxx
+
+h5. xxxxxxxxx xxxxxxxxxx xxxxx xxx xxxxx xxx 9 / 26 sp
+
+* _xxxxx xxx xxxxxxxxxx - 2 sp_ _[xxxxx-147|hxxx://xxxxx/xxxxxx/xxxxx-147]_
+{xxxxx:#808080}xxxxxx xhxx xhx x&x xxxxx hxx xxxxxxxxx xxxxxxxx xxx xxxxxxxxxx=xxxxxx xxx xxx xxhxxx (xx xxxx xxxxxxx xxxxx xxxxxxxx, xxx xhx xxxxxx spxxxxxx xxxxxxxx xxxxxx xxx hxx xxxxx xx xxhxx xxxxx, xxx xhx xxhxxx xx xxx. xxx xxxxxxxxxx=xxxxxx, xxx xxxxxx x&x xxxxxxxxx xx xxxxxx hxxx xxxx, xxx xxx xxhxxx xhxxx xx xx xxxxxxxx; xhx xxxxx xxxxxx xx xxxxxx xxxxxxxxx. xxxxxx xhxx xhx x&x xx xxxx xxspxxxxx xx xhxxx xxx xx xxxxxxx xxx x xxx xxxx{xxxxx}
+
+* xxxxx xxxxxxxx - 3 sp
+{xxxxx:#808080}xxxxxx xx xxxx xxxxxx xx xxxxx xxx xxx xxx xxxxxxx. xxxxxxx xxxxh xxxhxxxxxxxxx.{xxxxx}
+
+* xxxxxxx xxxx xx xxxx - 2 sp
+** -xxxxxxx xxxxxxxxx xx xxxx xxxxxxxxx xxx xxxxxx- \- 2 sp - [xxxxx-133|hxxx://xxxxx/xxxxxx/xxxxx-133]
+
+* xxxx xxxxx - 4 sp
+{xxxxx:#808080}xhxxx xxx xxx xxxx xxxx xxxxxxxxxx xhxx xxxxxxx xhx xxxxxx: xxxxxxxx xxx -- xhx xxx xhxxxx xxxx xxspxxx xhx xxxx spxxxxxxx; xx xhxx xxxxxxxxx xx xxxxxxx, xhx xxx xhxxxx xxspxxx xx xxxx xhxx xxxxxxxxxxx xxx xxxxxxxx xxxxxxx, xx xhx xxxxxxx xxxxxxxx (xxxxx xx xxxxxxxxx) xx xhxxx xxx xx xxxxxxx; xxxxxxxx xxxx -- xhxx xhxx xxxxxxxxx xhxx xxx xxxx xx xhx xxxxxxxxxxx xxxxxxxx{xxxxx}
+
+* _xxxxxx xxxxx - 3 sp_ \- [xxxxx-75|hxxx://xxxxx/xxxxxx/xxxxx-75]
+{xxxxx:#808080}xxxxxx xxx xxxxx xx xxxxxxx xx 2 xxxxxxxxx xx xxxh xxxxxxxxx.{xxxxx} [xxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#1]
+
+* _xxxx xxxxxxxx_ \- 5 sp - [xxxxx-86|hxxx://xxxxx/xxxxxx/xxxxx-86]
+{xxxxx:#808080}xhxxx xx xxxx xxxxxxxx xxxxx xxxxxxx.{xxxxx}
+
+* -xx xxxxx xx xxxxxxx xxxxxxxx- \- 5 sp - [xxxxx-93|hxxx://xxxxx/xxxxxx/xxxxx\-93]
+{xxxxx:#808080}{-}xxxxxxx xxxxxxxxxxxxxx xx xxx xxxxxxxxx xx xxxxx xx xxxxxxx xxxxxxxx.-{xxxxx}
+
+* -xxxxxxx xxxxxxx xxx xxxxxxxxx xxxxxxxxx - 1 sp-
+{xxxxx:#808080}{-}xhxxx xx xxxxxx xx xxxx 'xxxxxxx xxxxxx' hxx xxxxxxxxxxx xxxxxx xx xxxh xxxxxxx xxxx xhx{-}{xxxxx} [xxxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#3]
+
+* -xxxxxxxxx xxxxxxxxx - 1 sp-
+{xxxxx:#808080}{-}xhxxx xx x xxxxxx xx xxxx 'xxhxx xxxxxx' xxx xx xxxxx xx xxxh xx xxxxxxxxx xxxxxxxxx.-{xxxxx} -xxx- [xhxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#2] -xxxx xxx x xxxx xx xxxxxxxxx xxxxxxxxx-
+
+h3. xxxxx xxx - xxxxxxxx xxx xxxxx 0 / 33 sp
+
+h5. xxxxx xxx - xxxx hxxx xxxxxxxx - 0 / 25 sp
+
+* xxx xxx xxx xx xxxxxxxx xxxxxx xx xxspxxxx xx xxxxxx xhxxxxx xx xxx - 15 sp
+
+* xxxxxxxxxxxx xxxx xxxxx - 5 sp
+{xxxxx:#808080}xx'xx xxxxxxxx xx xhxx xxxxx xxxx hxx xxxh xxxxxx xxxxxxxxx xx xxx'x xxxxxxxxxx xxxxxxxx (xxxxxxx xx'xx xxxxx xxxxxx xxxxxx){xxxxx}
+
+* xx xxxxxxxx xxx-xx xxxxxxxx - 5 sp
+
+h5. xxxxxxxxx xxxxxxxxxx xxxxx xxx xxxxx xxx - 0 / 8 sp
+
+
+* xxxxxx hxxxxxx - 3 sp
+{xxxxx:#808080}xxxxxx xx xxxxxx xxx xxxxxxx xxxxxx xxxxxxxxxxxx xx xxxx xxxxxx'x hxxxxxx. xxxxxx hxxxxxx xhxxxx xx xxxxxxxxxx.{xxxxx}
+
+
+* xxxxxxxxxx xxxxx - 5 sp
+{xxxxx:#808080}xxxxxxx xxxxx xxx xxxxxxxxxx.{xxxxx} [xxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#7]
+
+h3. xxxxx xhxxx - xxxxxxxx xxx xxxxx - 0 / 15 sp
+
+h5. xxxxx xhxxx - xxxx xx hxxx xxxxxxxx - 0 / 10sp
+
+* xxxxxxx xxxxxxxx xxxxx - 4 sp
+{xxxxx:#808080}xxxxx xhxxxx xx xxx xxxx xxx xxxxxx xx xxxxxxx xhxxx xx xx xxxx xx xhxxxx xhx xxxxxxxxxxxxx. xxxxxxxxxxx xxxxx xxxh xxx xxxx xxxxxxxxxxxxx.{xxxxx}
+
+* xxxxxxxxxx xxxxxxxxxxx - 6 sp
+{xxxxx:#808080}xx xxxx xx hxxx xx xxxxxxxxxxx xhxx xxxx hxxx xxxhxxx xxxxxx xxxxxxxx xxxxxxxxxxxxx. xhxx xxxxxxxxx xxxxxxxxxx xxxxx xxxx xx xxx xxxxxxx xhxx xxx. xhx xxxxxxxxxxx xhxxxx xxxxxxxxx xxxx xxx xx xxxh xx xxxxxxxx - xhxx xxxxx hxxxxx xxxxxxh xxx xxxxxx-xx xx xxxxx.{xxxxx}** xxxhxxx xxxxxx xxxxxxxxxxxxx xxxxxxxx xx xxx xxxx xxx
+
+h5. xxxxxxxxx xxxxxxxxxx xxxxx xxx xxxxx xhxxx - 0 / 5 sp
+
+* xxxxxx xxxxxxxxx (x/xxx) - 5 sp
+{xxxxx:#808080}xxxxxxx xhxx xxx xxxxxxx xxx xxxxxxx xx xxx. xhxxx xx xhxxxxxx xxxxxx'x xxxxxx xx xxxxxxxxx xx xxx. xxxxxxxx xxxxxxx xxxxxxxx xxxxxx.{xxxxx} [xxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#7]
+
+h3. xxxxx xxxx - xxxx hxxx xxxxxxxx - 0 / 25 sp
+
+h5. xxxxx xxxx - xxxx xx hxxx xxxxxxxx - 0 / 17 sp
+
+* xxxxx xxxxxxx xx xxxxxxx, xxxxxxxxxxx xx xxxxx xxxxxxxxx xxxxxx xx - 4 sp
+
+* xxxx xxxxx xxxxxxxx xxxxxx xxxxx xx xxxx xxxxxxxxxx xxxxxxx - 11 sp
+
+* xxxxxxx xxxxxx xhxxxx xxspxxx xxxxxxx xxx xxx xxxxxx xxxx xxxxxxxxx xhx xxx xxxxxxxxx xxxxxxx xxxxxxxxx hxxx xxxxxhxx xxxxxx. - 2 sp
+
+h5. xxxxxxxxx xxxxxxxxxx xxxxx xxx xxxxx xxxx - 0 / 8 sp
+
+* xxxxxxxx xxxxxxx - 5 sp
+{xxxxx:#808080}xxxxxx xx xhxxxxxx x xxx xxxxxxxx xx xhx xxxx xxxxxx xxx xxxxx xx xx xxspxxxxx xxxh xxxxxxx xxxxxx.{xxxxx} [xxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#5]
+
+* xxxxxxxxxxx xxxxxxxxx - 1 sp
+{xxxxx:#808080}xhxxx xx x xxxxxx xx xxxx 'xxhxx xxxxxx'{xxxxx} {xxxxx:#808080}{_}xxxxxx{_}{xxxxx} {xxxxx:#808080}xx xxxxx xx xxxh xx xxxxxxxxxxx xxxxxxxxx.{xxxxx} xxx [xhxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#xxxxxxxxxxx] xxxx xxx x xxxx xx xxxxxxxxxxx xxxxxxxxx
+
+* xxx xxxxxxxhxx - 2 sp
+{xxxxx:#808080}xxxxxx xx xxxxxxx xxxxxxxhxx xxx xxspxxxxx.{xxxxx} [xxx|xxxxhxxx xxxxxxxx xxxxxxxxxx xxxxx#5]
+
+h3. -xxxxxxxx - 40 / 40 sp-
+
+h3. -xxx xxxxxxxxx xxxxxx{-}{-}x- -\- 37 / 37 sp-
+
+h3. -xxx xxxx 3 / 3 sp-
+
+* -xxxxx xxx xxxx xxx xxxx- \- 3 sp - [xxxxx-127|hxxx://xxxxx/xxxxxx/xxxxx-127]

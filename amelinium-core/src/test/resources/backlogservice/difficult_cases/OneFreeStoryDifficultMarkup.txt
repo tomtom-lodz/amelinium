@@ -1,0 +1,12 @@
+intro
+
+BACKLOG
+* -Some Story- \- _5sp_
+* -Some- {color:#ff0000}{-}Story{-}{color} -\-- 5sp
+* -Ddsds dsdsd - 5sp-
+* -asdfasda - 1sp-
+* -{color:#ff0000}asdfasda- - 1sp{color}
+* {color:#ff0000}abc - 2sp
+* {color:#ff0000}{-}Story{-}{color} - 5sp
+* {color:#ff0000} - Story - {color} - 5sp
+* {color:#ff0000} Not crossed {color} - 5sp

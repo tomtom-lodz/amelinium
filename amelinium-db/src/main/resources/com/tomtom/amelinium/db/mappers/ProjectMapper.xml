@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tomtom.amelinium.db.mappers.ProjectMapper">
+    
+    <select id="selectCurrentRevision" resultType="resultProject">
+        select distinct
+        p.name as name,
+        s.sync as sync,
+        b.content as wikiMarkupBacklog,
+        c.content as wikiMarkupChart
+        from snapshot s, backlog b, chart c, project p
+        where 
+		s.revision=(select max(r) from (select revision as r from snapshot where projectId=#{value}) as subquery)
+        and b.id=s.backlogId
+        and c.id=s.chartId
+        and p.id=s.projectId
+		and s.projectId=#{value}
+    </select>
+    
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into project (dtCreated, dtLastModified,
+	name
+		) values (
+		to_timestamp(#{dtCreated},'YYYY-MM-DD HH24:MI:SS'),
+		to_timestamp(#{dtLastModified},'YYYY-MM-DD HH24:MI:SS'),
+		#{name}
+		)
+	</insert>
+
+	<update id="updateName">
+		update project set
+		name = #{param2}
+		where id = #{param1}
+	</update>
+	
+	<update id="updateDtLastModified">
+		update project set
+		dtLastModified = to_timestamp(#{param2},'YYYY-MM-DD HH24:MI:SS')
+		where id = #{param1}
+	</update>
+
+	<delete id="delete">
+		delete from project
+		where id = #{id}
+	</delete>
+
+	<select id="selectAll" resultType="project">
+		select
+		*
+		from project
+	</select>
+	
+	<select id="selectIds" resultType="int">
+		select
+		id
+		from project
+	</select>
+
+	<select id="select" resultType="project">
+		select
+		*
+		from project
+		where id = #{value}
+	</select>
+	
+	<select id="selectNewestProjectId" resultType="int">
+		select max(id) from project where dtCreated in(select max(dtCreated) from project)
+	</select>
+
+</mapper>

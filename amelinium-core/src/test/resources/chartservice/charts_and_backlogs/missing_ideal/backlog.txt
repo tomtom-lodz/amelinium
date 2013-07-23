@@ -1,0 +1,17 @@
+Anything placed above the BACKLOG marker is not subject to recalculation.
+This is the area where you can provide a description of your project.
+
+BACKLOG - do not remove this line (needed for automatic recalculation)
+
+
+h3. First Feature Group - 4/6sp
+First Feature - 3/3sp
+* -First Story- - 1sp
+* -Second Story- - 2sp
+Second Feature - 1/3sp
+* -First Story- - 1sp
+* Second Story - 2sp
+
+h3. Second Feature Group - 0/0sp
+* Story directly under a feature group - 0sp
+* -Done story ("crossed out" with two hyphens)- - 0sp

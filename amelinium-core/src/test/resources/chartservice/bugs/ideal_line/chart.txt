@@ -1,0 +1,102 @@
+h2. TEST
+
+{chart:}
+|| || burned story points ||
+| 0 | 0 |
+| 1 | 15 |
+| 2 | 34 |
+| 3 | 52 |
+| 4 | 64 |
+| 5 | 74 |
+| 6 | 75 |
+| 7 | 90 |
+| 8 | 98 |
+| 9 | 114 |
+| 10 | 120 |
+| 11 | 133 |
+| 12 | 138 |
+| 13 | 148 |
+| 14 | 148 |
+| 15 | 162 |
+| 16 | 176 |
+| 17 | 190 |
+| 18 | 204 |
+| 19 | 213 |
+| 20 | 217 |
+| 21 | 226 |
+| 22 | 236 |
+| 23 | 252 |
+| 24 | 252 |
+
+|| || xxx ||
+| 0 | 220 |
+| 17 | 220 |
+| 18 | 227 |
+| 21 | 227 |
+| 22 | 239 |
+| 23 | 239 |
+| 24 | 239 |
+| 24 | 239 |
+| 24 | 0 |
+
+|| || xxx ||
+| 0 | 250 |
+| 21 | 250 |
+| 22 | 277 |
+| 23 | 330 |
+| 24 | 330 |
+| 33 | 330 |
+| 33 | 0 |
+
+|| || xxx ||
+| 0 | 297 |
+| 21 | 297 |
+| 22 | 324 |
+| 23 | 377 |
+| 24 | 377 |
+| 38 | 377 |
+| 38 | 0 |
+
+|| || ideal ||
+| 0 | 0.0 |
+| 39 | 390.0 |
+{chart}
+
+|| Configuration || ||
+| *Current sprint (number)* | 23 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 1 Jan 2012 |
+| Compute ideal (number (0='all', 5='last 5') or false) | 0 |
+| Extend ideal (true, false) | false |
+| Add missing feature groups to chart (true, false) | false |
+| Add missing feature groups to roadmap (true, false) | false |
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| AAA | 24 | 02 Dec 2012 | not planned |
+| BBB | 33 | 07 Apr 2013 | not planned |
+| CCC | 38 | 16 Jun 2013 | not planned |
+
+SUMMARY
+|| xxxxxx xxxxx xxxxxx | 252 ||
+
+|| xxxxxxx xxxxx || xxxxx xxxxxx ||
+| xxxxxxxx | 145 |
+| -xxxxxx xxx xxxxxxxxxxx- | 150 |
+| -xxx xxxxxxx 1.6- | 158 |
+| -xxx xxxxxxx xxx xxxxxxx xxxxxxxxx xxxxxxxxxxxxx- | 159 |
+| xxx | 239 |
+| xxx | 330 |
+| xxx | 377 |
+| xxxxxx xxxxxxxxx xxxxxxxxxx | 380 |
+| xxxxxxxxxxx | 387 |
+| xxxxxxxx | 402 |
+| xxxxxx xxxxxxx xxx xxxxxxx xxxx xxxxxxxxxx | 411 |
+| xxxxxxxxx xxxxxxx | 415 |
+| xxxxxxxxx xxxxxxxx | 419 |
+| xxxxx | 430 |
+
+AUTOCORRECTION LOG
+|| xxxxx || xxxxxxx? || xxxxxxxxx? || xxxxxxx xxxxx xxxx xxxxxxx ||
+| xxx | (/) | (/) | xxx - |
+| xxx | (/) | (/) | xxx - |
+| xxx | (/) | (/) | xxx - |

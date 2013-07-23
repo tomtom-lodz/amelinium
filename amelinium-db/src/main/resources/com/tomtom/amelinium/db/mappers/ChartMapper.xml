@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tomtom.amelinium.db.mappers.ChartMapper">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into chart (
+		dt, revision, content, revertedFromRevision
+		) values (
+		to_timestamp(#{dt},'YYYY-MM-DD HH24:MI:SS'),
+		#{revision},
+		#{content},
+		#{revertedFromRevision}
+		)
+	</insert>
+
+	<select id="selectCurrentId" resultType="int">
+	    select max(chartId) from snapshot where projectId=#{value}		
+	</select>
+
+	<!-- selects newest chart id from ALL PROJECTS!!! -->
+	<select id="selectNewestId" resultType="int">
+		 select max(id) from chart where dt in(select max(dt) from chart)
+	</select>
+
+	<select id="selectAll" resultType="chart">
+		select
+		revision, dt, content,
+		revertedFromRevision
+		from chart
+	</select>
+
+	<select id="select" resultType="chart">
+		select distinct c.id, c.revision,
+		c.dt, c.content, c.revertedFromRevision
+		from chart c, snapshot s
+		where s.projectId = #{param1}
+		and s.chartId=c.id
+		and c.revision = #{param2}
+	</select>
+
+	<select id="selectPart" resultType="historyElement">
+		select chart.revision as
+		revision,
+		snapshot.revision as projectRevision,
+		chart.dt as dt,
+		chart.revertedFromRevision as revertedFromRevision
+		from chart,
+		snapshot
+		where chart.id=snapshot.chartId
+		and chart.revision >= #{param2}
+		and
+		#{param3} >= chart.revision
+		and snapshot.projectId = #{param1}
+		order by
+		projectRevision desc
+	</select>
+	
+	<delete id="delete">
+	    delete from chart where id in 
+	    (select chartId from snapshot where projectId=#{value})  
+	</delete>
+
+</mapper>

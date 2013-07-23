@@ -1,0 +1,144 @@
+h3. Do not click links below (unless you know what you are doing)
+
+|| Configuration || ||
+| *Current sprint (number)* | 38 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 11 Feb 2011 |
+| Compute ideal (number (0='all', 5='last 5') or false) | false |
+| Extend ideal (true, false) | false |
+| Add missing feature groups to chart (true, false) | true |
+| Add missing feature groups to road map (true, false) | true |
+| Names on roadmap from (backlog, chart, unchanged) | chart |
+
+{chart:}
+
+|| || burned story points ||
+| 14 | 0 |
+| 15 | 9 |
+| 16 | 23 |
+| 17 | 32 |
+| 18 | 39 |
+| 19 | 55 |
+| 20 | 73 |
+| 21 | 73 |
+| 22 | 95 |
+| 23 | 121 |
+| 24 | 133 |
+| 25 | 150 |
+| 26 | 166 |
+| 27 | 173 |
+| 28 | 193 |
+| 29 | 203 |
+| 30 | 227 |
+| 31 | 231 |
+| 32 | 244 |
+| 33 | 252 |
+| 34 | 257 |
+| 36 | 269 |
+| 37 | 283 |
+| 38 | 286 |
+
+|| || JJJ ||
+| 14 | 417 |
+| 35 | 417 |
+| 36 | 417 |
+| 37 | 438 |
+| 38 | 471 |
+| 50 | 471 |
+| 50 | 0 |
+
+|| || III ||
+| 37 | 438 |
+| 38 | 463 |
+| 49 | 463 |
+| 49 | 0 |
+
+|| || HHH ||
+| 14 | 394 |
+| 35 | 394 |
+| 36 | 394 |
+| 37 | 415 |
+| 38 | 433 |
+| 47 | 433 |
+| 47 | 0 |
+
+|| || GGG ||
+| 37 | 416 |
+| 38 | 416 |
+| 46 | 416 |
+| 46 | 0 |
+
+|| || FFF ||
+| 14 | 372 |
+| 35 | 372 |
+| 36 | 372 |
+| 37 | 393 |
+| 38 | 406 |
+| 45 | 406 |
+| 45 | 0 |
+
+|| || EEE ||
+| 37 | 388 |
+| 38 | 388 |
+| 44 | 388 |
+| 44 | 0 |
+
+|| || DDD ||
+| 14 | 344 |
+| 35 | 344 |
+| 36 | 344 |
+| 37 | 365 |
+| 38 | 370 |
+| 42 | 370 |
+| 42 | 0 |
+
+|| || CCC ||
+| 37 | 344 |
+| 38 | 344 |
+| 40 | 344 |
+| 40 | 0 |
+
+|| || BBB ||
+| 14 | 319 |
+| 35 | 319 |
+| 36 | 319 |
+| 37 | 312 |
+| 38 | 316 |
+| 38 | 316 |
+| 38 | 0 |
+
+|| || OOO ||
+| 14 | 281 |
+| 30 | 281 |
+| 31 | 285 |
+| 32 | 267 |
+| 34 | 267 |
+| 34 | 0 |
+
+|| || NNN ||
+| 14 | 249 |
+| 30 | 249 |
+| 31 | 253 |
+| 32 | 247 |
+| 32 | 247 |
+| 32 | 0 |
+
+|| || ideal ||
+| 14 | 0.0 |
+| 51 | 490.0 |
+{chart}
+
+h3. Road Map
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| NNN - some description | 32 | 04 May 2012 | 12 Jun 2012 (/) |
+| OOO | 34 | 01 Jun 2012 | 3 Jul 2012 (/) |
+| BBB | 38 | 27 Jul 2012 | 4 Sep 2012 |
+| CCC | 40 | 24 Aug 2012 | October 2012 |
+| DDD | 42 | 21 Sep 2012 | October 2012 |
+| EEE | 44 | 19 Oct 2012 | December 2012 |
+| FFF | 45 | 02 Nov 2012 | December 2012 |
+| GGG | 46 | 16 Nov 2012 | December 2012 |
+| HHH | 47 | 30 Nov 2012 | February 2013 |
+| III | 49 | 28 Dec 2012 | February 2013 |
+| JJJ | 50 | 11 Jan 2013 | February 2013 |

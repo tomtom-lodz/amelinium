@@ -1,0 +1,25 @@
+Anything placed above the {chart . . .} marker is not subject to recalculation.
+This is the area where you can provide a description of your project.
+
+|| Configuration || ||
+| *Current sprint (number)* | 1 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 1 Jan 2012 |
+| Compute ideal (number (0='all', 5='last 5') or false) | false |
+| Extend ideal (true, false) | true |
+| Add missing feature groups to chart (true, false) | false |
+| Add missing feature groups to roadmap (true, false) | false |
+| Names on roadmap from (backlog, chart, unchanged) | unchanged |
+| Dark matter as percentage of velocity (0-99) | 0 |
+| Show cumulative points summary (true, false) | false |
+| Show autocorrection log (true, false) | true |
+
+{chart:type=xyLine|dataOrientation=vertical|width=800|height=500|title=insert your title here}
+
+{chart}
+
+h3. Roadmap
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| First Feature Group | 1 | 1 Jan 2012 | 1 Feb 2012 |
+| Second Feature Group | 32 | 3 Aug 2012 | not planned |

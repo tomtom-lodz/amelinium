@@ -1,0 +1,111 @@
+h2. Warta Release Planning
+
+Do not forget to update sprint number\! [http://10.18.10.247:8100/backlog-summator/chart-and-backlog/update?chartTitle=Warta+Release+Planning&chartSpace=WARTA&backlogTitle=Warta+Product+Backlog&backlogSpace=WARTA]
+
+|| Configuration || ||
+| *Current sprint (number)* | 26 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 22 Jul 2011 |
+| Compute ideal (number (0='all', 5='last 5') or false) | 0 |
+| Extend ideal (true, false) | false |
+| Add missing feature groups to chart (true, false) | false |
+| Add missing feature groups to roadmap (true, false) | false |
+
+{chart:}
+
+|| || burned story points ||
+| 0 | 0 |
+| 1 | 15 |
+| 2 | 34 |
+| 3 | 52 |
+| 4 | 64 |
+| 5 | 74 |
+| 6 | 75 |
+| 7 | 90 |
+| 8 | 98 |
+| 9 | 114 |
+| 10 | 120 |
+| 11 | 133 |
+| 12 | 138 |
+| 13 | 148 |
+| 14 | 148 |
+| 15 | 162 |
+| 16 | 176 |
+| 17 | 190 |
+| 18 | 204 |
+| 19 | 213 |
+| 20 | 217 |
+| 21 | 226 |
+| 22 | 236 |
+| 23 | 252 |
+| 24 | 254 |
+| 25 | 273 |
+| 26 | 273 |
+
+|| || xxxxxxx 1 ||
+| 0 | 220 |
+| 17 | 220 |
+| 18 | 227 |
+| 21 | 227 |
+| 22 | 239 |
+| 23 | 239 |
+| 23 | 0 |
+
+|| || xxxxxxx 2 ||
+| 0 | 250 |
+| 21 | 250 |
+| 22 | 277 |
+| 23 | 287 |
+| 24 | 289 |
+| 25 | 308 |
+| 26 | 323 |
+| 30 | 323 |
+| 30 | 0 |
+
+|| || xxxxx xxxxxxx ||
+| 0 | 297 |
+| 21 | 297 |
+| 22 | 324 |
+| 23 | 334 |
+| 24 | 336 |
+| 25 | 355 |
+| 26 | 370 |
+| 34 | 370 |
+| 34 | 0 |
+
+|| || ideal ||
+| 0 | 0.0 |
+| 35 | 383.0 |
+{chart}
+
+h3. Road Map
+
+|| xxxxxxx xxxxx || xxxxxx || xxx xx xxxxxxxxxxx || xxxxxxxxxx xx xxxxxxxxxx ||
+| xxxxxxx 1 | 23 | 08 xxx 2012 | xxx xxxxxxx |
+| xxxxxxx 2 | 30 | 14 xxx 2012 | xxx xxxxxxx |
+| xxxxx xxxxxxx | 34 | 08 xxx 2012 | xxx xxxxxxx |
+
+SUMMARY
+|| xxxxxx xxxxx xxxxxx | 273 ||
+
+|| xxxxxxx xxxxx || xxxxx xxxxxx ||
+| xxxxxxxx xxxx | 145 |
+| -xxxxxx xxx xxxxxxxxxxx- | 150 |
+| -xxx xxxxxxx 1.6- | 158 |
+| -xxx xxxxxxx xxx xxxxxxx xxxxxxxxx xxxxxxxxxxxxx- | 159 |
+| -xxxxxxx 1 - xxxxxxx xxxxxxxxx xxx xxxxxxx xxxx xxxxxx xxxxxxx xx xxxxxx, xxx xxxxx xxxxxxxxxx, xx xxxxxxxx, xxx xxxx (xxxx xxxx xxxxxx xxx)- | 239 |
+| xxxxxxx 2 | 323 |
+| xxxxx xxxxxxx | 370 |
+| xxxxxx xxxxxxxxx xxxxxxxxxx | 373 |
+| xxxxxxxxxxx | 380 |
+| xxxxxxxx | 395 |
+| xxxxxx xxxxxxx xxx xxxxxxx xxxx xxxxxxxxxx | 404 |
+| xxxxxxxxx xxxxxxx | 408 |
+| xxxxxxxxx xxxxxxxx | 412 |
+| xxxxx | 423 |
+
+AUTOCORRECTION LOG
+|| xxxxx || xxxxxxx? || xxxxxxxxx? || xxxxxxx xxxxx xxxx xxxxxxx ||
+| xxxxxxx 1 | (/) | (!) | \-xxxxxxx 1 - xxxxxxx xxxxxxxxx xxx xxxxxxx xxxx xxxxxx xxxxxxx xx xxxxxx, xxx xxxxx xxxxxxxxxx, xx xxxxxxxx, xxx xxxx (xxxx xxxx xxxxxx xxx) - - |
+| xxxxxxx 2 | (/) | (/) | xxxxxxx 2 - |
+| xxxxx xxxxxxx | (/) | (/) | xxxxx xxxxxxx - |

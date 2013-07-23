@@ -1,0 +1,37 @@
+BACKLOG
+
+h1. Sidework 45/48sp
+
+h3. feature group - 0/0sp
+
+{column:width=50%}
+
+feature - 0/0sp
+* story - 5sp
+* -story- - 1sp
+{column}
+
+{column:width=50%}
+
+feature - 0/0sp
+* story - 5sp
+* -story- - 1sp
+{column}
+
+h1. Actual 45/48sp
+
+h3. feature group - 0/0sp
+
+{column:width=50%}
+
+feature - 0/0sp
+* story - 5sp
+* -story- - 1sp
+{column}
+
+{column:width=50%}
+
+feature - 0/0sp
+* story - 5sp
+* -story- - 1sp
+{column}

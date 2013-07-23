@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <groupId>com.googlecode.amelinium</groupId>
+        <artifactId>amelinium-parent</artifactId>
+        <version>0.2-SNAPSHOT</version>
+        <name>amelinium parent</name>
+        <packaging>pom</packaging>
+        <modules>
+                <module>amelinium-core</module>
+                <module>amelinium-commandline</module>
+                <module>amelinium-web</module>
+	<!--	<module>amelinium-confluence</module>-->
+		<module>amelinium-db</module>
+<!-- 		<module>amelinium-gae</module> -->
+        </modules>
+        <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <licenses>
+                <license>
+                        <name>Apache License 2.0</name>
+                        <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+                        <distribution>repo</distribution>
+                </license>
+        </licenses>
+        <developers>
+                <developer>
+                        <id>wmlynar</id>
+                        <name>Wojciech Mlynarczyk</name>
+                        <email>wojciech.mlynarczyk@gmail.com</email>
+                </developer>
+                <developer>
+                        <id>nowakn</id>
+                        <name>Natasza Nowak</name>
+                        <email>natasza.katarzyna.nowak@gmail.com</email>
+                </developer>
+        </developers>
+        <issueManagement>
+                <system>code.google.com</system>
+                <url>http://code.google.com/p/amelinium/issues/list</url>
+        </issueManagement>
+        <scm>
+                <connection>scm:svn:http://amelinium.googlecode.com/svn/trunk</connection>
+                <developerConnection>scm:svn:https://amelinium.googlecode.com/svn/trunk</developerConnection>
+                <url>http://code.google.com/p/amelinium/source/browse/</url>
+        </scm>
+        <dependencies>
+                <dependency>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                        <version>4.1</version>
+                        <scope>test</scope>
+                </dependency>
+                <dependency>
+	<groupId>net.java</groupId>
+	<artifactId>textile-j</artifactId>
+	<version>2.2</version>
+</dependency>
+        </dependencies>
+        <build>
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>2.3.2</version>
+                                <configuration>
+                                        <source>1.6</source>
+                                        <target>1.6</target>
+                                </configuration>
+                        </plugin>
+                </plugins>
+                <extensions>
+                        <extension>
+                                <groupId>com.google.code.maven-svn-wagon</groupId>
+                                <artifactId>maven-svn-wagon</artifactId>
+                                <version>1.4</version>
+                        </extension>
+                </extensions>
+        </build>
+        <distributionManagement>
+                <repository>
+                        <uniqueVersion>false</uniqueVersion>
+                        <id>amelinium</id>
+                        <url>svn:https://amelinium.googlecode.com/svn/mavenrepo</url>
+                </repository>
+        </distributionManagement>
+        <repositories>
+                <repository>
+                        <id>amelinium</id>
+                        <url>http://amelinium.googlecode.com/svn/mavenrepo</url>
+                </repository>
+        </repositories>
+        <pluginRepositories>
+                <pluginRepository>
+                        <id>amelinium</id>
+                        <url>http://amelinium.googlecode.com/svn/mavenrepo</url>
+                </pluginRepository>
+        </pluginRepositories>
+</project>
+

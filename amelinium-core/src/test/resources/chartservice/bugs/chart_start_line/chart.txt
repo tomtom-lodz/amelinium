@@ -1,0 +1,177 @@
+h3. Do not click links below (unless you know what you are doing)
+
+Do not forget to update sprint number\!
+
+[http://]
+[http://localhost:]
+
+|| Configuration || ||
+| *Current sprint (number)* | 38 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 11 Feb 2011 |
+| Compute ideal (number (0='all', 5='last 5') or false) | false |
+| Extend ideal (true, false) | false |
+| Add missing feature groups (true, false) | false |
+
+{chart:type=xyLine|domainAxisTickUnit=1|dataOrientation=vertical|width=800|height=500|title=abcd}
+
+|| || burned story points ||
+| 14 | 0 |
+| 15 | 9 |
+| 16 | 23 |
+| 17 | 32 |
+| 18 | 39 |
+| 19 | 55 |
+| 20 | 73 |
+| 21 | 73 |
+| 22 | 95 |
+| 23 | 121 |
+| 24 | 133 |
+| 25 | 150 |
+| 26 | 166 |
+| 27 | 173 |
+| 28 | 193 |
+| 29 | 203 |
+| 30 | 227 |
+| 31 | 231 |
+| 32 | 244 |
+| 33 | 252 |
+| 34 | 257 |
+| 36 | 269 |
+| 37 | 283 |
+| 38 | 286 |
+
+|| || Cxx  x xxx  ||
+| 14 | 417 |
+| 35 | 417 |
+| 36 | 417 |
+| 37 | 438 |
+| 38 | 471 |
+| 50 | 471 |
+| 50 | 0 |
+
+|| || Cxxxx  x xx x ||
+| 37 | 438 |
+| 38 | 463 |
+| 49 | 463 |
+| 49 | 0 |
+
+|| || x xx x - xxx xx  x  xx xxx  + x x xxxx x xxx  x x ||
+| 14 | 394 |
+| 35 | 394 |
+| 36 | 394 |
+| 37 | 415 |
+| 38 | 433 |
+| 47 | 433 |
+| 47 | 0 |
+
+|| || Sxxx  xxx ||
+| 37 | 416 |
+| 38 | 416 |
+| 46 | 416 |
+| 46 | 0 |
+
+|| || Mxxxx  x   xxx ||
+| 14 | 372 |
+| 35 | 372 |
+| 36 | 372 |
+| 37 | 393 |
+| 38 | 406 |
+| 45 | 406 |
+| 45 | 0 |
+
+|| || Axxx xxxxx  x ||
+| 37 | 388 |
+| 38 | 388 |
+| 44 | 388 |
+| 44 | 0 |
+
+|| || Axxx xxxxx  x x xxxxx xx xx xxxxx ||
+| 14 | 344 |
+| 35 | 344 |
+| 36 | 344 |
+| 37 | 365 |
+| 38 | 370 |
+| 42 | 370 |
+| 42 | 0 |
+
+|| || Rxxx  xx xxx xx   xxxxx  ||
+| 37 | 344 |
+| 38 | 344 |
+| 40 | 344 |
+| 40 | 0 |
+
+|| || N xxxxx  xxx ||
+| 14 | 319 |
+| 35 | 319 |
+| 36 | 319 |
+| 37 | 312 |
+| 38 | 316 |
+| 38 | 316 |
+| 38 | 0 |
+
+|| || Cxxxxxx xxx ||
+| 14 | 281 |
+| 30 | 281 |
+| 31 | 285 |
+| 32 | 267 |
+| 34 | 267 |
+| 34 | 0 |
+
+|| || Ex xxx xx  ||
+| 14 | 249 |
+| 30 | 249 |
+| 31 | 253 |
+| 32 | 247 |
+| 32 | 247 |
+| 32 | 0 |
+
+|| || ideal ||
+| 14 | 0.0 |
+| 51 | 490.0 |
+{chart}
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| Ex xxx xx  | 32 | 04 M 2012 | 12 Jx 2012 (/) |
+| Cxxxxxx xxx | 34 | 01 Jx 2012 | 3 Jx 2012 (/) |
+| N xxxxx  xxx | 38 | 27 Jx 2012 | 4 Sx 2012 |
+| Rxxx  xx xxx xx   xxxxx  | 40 | 24 A  2012 | O xx 2012 |
+| Axxx xxxxx  x x xxxxx xx xx xxxxx | 42 | 21 Sx 2012 | O xx 2012 |
+| Axxx xxxxx  x | 44 | 19 O  2012 | Dxx 2012 |
+| Mxxxx  x   xxx | 45 | 02 Nx 2012 | Dxx 2012 |
+| Sxxx  xxx | 46 | 16 Nx 2012 | Dxx 2012 |
+| x xx x - xxx xx  x  xx xxx  + x x xxxx x xxx  x x | 47 | 30 Nx 2012 | Fxx 2013 |
+| Cxxxx  x xx x | 49 | 28 D 2012 | Fxx 2013 |
+| Cxx  x xxx  | 50 | 11 Jx 2013 | Fxx 2013 |
+
+SUMMARY
+|| Bxx x xx xxxx x | 286 ||
+
+|| F x Gxxx || S xx Pxxx x ||
+| Pxxxx | 267 |
+| N xxxxx  xxx | 316 |
+| Rxxx  xx xxx xx   xxxxx  | 344 |
+| Axxx xxxxx  x x xxxxx xx xx xxxxx | 370 |
+| Axxx xxxxx  x | 388 |
+| Mxxxx  x   xxx | 406 |
+| Sxxx  xxx | 416 |
+| x xx x - xxx xx  x  xx xxx  + x x xxxx x xxx  x x | 433 |
+| Cxxxx  x xx x | 463 |
+| Cxx  Cx Pxx  | 471 |
+| A xx Pxx  -- Nx xxxxxx x Sxxxx Dxx xx  Bxxx Nxx | 476 |
+| Txxxx xxx x  Axxxx xxx  x Mx xxx Lx  x | 484 |
+| O xx | 539 |
+
+AUTOCORRECTION LOG
+|| Tx || x x? || xxx ? || F x Gxxx  xxx xxx  ||
+| Cxx  x xxx  | (/) | (/) | Cxx  Cx Pxx  - |
+| Cxxxx  x xx x | (/) | (/) | Cxxxx  x xx x - |
+| x xx x - xxx xx  x  xx xxx  + x x xxxx x xxx  x x | (/) | (/) | x xx x - xxx xx  x  xx xxx  + x x xxxx x xxx  x x - |
+| Sxxx  xxx | (/) | (/) | Sxxx  xxx - |
+| Mxxxx  x   xxx | (/) | (/) | Mxxxx  x   xxx - |
+| Axxx xxxxx  x | (/) | (/) | Axxx xxxxx  x - |
+| Axxx xxxxx  x x xxxxx xx xx xxxxx | (/) | (/) | Axxx xxxxx  x x xxxxx xx xx xxxxx - |
+| Rxxx  xx xxx xx   xxxxx  | (/) | (/) | Rxxx  xx xxx xx   xxxxx  - |
+| N xxxxx  xxx | (/) | (/) | N xxxxx  xxx - |
+| Cxxxxxx xxx | (!) | (!) | |
+| Ex xxx xx  | (!) | (!) | |

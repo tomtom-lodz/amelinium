@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tomtom.amelinium.db.mappers.BacklogMapper">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into backlog (
+		dt, revision, content, revertedFromRevision
+		) values (
+		to_timestamp(#{dt},'YYYY-MM-DD HH24:MI:SS'),
+		#{revision},
+		#{content},
+		#{revertedFromRevision}
+		)
+	</insert>
+
+	<select id="selectCurrentId" resultType="int">
+	    select max(backlogId) from snapshot where projectId=#{value}
+	</select>
+
+	<!-- selects newest backlog id from ALL PROJECTS!!! -->
+	<select id="selectNewestId" resultType="int">
+		select max(id) from backlog where dt in(select max(dt) from backlog)
+	</select>
+
+	<select id="selectAll" resultType="backlog">
+		select
+		revision, dt, content,
+		revertedFromRevision
+		from backlog
+	</select>
+
+	<select id="select" resultType="backlog">
+		select distinct b.id, b.revision,
+		b.dt, b.content, b.revertedFromRevision
+		from backlog b, snapshot s
+		where s.projectId=#{param1}
+		and s.backlogId=b.id
+		and b.revision=#{param2}
+	</select>
+
+	<select id="selectPart" resultType="historyElement">
+		select backlog.revision as
+		revision,
+		snapshot.revision as projectRevision,
+		backlog.dt as dt,
+		backlog.revertedFromRevision as revertedFromRevision
+		from backlog,
+		snapshot
+		where backlog.id=snapshot.backlogId
+		and backlog.revision >=
+		#{param2}
+		and #{param3} >= backlog.revision
+		and snapshot.projectId =
+		#{param1}
+		order by projectRevision desc
+	</select>
+	
+	<delete id="delete">
+	    delete from backlog where id in 
+	    (select backlogId from snapshot where projectId=#{value})  
+	</delete>
+
+</mapper>

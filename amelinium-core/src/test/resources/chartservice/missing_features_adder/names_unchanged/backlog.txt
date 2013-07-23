@@ -1,0 +1,226 @@
+BACKLOG - xx xxx xxxxxx xxxx xxxx (xxxxxx xxx xxxxxxxxx xxxxxxxxxxxxx)
+
+
+h3. AAA - 267/267sp
+
+* -Dxxx xxxxxxxx xxxxx xx xxxx xxxxx xxxxx - 150sp-
+* -Mxxxxxx xxxxxxx - 15sp-
+* -Wxxxxxxx xxxxx xx xxxx - 82sp-
+* -Cxxxxxxxxx Lxxxxx - 20sp-
+
+
+h3. BBB - 19/49sp
+
+-Uxxxxx xxxxx xxxx - 2/2sp-
+* -Uxxxxx xxxxx xxxx, xxxxxxx xxxxx xxxxxxx xxxxxx xxxx - 2sp-
+
+-Sxxxx xxxxx - 0/0sp-
+* -"Mx xxxxxxxx xxxxxxxxxxxx" xxxxxx xxxx "Mx xxxxxxxx xxxxxxxxxxx" xxxxx Mx Axxxxxx xxx - 0sp-
+* -Uxxxx "Cxxxxxx Ux" xx xxxxxx xxxxxx xxx xxxxxxx xx xxxxxxx: "Pxxxxx xxxxx xx xxx xxxx xxxx xxxx xxxxxxxxx xxxx xxxx. Bx xxxx xx xxxxxxx xxxx xxxx, xxxxxxx xxxxxxxxxxx xxx x xxxxxxxx xxxxxxxxxxx xx xxx xxxxxxx xx xxx xxxx xx xxx xxxxx xxxxxxx" - 0sp-
+* -Ox xxx xxxxxxx xxxx xxxxxxx, xxx xx xxxxxx xxxxxx Sxxxxx xx Hxxxx Nxxxxx - 0sp-
+* -Ox xxx Rxxxxxx xxx, xxxxx xx xxxxxxx xxxxxxx xxxxxxx xxxx xxx xxxxxxxxxx xxxxxxxxxxxx xxxxxxxx xx xxxxxx xxxxxxx xxxx, xx xxxxxx xxxxxx xxx xxxxxxx xx xx "xxx Axxxxxx Pxxxx xxxxx xxxxx" xxx "xxx Hxxxx Nxxxxx xxxxx xxxxx" xx xxxxxxxx - 0sp-
+* -Txx xxxxxxx xxxxx (Mxxxx/26/Yxxx xx Mxxxx/25/Yxxx) xxxxxx xx xxspxxxxx xx xxx Uxxxx xxx - 0sp-
+
+-Cxxxxx xxxx xxxxxxxxx xxxxxxxxxx - 4/4sp-
+* -Dxxxxx xxx xxxxxxxxx xxxxxxxxxx xxxxxxxxxxxx - 4sp-
+
+-Oxx-xxx xxxxxxxxx - 3/3sp-
+* -Oxx-xxx xxxxxxxxx xxxx, xxxxx xxxxxxxxxx, xxxx xxxxxxx, xx xxxxxxxx - 3sp-
+
+-Exxxxxxxxx xxxxxxxx - 3/3sp-
+* -Axxxxxx xx xxxxxx x xxx xxxxxxxxxx xxxxxxx xx xxx xxxx xxxxxxx. Uxxx xxx xxx xxx xxxx xxxx xxx xxx xxxx xxxxxxx xx xxx xxxx (xxx xxx) - 3sp-
+
+_Sxxxxxxx - 0/5sp_
+* _Axx xxxxx xxxx xxx xxxxxx xxx xxxxxx ID xxxxx xx xxx xxxxxx xxxx - 3sp_
+* Axx xxxxxx xx xxx xxxxxx xxxx - ?sp
+* _Ixxxxxxxx Axxxxxx 1.8 - ?sp_
+* _xAxxxx xxx xUxxx xxx xxx xx xxxxxxxx xxxx xxx xxxx xxxx xxx xxxxxxx xxxxxxx xxx xxxx - 2sp_
+
+_Nxx xxxxxxx xxxxx - 7/32sp_
+* -Lxxx xx xx xxxxxxxxxxxx xxxx xxxx xxxxxx: xxxxx xxxx, xxxxxxx xxxx, xxxxxxxxxxxx xxxx, xxxxxxxxxx xxxx, xxxxxx, xxxxxx xx xxxxxxx xxxxxxxxx, xxx xxxx xxxxxxx xxxx + xxxxxx - 3sp-
+* -Lxxx xx xxx xxxxxxxxxxxx xxxx (xxxxxxx->xxxxxxxxxxxx) xxxx xxxxxx: xxxxxxx xxxx, xxxx xxxx, xxxxxx - 1sp\-
+* _{-}Bxx xxxx xxxxxxx xxxx (1 xxxxxx xxx xxxx xxxxxxx xx xx xxxxxxxxxxxx xxxx 2 xxxxxxx xxxxx 3 xxxxx xxxxxx xx xxxxxxx 4 xxxxxxxxx xxxxx 5 xxxxxx xxxxxxx xxxxxx 6 xxxxxxx xxxxxxx 7 xxxxxxx xxxxxxx 8 xxxxxxxx xx xx xxxxxxxxxxxx) - 3sp{-}_
+* _Axxxx xxxxxxxxxxx xx xxx xxxxxxx xxxxx_ _\- 13sp_
+* _Uxxxxx xxxxxxx xx xxspxxx xxxxxxx xxx xxxxx (xxxxxx Rxxxxxx xxx Bxxxxxx Rxxxxxx xxxx xxxx xxxxxxx xxxxx) - 0sp_
+* _Exxx xxxxxxxxxx xx xxxxxxx xxxxx - 0sp_
+* _Sxx xxxxx xxxxxxxxxxx xxxxx xxx xxxxxx xxxxxxx xx xxxxxxx - 2sp_
+* Wxxx xxxx xxxxx xx xxxxxxx xxx xxx xxx xxxxxx xxxxxxx xxxxx xxxxxx xx xxxx xx CxxxxxxxAxxxx - ?sp
+* _Sxxx xxxxx xxxxx xxxxxxx (xxxxxx xxxx xxxxxx xxxxx, CxxxxxxxAxxxx) - 2sp_
+* _Dxspxxx xxxxxxxxxxx "Wxxxxxx $\{xxxx\}, xxx xxxx $\{xxxxxx\} xxxxxx xx xxxxxxx xxxx" xxxx xx Mx Axxxxxx - 2sp_
+* Oxxx xUxxx xxx xAxxxx xxx xxx xxxxxxx (xxxxxx xxxxxx xxxxxxx xxxx) - 3sp
+* Mxxx "Mx xxxxxxxxxxxx" xxxx xx "Mx xxxxxxx" xxxxxxx xxxx xx CxxxxxxxAxxxx - 1sp
+* Rxxxxxxx Cxxxxxxx Ixxxxxxxxxx Sxxxxxx - 2sp
+* Ixxxxxxxx Bxxxxxx Rxxxxxx (xxxx xx xxx xxxxxxxxxxxx) xx xxxxxx (xxx xUxxx xxx xx xxxxxxx xxx xAxxxx xxx xxx xxxxxxxx) - 0sp
+* Ixxxxxxxx Rxxxxxx Rxxxxxx xx xxxxxx (xxx xAxxxx xxxx) - ?sp
+
+
+h3. CCC - 0/28sp
+
+Cxxxxx xxxx xxxxxxxxx xxxxxxxxxx - 0/26sp
+* Ixxxxxxxx xxxxxxxx xxxx xxxxxxxxx xxxxxxxxx / xxxxxxx - 8sp
+* Cxxxxx xxxxxx xxxxxxxxxxx xxxxx xxxxxx xxxx xxxxxxxxx xxxxxxxxx - 4sp
+* Rxxxxxx xxxxxxxx xxxx Axxxxxxxx - 8sp
+* Txxx Ixxxxxxxxxxx xxxx xxx xxxx xxxxxxxxx xxxxxxxxxx (Axxxxxxxx) xxxxxxxxxx - 6sp
+
+Nxx xxxxxx ENQUEUED - 0/2sp
+* Axx xxxxxxxxxx xxxxxx xxxx xxxx ENQUEUED xx xxx xxxxxxxxxx xxxx xx xxxxxx. Axxxxxxx xxxxx xx xx xxxxxxxxxx xxxx xxx xx xxxxxx xxxxxxxxxx xxxxxxx xxxx xx 'xxxxxxxx' xxxxxx. Cxxxxxxxx 'Exxxxxxx' xxx xxxxxx IN_PROCESSING - 2sp
+
+
+h3. DDD - 0/26sp
+
+Axxxxxx xx xxxxxxx - 0/3sp
+* Axxxxxx xx xxxxxxx xxxxx xxxxx xxxxxxxxx - 3sp
+
+Axxxxx xxxxxxxxxx - 0/5sp
+* Axxxxx xxxxxxxxxx - 5sp
+
+Sxxxxxxxxx xxxx xx xxxxxxx - 0/10sp
+* ROUGH ESTIMATE - 10sp
+
+Sxxxxxx xxx xxxxx xxxxxx xxxxxxx xx Axxxxxx - 0/8sp
+* Sxxx xxxxx xxxxxx xxxxxxx xx Axxxxxx - 8?sp (FIXME xxxxxxxxx xx xxx)
+
+
+h3. EEE - 0/18sp
+
+Axxxxxxxxx xx xxxxxxxxxx - 0/10sp
+* Axxxxxxxx xxxxxxxx xx AMI - 5sp
+* Axxxxxxxx xxxxxxxx xx xxxx xxxxxxxxxxxx - 5sp
+
+Fxx xxxxxxx xxxxxxxxxxx - 0/5sp
+* Fxx xxxxxxxx xxxxx xx xxxx xx xxx xxxxx xxxx xxx xxxxxxx Axxxxxxxx xxxxxxxxxxxx - 2sp
+* _Fxx Sxxxxxxx xxxxxxx xxxxxxxxxxx - 3sp_
+
+Cxxxxxx - 0/3sp
+* Rxxxxx API xxxxxxxxxxxxx - 3?sp (FIXME xxxxxxxxx xx xxx)
+
+
+h3. FFF - 0/18sp
+
+Mxx xxxxxx - 0/10sp
+* Dxspxxx xxx xxxxxx xxxx xxxx xxxxxxxxx xx xxxxxxxx, xxxxxxxxx xxx xxxxx xxx xxxx xx xxxxxxxx xxxx - 5sp
+* Sxxxxx xxxxxxx xxxxxxxxx xxxxx xx xxxxx xxx xx xxxx - 1sp
+* Sxxxxx xxxxxxx xxxxxxx xx xxxxxx - 2sp
+* Dxspxxx xxxxxxxxxxx xxxx xxxxxx xxxx xx xxxxxx xxxxx xxxxxx / xxxxxx - 2sp
+
+Rxxxxx xxxxxxx xx xxxxxx xxxx xxxxxx xxxxxxx xxxxxx xxxxx xxxxxx - 0/3sp
+* Uxxxxx xxxx - xxspxxx xxxxxxxxxxx xxxx xxxxxxx xx xxxxxx xxx xxx xxxxxxxxx + xxxxxx xx xx xx xxxx xx xxxx - 2sp
+* Rxxxxx xxxxxxx xx xxxxxx xxxx xxx xxxx - 1sp
+
+Sxxxxxxx - 0/5sp
+* Dxxxxxxx xxxxx xxxxxxxxxxx xxxx xxxxxxxxxx xxxxxx. I xxxx xx xxxx xxx xxxxxxx xxx xxxx xxxxxx xxxxx - 3sp
+* Cxxxxxx xUxxx xxxx xAxxxx xxx xxxx - 2sp
+
+
+h3. GGG - 0/10sp
+
+Sxxxxxxx - 0/4sp
+* Sxxxxxx xxxxxxxxx "" xx xxx - ?sp
+* Lxxxx xxxxxxxx xxxx xx xxx xxxx xx xx xxxxxxxxxx - 2sp
+* Tx xx xxxx xx xxxx VAT # xxxx xxxxxxxx x xxx xxxxxxx xx xxxxxxx xx xxxxxxxx xxxxxxx - 1sp
+* Axx "Bxxx xx" xxxxxxx xxxx xxxxx xxxx xxx xxxx xxxx xxxxxxxxxx xxx "Cxxxxxx Nxxx" xxxxxxx xx xxx "Cxxxxx xxx xxxxxxx xxxx" - 1sp
+* Ox x xxxxxxx xxspxxx xxx xxxxxxxxxxx xxxxx xxx xxxxxxx (xxxxxx xxx, xxx.) - ?sp
+
+Uxxxxx xxxx - 0/2sp
+* Fxxxxx xxxx xxxxx xx xxxxxx xxxx - 1sp
+* Rxxxxxxx xx xxxxxx xxxx xxxxx xxx-xx, xxxxxxx xx xxxx - 1sp
+
+Cxxxxx xxxxxx xx xxxxxxxxxxx - 0/4sp
+* Exxx xxxxxxxxxx xx xxxxxxxxxxx - 2sp
+* Sxxx xxxxx xxxxx xxxxxxx xxxxxxxxxxx - 2sp
+* Bxxxx/xxxxxx/xxxxxxx xxxxxxxxxxx - xxxxxxx xx xx xxxxxx - ?sp
+
+
+h3. HHH - 0/12sp
+
+Sxxxxxx xxx xxxxxxxxx xxxx xx xxx xxxxxxxxxxxx - 0/4sp
+* Sxxx xxxxxxxxxxxx xx xxx xxxxxxxxxxxx xxxx - 2sp
+* Fxxxxx xxxxxxxxxxxx xx xxx xxxxxxxxxxxx xxxx - 2sp
+
+Sxxxxxx xxx xxxxxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 0/8sp
+* Tx xxxx xxxxxxx xxx xxxxxxxxx xxxxxxxxxxxx xxx xUxxx xxx xAxxxx - 8sp
+
+Uxxxxxxxxx xxxxxxx xxx xxxxx xxxxx - 0/5sp
+* Pxxxxxxxxxx xx xxxx xxxxxxx xxx xxxxx xxxxxxxxx - 5sp
+* Cxxxxxx Uxxx xxx Cxxxxxx Axxxx xxxxxx xxxx xx xxxxxx xxx 2 xxxxxxx xxxxxxxxxx - 0sp
+
+
+h3. III - 0/30sp
+
+Pxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 0/2sp
+* Pxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 2sp?
+
+Lxxx xx xxxx - 0/4sp
+* Ixxxxxxxxxx xxxxxxx xxxxxxx xx xxxx, xxx xxxx xx xxxxxxxx xx xxx xxx - 3sp
+* Cxxxxx xxxxxxx xx xxxx xx xxxxxxxx xxxxxxx / xxxxx xxxxxxx - 1sp
+
+Rxxxxxx - 0/4sp
+* Sxxxxx xxxxxxxxxx xxxx xxxxxx (xxxxx, xxxx xxxxx, xxxxxxxx xxxxx, xxxx xxxx, xxxxxxxx xxxx, xxxx 7 xxxx, xxxx 30 xxxx) - 2sp
+* Rxxxxxx xxxxxxx xxxxx (xxxxxxxxxxxx xxxxxxxx, xxxxxx, xxxxxxx xxxx) - 2sp
+
+Cxxxxxxx ATF xxxxxxx xxx xxxxx 0/6sp
+* Sxxxx Cxxxxxxx Uxxx xxxx - 2sp
+* Sxxxx xUxxx xxxx - 2sp
+* Sxxxx xAxxxx xxxx - 2sp
+
+Rxxxxxx xx xxxxxxxx - 0/11sp
+* Axxxx 1 xxxx xxxx xxxx xx, xxxxxxx xxxxx xxxx xx-xxxxxx xxxxx xxx xxxxxxxxxx. Exxxx xxxxxxx. Axxxxxxxxxx xxxxxx xx xxxxxxx - 3sp
+* Dxxxxxx xxxxxxxx xxxxxxxx, xxxxxxxxxx - 8sp \(?)
+
+Exxxxx xxxxxxx - 0/3sp
+* Exxxxx xx xxxxxxxxx - 3sp
+
+
+h3. JJJ - 0/8sp
+
+Cxxxxx xxxx xxxxxxx - 0/8sp
+* Cxxxxx xxxx xxxxxxx - 8sp
+
+
+h3. KKK - 0/5sp
+
+Axx xx xxxxxxx - 0/5sp
+* Sxxxxx - 5sp
+
+Axx xx xxxxxxx - Nxxxxxxxxxxx xxx Sxxxxx Dxxxxxxx Nxxxx - 0/0sp
+* Cxxx Mxxxxxxx API xxx xxxxxx Nxxxxxxxxxxx xxx Sxxxxx Dxxxxxxxx xxxxx xx x xxxxxxxx xxxxxx xxxx xx xxxxxxxx xx xxxxxxxx xxxxxx xxxx Oxxxx - ?sp
+
+
+h3. LLL - 0/8sp
+
+Txxxxxxxxxxx - 0/8sp
+* Txxxxxxxxxx xx Axxxxxxxxxx xx Mxxxxxxxx Lxxxxxxxx - 8sp
+
+
+h3. MMM - 0/55sp
+
+Bxxxx xxxxxxxxx xxx xxxxxxxxx - 0/5sp
+* Bxxxx Gxxxxxxx xxx xxxxxxxxx - 5sp
+
+Lxxx xx SxxxxFxxxx - 0/0sp
+* xxx - ?sp
+
+Oxx-xxx xxxxxxxxx - 0/3sp
+* Cxxxxxxx xxx xxx-xxx xxxxxxxxx xxxx xxxx xxxxxxxxx - 3sp
+
+Sxx xxx-xxx xxxxxxxxx xxxxxxx xx xxx xx xxx xxx - 0/2sp
+* Exxxx xxx xx xxxxxx xxxx xxxxxxxxxx - 2sp
+
+Dxxxxxxxxxxxx - 0/8sp
+* Bxxx xxx x Uxxx/Axxxx xxx xxx Cxxxxxx Uxxx/Axxxx xxxx xxxxxx xx xxxxxxxxx xxxxxx xxxxxxxxx xx xxx Uxxx Pxxxxxx xxxxxxxx xx xxxx xxxxx xxxxxxx. Ix xxxxx xxxxx, xx xxx xxxx xx x Cxxxxxx Uxxx xx Cxxxxxx Axxxx, xxxx xxxxxx xxxx xxx xxxx xxxxxxxxxxxxx. Ix xxx xxxx xx xxxxxx x x Uxxx xx x x Axxxx, xxxx xxxxxx xx xxxx xx xxx ALL xxxxxxxxxxxxx - 1sp
+* Axxxx xxx x Axxxx xxxx xx xxxxxx xxx/xxxxxxx xxxxxxxxxxxxx xxx xxx xxx xxxxxxx - xxxxxx xxx HELP xxxxxxx (xxxxxx xxxx xxxx xxx x xxx xxxxxxx xxxx xxxx) - 3sp
+* Axxxx xxx x Uxxx xx Axxxx xx xxxxxx xxx xxxxx xxxxx' xxx xxxxxxxxxx xx xxxxxxxxx ({xxxxx:#xx0000}xxxxxx xxx xxxx xxxx{xxxxx}) - 3sp
+* Ax x xxxx x xxxxx xxxx x xxxx xx xxx xxxxxxx xxxxxxxxxxx xxxxx xxxx xx xxx T & C xxxx xxx xxxx xxxx xxxx xxxxx xxx xxxxxxxxxxx - 1sp
+
+Oxxxx - 0/30sp
+* Wxxxxxxx xx xxxxxxx xx xxxxxxxxxxx, xxxx Gxxxxx Sxxxx Oxxxxxxxxx (xxxxxxxxxxx.xxxxxxxxxxspxxxxxx.xxx) xxx Lxxxxxxxx Sxxxxxx (xxxxxxxxxxxxxxxxspxxxxxx.xxx) xxxx xx xxxxxxxx - 1sp
+* A x Uxxx xx Axxxx xxxxxx xx xxxx xx xxxxxxxxxx xx xxxxxx xxxxxxx, xxxxxx xxxx xxxx xx xxxx - 3sp
+* Ax x x Uxxx xxx x x Axxxx, I xxxx xx xx xxxx xx xxx xxx xxxx xxx xxxxxxxxxx xxxxxxx xxx xxxxxxx xx xxxx xx xxx xxxx xxx xxxx xxxxxxx xxx xxxxxxxx. Oxxxx - 13sp
+* Ix xxx xxxx, xxx Sxxxxxxxxx xxxxxx xxx Ixxxxxxxxxxx xxxxxx xxxxxxxxxxx - xxxxxxxxxxx xxxx xx Axxxxxx Mxxxxxx xxxxxxxxxx xxxxxxx, xxx... - 10sp
+* Ax x x Uxxx, I xxxx xx xx xxxx xx xxxxxx xxxx x Cxxxxxx Fxxx xxxxxxx xxx xx xxxxxxx (x xxxx xxxx xxxxxx xx xxxxxxx xx xxxxxxx) - 3sp
+
+Rxxxxxxxx xx TxxxOxx - 0/2sp
+* Cxxxxxxxxx xx xxxxx xxxxxx (xxxx). Ixxxxxx xx xxxxxx xxxxx xxx SMTP, xxxxxxxxxx xx xxx xxxx xxxxxx - 2sp
+
+Oxxxx - 0/5sp
+* Axx xxxxx xxx xxxxxxxxxxx xxxxxxxx xxxxx (xxxxxxx-xxxxxxxxxxxxMxx-xxxxxxxxFxxxx) - 5sp

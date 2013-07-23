@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.googlecode.amelinium</groupId>
+		<artifactId>amelinium-parent</artifactId>
+		<version>0.2-SNAPSHOT</version>
+	</parent>
+	<groupId>com.googlecode.amelinium</groupId>
+	<artifactId>amelinium-db</artifactId>
+	<version>0.2-SNAPSHOT</version>
+	<name>amelinium database handler</name>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.maven.plugins</groupId> -->
+		<!-- <artifactId>maven-resources-plugin</artifactId> -->
+		<!-- <version>2.4.3</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> <groupId>org.xerial</groupId> <artifactId>sqlite-jdbc</artifactId> 
+			<version>3.7.2</version> </dependency> -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+<!-- 			<version>7.4.1</version> -->
+<version>9.1-901.jdbc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

@@ -1,0 +1,30 @@
+
+BACKLOG - do not remove this line (needed for automatic recalculation)
+
+
+h3. Group zero - 0/36sp
+
+* fff - 6sp
+
+
+h3. Group one - 2/5sp
+{section}
+{column:width=50%}
+
+h5. Group one - 0/0sp
+
+* _sss_ \- 5sp
+{color:#808080}{color}
+* eee - 1sp
+mmm
+{column}
+{column}
+
+h5. abc 2/5sp
+
+* -ttt- \- 2sp _[LBSMS-147|http://vlieg/browse/LBSMS-147]_
+eee
+* bbb - 3sp
+vvv
+{column}
+{section}

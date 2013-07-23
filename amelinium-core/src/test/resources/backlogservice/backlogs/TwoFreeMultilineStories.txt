@@ -1,0 +1,3 @@
+BACKLOG
+* One Story without story points
+* Second Story with story points - 5sp

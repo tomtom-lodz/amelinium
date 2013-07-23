@@ -1,0 +1,254 @@
+x2. xxxxx xxxxxxxx xxxxxxx xxxxxxx
+
+xxxxxx
+
+* -xxxxxxx xxxx-
+* _xxxxxxx xx xxxxxxxx_
+* xx xx xxxxxxx
+
+h3. xxxxxxxxxxxxxxxx
+
+xxxxxxxxxx xxxxxxxxx xxxxxxx (xxx xxxxx xxxxxxx, xxx xxxxxxx xxxxxxxx xxxx)
+
+# xxxxxxxxx xxx xxxxxxx xxxxx (xxxxxx xxxxxxx)
+# xxxxxxx xxxxxx (xxx xxxxxxx)
+# xxx xxx xxxxxxxxx (xxx)
+# xxxxxxxx xxxxx xxx xxxx xxxxxx (xxxx xxxx xxxxxxxx xx xxxxxx xxx xxxx x xxx spxxxxx)
+# xxxxxx xxxxxxxxxx (xxx)
+# xxxxx xxxxxxxxx xxx xxxxxxxxx (xxxx xx xxxxxxxxxx xxxx xxxxxxx xxxx xx xxxx xxx) (xxx)
+# xxxxxxxx xxxxxxxxxx xxxxxxx (xxxxxxxx xxxxxxx)
+# xxxxxxx xxxxx xxxxxxxx (xxx xxxxxxx)
+# xxxxxx xxxx xxxxxxx (xxxxxxxx xxxxxxx)
+# xxx xx xxxxxxx -- xxxxxxxxxxxx xxx xxxxxx xxxxxxxx xxxxxxxx xxxxx (xxxxx x xx xxxxxxxxxxx xxxx xxx xxxxxxxx xxx. xxxx xx x xxxxxx xxxxx xx xxxx xxxxxxxx, xx xxx xxx xxxx xxxx xxxx xxxx xxxxxxx xxxx xxxx xx xxxx xxx xxxx xxxxxxxxxxx xxxx xxxx xxxx xx xxxxxxxxxx) (xxx 2013 xxxxxxx)
+# xxxxxxxxxxx xx xxxxxxxxxxx xx xxxxxxxxx xxxxxxxxx (xxx xxxxxxx xxxxxxxxxx xxxx xxxx xx xxxxx, xx xxxx xxxx xxxx xxxx xxx) (xxxxx xxxxxxx)
+
+h3. xx xxx xxxxx xxxxx xxxxx (xxxxxx xxx xxxx xxxx xxx xxx xxxxx)
+
+[xxxx://10.18.10.247:8100/xxxxxxx-xxxxxxxx/xxxxxxx/xxxxxx?xxxxx=xxxxx+xxxxxxxx+xxxxxxx+xxxxxxx&spxxx=xxxxxx]
+
+BACKLOG
+
+
+h3. xxxxxxxx - 267/267sp
+
+* -xxxx xxxxxxxx xxxxx xx xxxx xxxxx xxxxx - 150sp-
+* -xxxxxxx xxxxxxx - 15sp-
+* -xxxxxxxx xxxxx xx xxxx - 82sp-
+* -xxxxxxxxxx xxxxxx - 20sp-
+
+
+h3. xxx xxxxxxx xxxxx - 19/49sp
+
+-xxxxxx xxxxx xxxx - 2/2sp-
+* -xxxxxx xxxxx xxxx, xxxxxxx xxxxx xxxxxxx xxxxxx xxxx - 2sp-
+
+-xxxxx xxxxx - 0/0sp-
+* -"xx xxxxxxxx xxxxxxxxxxxx" xxxxxx xxxx "xx xxxxxxxx xxxxxxxxxxx" xxxxx xx xxxxxxx xxx - 0sp-
+* -xxxxx "xxxxxxx xx" xx xxxxxx xxxxxx xxx xxxxxxx xx xxxxxxx: "xxxxxx xxxxx xx xxx xxxx xxxx xxxx xxxxxxxxx xxxx xxxx. xx xxxx xx xxxxxxx xxxx xxxx, xxxxxxx xxxxxxxxxxx xxx x xxxxxxxx xxxxxxxxxxx xx xxx xxxxxxx xx xxx xxxx xx xxx xxxxx xxxxxxx" - 0sp-
+* -xx xxx xxxxxxx xxxx xxxxxxx, xxx xx xxxxxx xxxxxx xxxxxx xx xxxxx xxxxxx - 0sp-
+* -xx xxx xxxxxxx xxx, xxxxx xx xxxxxxx xxxxxxx xxxxxxx xxxx xxx xxxxxxxxxx xxxxxxxxxxxx xxxxxxxx xx xxxxxx xxxxxxx xxxx, xx xxxxxx xxxxxx xxx xxxxxxx xx xx "xxx xxxxxxx xxxxx xxxxx xxxxx" xxx "xxx xxxxx xxxxxx xxxxx xxxxx" xx xxxxxxxx - 0sp-
+* -xxx xxxxxxx xxxxx (xxxxx/26/xxxx xx xxxxx/25/xxxx) xxxxxx xx xxspxxxxx xx xxx xxxxx xxx - 0sp-
+
+-xxxxxx xxxx xxxxxxxxx xxxxxxxxxx - 4/4sp-
+* -xxxxxx xxx xxxxxxxxx xxxxxxxxxx xxxxxxxxxxxx - 4sp-
+
+-xxx-xxx xxxxxxxxx - 3/3sp-
+* -xxx-xxx xxxxxxxxx xxxx, xxxxx xxxxxxxxxx, xxxx xxxxxxx, xx xxxxxxxx - 3sp-
+
+-xxxxxxxxxx xxxxxxxx - 3/3sp-
+* -xxxxxxx xx xxxxxx x xxx xxxxxxxxxx xxxxxxx xx xxx xxxx xxxxxxx. xxxx xxx xxx xxx xxxx xxxx xxx xxx xxxx xxxxxxx xx xxx xxxx (xxx xxx) - 3sp-
+
+_xxxxxxxx - 0/5sp_
+* _xxx xxxxx xxxx xxx xxxxxx xxx xxxxxx xx xxxxx xx xxx xxxxxx xxxx - 3sp_
+* xxx xxxxxx xx xxx xxxxxx xxxx - ?sp
+* _xxxxxxxxx xxxxxxx 1.8 - ?sp_
+* _xxxxxxx xxx xxxxxx xxx xxx xx xxxxxxxx xxxx xxx xxxx xxxx xxx xxxxxxx xxxxxxx xxx xxxx - 2sp_
+
+_xxx xxxxxxx xxxxx - 7/32sp_
+* -xxxx xx xx xxxxxxxxxxxx xxxx xxxx xxxxxx: xxxxx xxxx, xxxxxxx xxxx, xxxxxxxxxxxx xxxx, xxxxxxxxxx xxxx, xxxxxx, xxxxxx xx xxxxxxx xxxxxxxxx, xxx xxxx xxxxxxx xxxx + xxxxxx - 3sp-
+* -xxxx xx xxx xxxxxxxxxxxx xxxx (xxxxxxx->xxxxxxxxxxxx) xxxx xxxxxx: xxxxxxx xxxx, xxxx xxxx, xxxxxx - 1sp\-
+* _{-}xxx xxxx xxxxxxx xxxx (1 xxxxxx xxx xxxx xxxxxxx xx xx xxxxxxxxxxxx xxxx 2 xxxxxxx xxxxx 3 xxxxx xxxxxx xx xxxxxxx 4 xxxxxxxxx xxxxx 5 xxxxxx xxxxxxx xxxxxx 6 xxxxxxx xxxxxxx 7 xxxxxxx xxxxxxx 8 xxxxxxxx xx xx xxxxxxxxxxxx) - 3sp{-}_
+* _xxxxx xxxxxxxxxxx xx xxx xxxxxxx xxxxx_ _\- 13sp_
+* _xxxxxx xxxxxxx xx xxspxxx xxxxxxx xxx xxxxx (xxxxxx xxxxxxx xxx xxxxxxx xxxxxxx xxxx xxxx xxxxxxx xxxxx) - 0sp_
+* _xxxx xxxxxxxxxx xx xxxxxxx xxxxx - 0sp_
+* _xxx xxxxx xxxxxxxxxxx xxxxx xxx xxxxxx xxxxxxx xx xxxxxxx - 2sp_
+* xxxx xxxx xxxxx xx xxxxxxx xxx xxx xxx xxxxxx xxxxxxx xxxxx xxxxxx xx xxxx xx xxxxxxxxxxxxx - ?sp
+* _xxxx xxxxx xxxxx xxxxxxx (xxxxxx xxxx xxxxxx xxxxx, xxxxxxxxxxxxx) - 2sp_
+* _xxspxxx xxxxxxxxxxx "xxxxxxx h3\{xxxx\}, xxx xxxx h3\{xxxxxx\} xxxxxx xx xxxxxxx xxxx" xxxx xx xx xxxxxxx - 2sp_
+* xxxx xxxxxx xxx xxxxxxx xxx xxx xxxxxxx (xxxxxx xxxxxx xxxxxxx xxxx) - 3sp
+* xxxx "xx xxxxxxxxxxxx" xxxx xx "xx xxxxxxx" xxxxxxx xxxx xx xxxxxxxxxxxxx - 1sp
+* xxxxxxxx xxxxxxxx xxxxxxxxxxx xxxxxxx - 2sp
+* xxxxxxxxx xxxxxxx xxxxxxx (xxxx xx xxx xxxxxxxxxxxx) xx xxxxxx (xxx xxxxxx xxx xx xxxxxxx xxx xxxxxxx xxx xxx xxxxxxxx) - 0sp
+* xxxxxxxxx xxxxxxx xxxxxxx xx xxxxxx (xxx xxxxxxx xxxx) - ?sp
+
+
+h3. xxxxxxxx xxxx xxxxxxxxx xxxxxxxxxx - 0/28sp
+
+xxxxxx xxxx xxxxxxxxx xxxxxxxxxx - 0/26sp
+* xxxxxxxxx xxxxxxxx xxxx xxxxxxxxx xxxxxxxxx / xxxxxxx - 8sp
+* xxxxxx xxxxxx xxxxxxxxxxx xxxxx xxxxxx xxxx xxxxxxxxx xxxxxxxxx - 4sp
+* xxxxxxx xxxxxxxx xxxx xxxxxxxxx - 8sp
+* xxxx xxxxxxxxxxxx xxxx xxx xxxx xxxxxxxxx xxxxxxxxxx (xxxxxxxxx) xxxxxxxxxx - 6sp
+
+xxx xxxxxx xxxxxxxx - 0/2sp
+* xxx xxxxxxxxxx xxxxxx xxxx xxxx xxxxxxxx xx xxx xxxxxxxxxx xxxx xx xxxxxx. xxxxxxxx xxxxx xx xx xxxxxxxxxx xxxx xxx xx xxxxxx xxxxxxxxxx xxxxxxx xxxx xx 'xxxxxxxx' xxxxxx. xxxxxxxxx 'xxxxxxxx' xxx xxxxxx xx_xxxxxxxxxx - 2sp
+
+
+h3. xxxxxx xxxxxxxxxx xxx xxxxxxxxxx xxxxxx xxxxxxx - 0/26sp
+
+xxxxxxx xx xxxxxxx - 0/3sp
+* xxxxxxx xx xxxxxxx xxxxx xxxxx xxxxxxxxx - 3sp
+
+xxxxxx xxxxxxxxxx - 0/5sp
+* xxxxxx xxxxxxxxxx - 5sp
+
+xxxxxxxxxx xxxx xx xxxxxxx - 0/10sp
+* xxxxx xxxxxxxx - 10sp
+
+xxxxxxx xxx xxxxx xxxxxx xxxxxxx xx xxxxxxx - 0/8sp
+* xxxx xxxxx xxxxxx xxxxxxx xx xxxxxxx - 8?sp (xxxxx xxxxxxxxx xx xxx)
+
+
+h3. xxxxxx xxxxxxxxxx xxxxxxxx - 0/18sp
+
+xxxxxxxxxx xx xxxxxxxxxx - 0/10sp
+* xxxxxxxxx xxxxxxxx xx xxx - 5sp
+* xxxxxxxxx xxxxxxxx xx xxxx xxxxxxxxxxxx - 5sp
+
+xxx xxxxxxx xxxxxxxxxxx - 0/5sp
+* xxx xxxxxxxx xxxxx xx xxxx xx xxx xxxxx xxxx xxx xxxxxxx xxxxxxxxx xxxxxxxxxxxx - 2sp
+* _xxx xxxxxxxx xxxxxxx xxxxxxxxxxx - 3sp_
+
+xxxxxxx - 0/3sp
+* xxxxxx xxx xxxxxxxxxxxxx - 3?sp (xxxxx xxxxxxxxx xx xxx)
+
+
+h3. xxxxxxx xx xxxxxx - 0/18sp
+
+xxx xxxxxx - 0/10sp
+* xxspxxx xxx xxxxxx xxxx xxxx xxxxxxxxx xx xxxxxxxx, xxxxxxxxx xxx xxxxx xxx xxxx xx xxxxxxxx xxxx - 5sp
+* xxxxxx xxxxxxx xxxxxxxxx xxxxx xx xxxxx xxx xx xxxx - 1sp
+* xxxxxx xxxxxxx xxxxxxx xx xxxxxx - 2sp
+* xxspxxx xxxxxxxxxxx xxxx xxxxxx xxxx xx xxxxxx xxxxx xxxxxx / xxxxxx - 2sp
+
+xxxxxx xxxxxxx xx xxxxxx xxxx xxxxxx xxxxxxx xxxxxx xxxxx xxxxxx - 0/3sp
+* xxxxxx xxxx - xxspxxx xxxxxxxxxxx xxxx xxxxxxx xx xxxxxx xxx xxx xxxxxxxxx + xxxxxx xx xx xx xxxx xx xxxx - 2sp
+* xxxxxx xxxxxxx xx xxxxxx xxxx xxx xxxx - 1sp
+
+xxxxxxxx - 0/5sp
+* xxxxxxxx xxxxx xxxxxxxxxxx xxxx xxxxxxxxxx xxxxxx. x xxxx xx xxxx xxx xxxxxxx xxx xxxx xxxxxx xxxxx - 3sp
+* xxxxxxx xxxxxx xxxx xxxxxxx xxx xxxx - 2sp
+
+
+h3. xxxxx xxxxx - 0/10sp
+
+xxxxxxxx - 0/4sp
+* xxxxxxx xxxxxxxxx "" xx xxx - ?sp
+* xxxxx xxxxxxxx xxxx xx xxx xxxx xx xx xxxxxxxxxx - 2sp
+* xx xx xxxx xx xxxx xxx # xxxx xxxxxxxx x xxx xxxxxxx xx xxxxxxx xx xxxxxxxx xxxxxxx - 1sp
+* xxx "xxxx xx" xxxxxxx xxxx xxxxx xxxx xxx xxxx xxxx xxxxxxxxxx xxx "xxxxxxx xxxx" xxxxxxx xx xxx "xxxxxx xxx xxxxxxx xxxx" - 1sp
+* xx x xxxxxxx xxspxxx xxx xxxxxxxxxxx xxxxx xxx xxxxxxx (xxxxxx xxx, xxx.) - ?sp
+
+xxxxxx xxxx - 0/2sp
+* xxxxxx xxxx xxxxx xx xxxxxx xxxx - 1sp
+* xxxxxxxx xx xxxxxx xxxx xxxxx xxx-xx, xxxxxxx xx xxxx - 1sp
+
+xxxxxx xxxxxx xx xxxxxxxxxxx - 0/4sp
+* xxxx xxxxxxxxxx xx xxxxxxxxxxx - 2sp
+* xxxx xxxxx xxxxx xxxxxxx xxxxxxxxxxx - 2sp
+* xxxxx/xxxxxx/xxxxxxx xxxxxxxxxxx - xxxxxxx xx xx xxxxxx - ?sp
+
+
+h3. xxx xxxxxx - xxxxxxx xxx xxxxxxxxx + xxxxxxxxxx xxxxxxx xxx xxxxx xxxxx - 0/12sp
+
+xxxxxxx xxx xxxxxxxxx xxxx xx xxx xxxxxxxxxxxx - 0/4sp
+* xxxx xxxxxxxxxxxx xx xxx xxxxxxxxxxxx xxxx - 2sp
+* xxxxxx xxxxxxxxxxxx xx xxx xxxxxxxxxxxx xxxx - 2sp
+
+xxxxxxx xxx xxxxxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 0/8sp
+* xx xxxx xxxxxxx xxx xxxxxxxxx xxxxxxxxxxxx xxx xxxxxx xxx xxxxxxx - 8sp
+
+xxxxxxxxxx xxxxxxx xxx xxxxx xxxxx - 0/5sp
+* xxxxxxxxxxx xx xxxx xxxxxxx xxx xxxxx xxxxxxxxx - 5sp
+* xxxxxxx xxxx xxx xxxxxxx xxxxx xxxxxx xxxx xx xxxxxx xxx 2 xxxxxxx xxxxxxxxxx - 0sp
+
+
+h3. xxxxxxxx xxx xxxxxx - 0/30sp
+
+xxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 0/2sp
+* xxxxxx xxx xxx xxxxxx xxx xxx xxxxx - 2sp?
+
+xxxx xx xxxx - 0/4sp
+* xxxxxxxxxxx xxxxxxx xxxxxxx xx xxxx, xxx xxxx xx xxxxxxxx xx xxx xxx - 3sp
+* xxxxxx xxxxxxx xx xxxx xx xxxxxxxx xxxxxxx / xxxxx xxxxxxx - 1sp
+
+xxxxxxx - 0/4sp
+* xxxxxx xxxxxxxxxx xxxx xxxxxx (xxxxx, xxxx xxxxx, xxxxxxxx xxxxx, xxxx xxxx, xxxxxxxx xxxx, xxxx 7 xxxx, xxxx 30 xxxx) - 2sp
+* xxxxxxx xxxxxxx xxxxx (xxxxxxxxxxxx xxxxxxxx, xxxxxx, xxxxxxx xxxx) - 2sp
+
+xxxxxxxx xxx xxxxxxx xxx xxxxx 0/6sp
+* xxxxx xxxxxxxx xxxx xxxx - 2sp
+* xxxxx xxxxxx xxxx - 2sp
+* xxxxx xxxxxxx xxxx - 2sp
+
+xxxxxxx xx xxxxxxxx - 0/11sp
+* xxxxx 1 xxxx xxxx xxxx xx, xxxxxxx xxxxx xxxx xx-xxxxxx xxxxx xxx xxxxxxxxxx. xxxxx xxxxxxx. xxxxxxxxxxx xxxxxx xx xxxxxxx - 3sp
+* xxxxxxx xxxxxxxx xxxxxxxx, xxxxxxxxxx - 8sp \(?)
+
+xxxxxx xxxxxxx - 0/3sp
+* xxxxxx xx xxxxxxxxx - 3sp
+
+
+h3. xxxxxx xxxx xxxxxxx - 0/8sp
+
+xxxxxx xxxx xxxxxxx - 0/8sp
+* xxxxxx xxxx xxxxxxx - 8sp
+
+
+h3. xxx xx xxxxxxx -- xxxxxxxxxxxx xxx xxxxxx xxxxxxxx xxxxxxxx xxxxx - 0/5sp
+
+xxx xx xxxxxxx - 0/5sp
+* xxxxxx - 5sp
+
+xxx xx xxxxxxx - xxxxxxxxxxxx xxx xxxxxx xxxxxxxx xxxxx - 0/0sp
+* xxxx xxxxxxxx xxx xxx xxxxxx xxxxxxxxxxxx xxx xxxxxx xxxxxxxxx xxxxx xx x xxxxxxxx xxxxxx xxxx xx xxxxxxxx xx xxxxxxxx xxxxxx xxxx xxxxx - ?sp
+
+
+h3. xxxxxxxxxxx xx xxxxxxxxxxx xx xxxxxxxx xxxxxxxxx - 0/8sp
+
+xxxxxxxxxxxx - 0/8sp
+* xxxxxxxxxxx xx xxxxxxxxxxx xx xxxxxxxxx xxxxxxxxx - 8sp
+
+
+h3. xxxxx - 0/55sp
+
+xxxxx xxxxxxxxx xxx xxxxxxxxx - 0/5sp
+* xxxxx xxxxxxxx xxx xxxxxxxxx - 5sp
+
+xxxx xx xxxxxxxxxx - 0/0sp
+* xxx - ?sp
+
+xxx-xxx xxxxxxxxx - 0/3sp
+* xxxxxxxx xxx xxx-xxx xxxxxxxxx xxxx xxxx xxxxxxxxx - 3sp
+
+xxx xxx-xxx xxxxxxxxx xxxxxxx xx xxx xx xxx xxx - 0/2sp
+* xxxxx xxx xx xxxxxx xxxx xxxxxxxxxx - 2sp
+
+xxxxxxxxxxxxx - 0/8sp
+* xxxx xxx xx xxxx/xxxxx xxx xxx xxxxxxx xxxx/xxxxx xxxx xxxxxx xx xxxxxxxxx xxxxxx xxxxxxxxx xx xxx xxxx xxxxxxx xxxxxxxx xx xxxx xxxxx xxxxxxx. xx xxxxx xxxxx, xx xxx xxxx xx x xxxxxxx xxxx xx xxxxxxx xxxxx, xxxx xxxxxx xxxx xxx xxxx xxxxxxxxxxxxx. xx xxx xxxx xx xxxxxx x xx xxxx xx x xx xxxxx, xxxx xxxxxx xx xxxx xx xxx xxx xxxxxxxxxxxxx - 1sp
+* xxxxx xxx xx xxxxx xxxx xx xxxxxx xxx/xxxxxxx xxxxxxxxxxxxx xxx xxx xxx xxxxxxx - xxxxxx xxx xxxx xxxxxxx (xxxxxx xxxx xxxx xxx x xxx xxxxxxx xxxx xxxx) - 3sp
+* xxxxx xxx xx xxxx xx xxxxx xx xxxxxx xxx xxxxx xxxxx' xxx xxxxxxxxxx xx xxxxxxxxx ({xxxxx:#xx0000}xxxxxx xxx xxxx xxxx{xxxxx}) - 3sp
+* xx x xxxx x xxxxx xxxx x xxxx xx xxx xxxxxxx xxxxxxxxxxx xxxxx xxxx xx xxx x & x xxxx xxx xxxx xxxx xxxx xxxxx xxx xxxxxxxxxxx - 1sp
+
+xxxxx - 0/30sp
+* xxxxxxxx xx xxxxxxx xx xxxxxxxxxxx, xxxx xxxxxx xxxxx xxxxxxxxxx (xxxxxxxxxxx.xxxxxxxxxxspxxxxxx.xxx) xxx xxxxxxxxx xxxxxxx (xxxxxxxxxxxxxxxxspxxxxxx.xxx) xxxx xx xxxxxxxx - 1sp
+* x xx xxxx xx xxxxx xxxxxx xx xxxx xx xxxxxxxxxx xx xxxxxx xxxxxxx, xxxxxx xxxx xxxx xx xxxx - 3sp
+* xx x xx xxxx xxx x xx xxxxx, x xxxx xx xx xxxx xx xxx xxx xxxx xxx xxxxxxxxxx xxxxxxx xxx xxxxxxx xx xxxx xx xxx xxxx xxx xxxx xxxxxxx xxx xxxxxxxx. xxxxx - 13sp
+* xx xxx xxxx, xxx xxxxxxxxxx xxxxxx xxx xxxxxxxxxxxx xxxxxx xxxxxxxxxxx - xxxxxxxxxxx xxxx xx xxxxxxx xxxxxxx xxxxxxxxxx xxxxxxx, xxx... - 10sp
+* xx x xx xxxx, x xxxx xx xx xxxx xx xxxxxx xxxx x xxxxxxx xxxx xxxxxxx xxx xx xxxxxxx (x xxxx xxxx xxxxxx xx xxxxxxx xx xxxxxxx) - 3sp
+
+xxxxxxxxx xx xxxxxxx - 0/2sp
+* xxxxxxxxxx xx xxxxx xxxxxx (xxxx). xxxxxxx xx xxxxxx xxxxx xxx xxxx, xxxxxxxxxx xx xxx xxxx xxxxxx - 2sp
+
+xxxxx - 0/5sp
+* xxx xxxxx xxx xxxxxxxxxxx xxxxxxxx xxxxx (xxxxxxx-xxxxxxxxxxxxxxx-xxxxxxxxxxxxx) - 5sp

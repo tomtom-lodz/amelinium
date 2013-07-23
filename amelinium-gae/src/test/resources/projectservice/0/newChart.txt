@@ -1,0 +1,49 @@
+h2. TEST
+
+{chart:type=xyLine|dataOrientation=vertical|width=800|height=500|title=hahahaha}
+|| || burned story points ||
+| 0 | 0 |
+| 1 | 15 |
+
+|| || AAA ||
+| 0 | 220 |
+| 1 | 230 |
+| 1 | 0 |
+
+|| || BBB ||
+| 0 | 250 |
+| 20 | 250 |
+| 20 | 0 |
+
+|| || ideal ||
+| 0 | 0.0 |
+| 32 | 351.0 |
+{chart}
+
+|| Configuration || ||
+| *Current sprint (number)* | 23 |
+| Sprint length (days) | 14 |
+| Zeroeth sprint (date) | 1 Jan 2012 |
+| Compute ideal (number (0='all', 5='last 5') or false) | 0 |
+| Extend ideal (true, false) | true |
+| Add missing feature groups to chart (true, false) | false |
+| Add missing feature groups to roadmap (true, false) | false |
+| Names on roadmap from (backlog, chart, unchanged) | unchanged |
+| Dark matter as percentage of velocity (0-99) | 0 |
+| Show cumulative points summary (true, false) | false |
+| Show autocorrection log (true, false) | true |
+
+|| Feature Group || Sprint || End of development || Deployment to production ||
+| AAA | 23 | 8 Jun 2012 | not planned |
+
+SUMMARY
+|| Burned story points | 0 ||
+
+|| Feature Group || Story Points ||
+|xxxxxxxx|0|
+|-xxxxxx xxx xxxxxxxxxxx-|0|
+|AAA|0|
+
+AUTOCORRECTION LOG
+|| Table || matched? || corrected? || Feature Group from backlog ||
+

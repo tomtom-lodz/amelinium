@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="com/tomtom/amelinium/db/db.properties">
+		<property name="foo" value="bar" />
+	</properties>
+	<typeAliases>
+		<typeAlias type="com.tomtom.amelinium.db.beans.Project" alias="project" />
+		<typeAlias type="com.tomtom.amelinium.db.results.ResultProject" alias="resultProject" />
+		<typeAlias type="com.tomtom.amelinium.db.beans.Backlog" alias="backlog" />
+		<typeAlias type="com.tomtom.amelinium.db.beans.Chart" alias="chart" />
+		<typeAlias type="com.tomtom.amelinium.db.beans.Snapshot" alias="snapshot" />
+		<typeAlias type="com.tomtom.amelinium.db.results.HistoryElement" alias="historyElement" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+<!-- 				<property name="url" value="${jdbc.localurl}" /> -->
+<!-- 				<property name="username" value="${jdbc.localusername}" /> -->
+<!-- 				<property name="password" value="${jdbc.localpassword}" /> -->
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/tomtom/amelinium/db/mappers/ProjectMapper.xml" />
+		<mapper resource="com/tomtom/amelinium/db/mappers/BacklogMapper.xml" />
+		<mapper resource="com/tomtom/amelinium/db/mappers/ChartMapper.xml" />
+		<mapper resource="com/tomtom/amelinium/db/mappers/SnapshotMapper.xml" />
+	</mappers>
+</configuration>
