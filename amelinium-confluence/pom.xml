@@ -153,7 +153,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
 		</dependency>
-		
+
 		<!-- To get rid of warning: org.apache.axis.utils.JavaUtils - Unable to 
 			find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). 
 			Attachment support is disabled. -->
@@ -169,7 +169,19 @@
 			<version>1.4.4</version>
 			<scope>generate-sources</scope>
 		</dependency>
-		
+
+		<!-- Validation -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-validation_1.0_spec</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
+		</dependency>
+
 		<!-- Project -->
 		<dependency>
 			<groupId>com.googlecode.amelinium</groupId>
