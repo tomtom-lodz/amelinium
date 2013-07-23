@@ -1,0 +1,32 @@
+$(document).ready(function(){
+<LINES1>
+  var <PLOT> = $.jqplot('<PLOT>', [<LINES2>], {
+    title:'<TITLE>',
+    axes:{
+        xaxis:{
+            renderer:$.jqplot.DateAxisRenderer,
+//            max: <MAXX>,
+        },
+        yaxis: {
+			min: <MINY>,
+			label: 'Story Points',
+//			labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        },
+    },
+    series:[<SERIES>],
+	cursor: {
+	     show: true
+	},
+    highlighter: {
+        show: true,
+//        sizeAdjust: 1,
+        tooltipOffset: 9
+    },
+	legend:{
+        renderer: $.jqplot.EnhancedLegendRenderer,
+        show:true,
+        showSwatches: true,
+        placement: 'outsideGrid',
+    }
+  });
+});

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Date Axes</title>
+
+    <link class="include" rel="stylesheet" type="text/css" href="../jquery.jqplot.min.css" />
+  
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../excanvas.js"></script><![endif]-->
+    <script class="include" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+   
+</head>
+<body>
+        <div class="col1" id="example-content">
+
+  
+<!-- Example scripts go here -->
+<div id="chart1" style="height:600px; width:1024px;"></div>
+<br/>
+<br/>
+<br/>
+<div id="chart2" style="height:600px; width:1024px;"></div>
+<br/>
+<br/>
+<br/>
+<div id="chart3" style="height:600px; width:1024px;"></div>
+
+<script class="code" type="text/javascript">
+$(document).ready(function(){
+  var line1=[['2008-08-12 4:00PM',4], ['2008-09-12 4:00PM',6.5], ['2008-10-12 4:00PM',5.7], ['2008-11-12 4:00PM',9], ['2008-12-12 4:00PM',8.2]];
+  var line2=[['2008-08-12 4:00PM',14], ['2008-09-12 4:00PM',16.5], ['2008-10-12 4:00PM',15.7], ['2008-11-12 4:00PM',19], ['2008-12-12 4:00PM',18.2]];
+  var line3=[['2008-08-12 4:00PM',24], ['2008-09-12 4:00PM',26.5], ['2008-10-12 4:00PM',25.7], ['2008-11-12 4:00PM',29], ['2008-12-12 4:00PM',28.2]];
+  var aaa1=[['2008-12-12 4:00PM',8.2], ['2009-10-1 4:00PM',20]];
+  var aaa2=[['2008-08-12 4:00PM',4], ['2010-10-1 4:00PM',31]];
+  var aaa3=[['2008-08-12 4:00PM',18.2], ['2009-10-1 4:00PM',18.2], ['2009-10-1 4:00PM',3]];
+  var aaa4=[['2008-08-12 4:00PM',28.2], ['2010-7-15 4:00PM',28.2], ['2010-7-15 4:00PM',3]];
+  var plot1 = $.jqplot('chart1', [line3,line2,line1,aaa2,aaa3,aaa4], {
+    title:'Burnup chart',
+    axes:{
+        xaxis:{
+            renderer:$.jqplot.DateAxisRenderer
+        },
+        yaxis: {
+	  min: 3,
+	  label: 'Story Points',
+	  labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        },
+    },
+    series:[{label: 'aaa1'},{label: 'aaa2'},{label: 'aaa3'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa1 trend'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa2 trend'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa2 trend'}],
+
+     cursor: {
+         show: true
+     },
+
+        highlighter: {
+            show: true,
+            sizeAdjust: 1,
+            tooltipOffset: 9
+        },
+
+legend:{
+                renderer: $.jqplot.EnhancedLegendRenderer,
+                show:true,
+                showSwatches: true,
+                placement: 'outsideGrid',
+            }
+
+  });
+});
+</script>
+
+
+<script class="code" type="text/javascript">
+$(document).ready(function(){
+  var line1=[['2008-08-12 4:00PM',18.2], ['2008-09-12 4:00PM',19], ['2008-10-12 4:00PM',15.7], ['2008-11-12 4:00PM',16.5], ['2008-12-12 4:00PM',14]];
+  var line2=[['2008-08-12 4:00PM',28.2], ['2008-09-12 4:00PM',29], ['2008-10-12 4:00PM',25.7], ['2008-11-12 4:00PM',26.5], ['2008-12-12 4:00PM',24]];
+  var line3=[['2008-08-12 4:00PM',38.2], ['2008-09-12 4:00PM',39], ['2008-10-12 4:00PM',35.7], ['2008-11-12 4:00PM',36.5], ['2008-12-12 4:00PM',34]];
+  var aaa2=[['2008-08-12 4:00PM',18.2], ['2010-1-1 4:00PM',0]];
+  var aaa3=[['2008-08-12 4:00PM',28.2], ['2010-11-1 4:00PM',0]];
+  var aaa4=[['2008-08-12 4:00PM',38.2], ['2011-9-1 4:00PM',0]];
+  var plot2 = $.jqplot('chart2', [line3,line2,line1,aaa2,aaa3,aaa4], {
+    title:'Burndown chart',
+    axes:{
+        xaxis:{
+            renderer:$.jqplot.DateAxisRenderer
+        },
+        yaxis: {
+	  min: 0,
+	  label: 'Story Points',
+	  labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        },
+    },
+    series:[{label: 'aaa1'},{label: 'aaa2'},{label: 'aaa3'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa1 trend'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa2 trend'},
+{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'aaa2 trend'}],
+
+     cursor: {
+         show: true
+     },
+
+        highlighter: {
+            show: true,
+            sizeAdjust: 1,
+            tooltipOffset: 9
+        },
+
+legend:{
+                renderer: $.jqplot.EnhancedLegendRenderer,
+                show:true,
+                showSwatches: true,
+                placement: 'outsideGrid',
+            }
+
+  });
+});
+</script>
+
+<script class="code" type="text/javascript">
+
+$(document).ready(function(){
+  var line0=[['2012-01-01',0.0],['2012-01-02',10.0],['2012-01-03',20.0],['2012-01-04',29.0],['2012-01-05',41.0],['2012-01-06',45.0],];
+  var line1=[['2012-01-01',50.0],['2012-01-02',52.0],['2012-01-03',53.0],['2012-01-04',55.0],['2012-01-05',59.0],['2012-01-06',60.0],];
+  var line2=[['2012-01-04',70.0],['2012-01-05',73.0],['2012-01-06',73.0],];
+  var line3=[['2012-01-01',33.0],['2012-01-02',41.0],['2012-01-03',50.0],];
+  var trend0=[['2012-01-01',5.0],['2012-01-10',77.0],];
+  var trend1=[['2012-01-04',59.8],['2012-01-08',60.2],['2012-01-08',0.0],];
+  var trend2=[['2012-01-04',72.8],['2012-01-10',73.4],['2012-01-10',0.0],];
+
+  var chart3 = $.jqplot('chart3', [line3,line2,line1,line0,trend2,trend1,trend0,], {
+    title:'Burndown chart',
+    axes:{
+        xaxis:{
+            renderer:$.jqplot.DateAxisRenderer,
+//            max: '2012-01-10',
+        },
+        yaxis: {
+			min: 0.0,
+			label: 'Story Points',
+//			labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        },
+    },
+    series:[{label: 'Feature Group 1'},{label: 'Feature Group 3'},{label: 'Feature Group 2'},{label: 'Burned'},{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Feature Group 3 - trend'},{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Feature Group 2 - trend'},{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Burned - trend'},],
+	cursor: {
+	     show: true
+	},
+    highlighter: {
+        show: true,
+//        sizeAdjust: 1,
+        tooltipOffset: 9
+    },
+	legend:{
+        renderer: $.jqplot.EnhancedLegendRenderer,
+        show:true,
+        showSwatches: true,
+        placement: 'outsideGrid',
+    }
+  });
+});
+
+
+
+</script>
+
+<!-- End example scripts -->
+
+<!-- Don't touch this! -->
+
+
+    <script class="include" type="text/javascript" src="../jquery.jqplot.min.js"></script>
+
+
+<!-- End Don't touch this! -->
+
+<!-- Additional plugins go here -->
+
+    <script class="include" language="javascript" type="text/javascript" src="../plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script class="include" language="javascript" type="text/javascript" src="../plugins/jqplot.highlighter.min.js"></script>
+    <script class="include" language="javascript" type="text/javascript" src="../plugins/jqplot.cursor.min.js"></script>
+    <script class="include" language="javascript" type="text/javascript" src="../plugins/jqplot.enhancedLegendRenderer.js"></script>
+
+<!-- End additional plugins -->
+
+        </div>
+
+</body>
+
+
+</html>

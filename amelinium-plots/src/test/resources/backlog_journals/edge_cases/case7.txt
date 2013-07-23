@@ -1,0 +1,10 @@
+Date,Burned,Feature Group 1,Feature Group 2
+2012-1-1,0,33,50
+2012-1-2,10,41,52
+2012-1-3,20,50,53
+
+x,Burned,Feature Group 2,Feature Group 3
+2012-1-4,29,55,70
+2012-1-5,41,59,73
+2012-1-6,45,60,73
+
