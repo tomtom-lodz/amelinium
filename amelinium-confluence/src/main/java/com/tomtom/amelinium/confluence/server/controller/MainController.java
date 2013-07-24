@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
 import com.tomtom.amelinium.confluence.logic.BacklogPageCorrector;
 import com.tomtom.amelinium.confluence.logic.ChartPageCorrector;
+import com.tomtom.amelinium.confluence.logic.PlotPageGenerator;
+import com.tomtom.amelinium.confluence.logic.Plots;
 import com.tomtom.amelinium.confluence.server.model.BacklogForm;
 import com.tomtom.amelinium.confluence.server.model.ChartForm;
 /**
@@ -29,6 +31,8 @@ public class MainController {
 	private BacklogPageCorrector backlogPageCorrector;
 	@Autowired
 	private ChartPageCorrector chartPageCorrector;
+	@Autowired
+	private PlotPageGenerator plotPageGenerator;
 
 	@RequestMapping("/backlog/")
 	public ModelAndView updateFormWelcomeHandler() {
@@ -75,4 +79,30 @@ public class MainController {
 
 	}
 
+	@RequestMapping(value = "/plot/draw", method = RequestMethod.GET)
+	public ModelAndView drawPlot(@RequestParam String space, @RequestParam String pageTitle,
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative) {
+
+		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, pageTitle, isCumulative);
+		
+		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
+		model.addObject("chartName1", plots.chartName1);
+		model.addObject("chartBody1", plots.chartBody1);
+		model.addObject("chartName2", plots.chartName2);
+		model.addObject("chartBody2", plots.chartBody2);
+		
+		return model;
+	}
+	
+//	public void drawPlot(HttpServletResponse response) throws IOException {
+//		response.setContentType("text/html");
+//		PrintWriter out = response.getWriter();
+//		
+//		String csv = "Date, Burned,group 1, group 2\n2013-07-20, 0, 13, 13\n";
+//		
+//		String html = PlotHtmlPageGenerator.createHtmlPageWithPlots(csv,false,1,0,1);
+//		
+//		out.println(html);
+//	}
+	
 }
