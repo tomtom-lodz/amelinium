@@ -81,9 +81,21 @@ public class MainController {
 
 	@RequestMapping(value = "/plot/draw", method = RequestMethod.GET)
 	public ModelAndView drawPlot(@RequestParam String space, @RequestParam String pageTitle,
-			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative) {
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+			@RequestParam int sprintLength, @RequestParam double velocity, @RequestParam double scopeIncrease,
+			@RequestParam(required=false) Double effectiveVelocity) {
 
-		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, pageTitle, isCumulative);
+		double dailyVelocity = velocity/sprintLength;
+		double dailyBlackMatter = scopeIncrease/sprintLength;
+		double dailyEffectiveVelocity;
+		if(effectiveVelocity==null) {
+			dailyEffectiveVelocity = dailyVelocity - dailyBlackMatter;
+		} else {
+			dailyEffectiveVelocity = effectiveVelocity/sprintLength;
+		}
+		
+		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, pageTitle, isCumulative,
+				dailyVelocity, dailyBlackMatter, dailyEffectiveVelocity);
 		
 		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
 		model.addObject("chartName1", plots.chartName1);

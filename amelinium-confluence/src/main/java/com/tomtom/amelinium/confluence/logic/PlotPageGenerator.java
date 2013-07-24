@@ -35,12 +35,9 @@ public class PlotPageGenerator {
 	private BurndownPlotJavascriptGenerator burndownGenerator = new BurndownPlotJavascriptGenerator();
 
 
-	public Plots generatePlotsFromConfluencePage(String space, String title, boolean isCumulative) {
+	public Plots generatePlotsFromConfluencePage(String space, String title, boolean isCumulative,
+			double dailyVelocity, double dailyBlackMatter, double effectiveVelocity) {
 		String csv = ConfluenceOperations.getPageSource(config.SERVER, config.USER, config.PASS, space, title);
-		
-		double dailyVelocity = 1;
-		double dailyBlackMatter = 0;
-		double effecticeVelocity = 1;
 		
 		ArrayList<BacklogChunk> chunks = reader.readFromString(csv);
 		if(!isCumulative) {
@@ -51,7 +48,7 @@ public class PlotPageGenerator {
 		String chart1 = burnupGenerator.generateBurnup(burnupModel, "chart1", "Burnup chart");
 
 		BacklogChunk merged2 = subtractor.subtractBurnedFromMerged(merged);
-		BurndownModel burndownModel = burndownModelFactory.createModel(merged2, effecticeVelocity);
+		BurndownModel burndownModel = burndownModelFactory.createModel(merged2, effectiveVelocity);
 		String chart2 = burndownGenerator.generateBurndown(burndownModel, "chart2", "Burndown chart");
 		
 		Plots plots = new Plots();
