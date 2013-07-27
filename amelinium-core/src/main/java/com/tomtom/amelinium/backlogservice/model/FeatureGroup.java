@@ -201,4 +201,9 @@ public class FeatureGroup {
 	public void setDividedIntoColumns(boolean dividedIntoColumns) {
 		this.dividedIntoColumns = dividedIntoColumns;
 	}
+	
+	public String getTitle() {
+		String fgTitle = getContentLeft() + getContentRight();
+		return fgTitle.replace("h3. ", "");		
+	}
 }
