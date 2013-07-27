@@ -1,27 +1,16 @@
 package com.tomtom.woj.amelinium.journal.operations;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
 import org.junit.Test;
 
-import com.tomtom.amelinium.backlogservice.builders.BacklogModelBuilder;
-import com.tomtom.amelinium.backlogservice.corrector.BacklogModelCorrector;
 import com.tomtom.amelinium.backlogservice.factory.BacklogServiceFactory;
 import com.tomtom.amelinium.backlogservice.model.BacklogModel;
-import com.tomtom.amelinium.backlogservice.model.FeatureGroup;
-import com.tomtom.amelinium.chartservice.builders.ChartModelBuilder;
-import com.tomtom.amelinium.chartservice.corrector.ChartCorrector;
-import com.tomtom.amelinium.chartservice.serializer.ChartModelSerializer;
-import com.tomtom.amelinium.common.LineProducer;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
-import com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalUpdater;
 import com.tomtom.woj.amelinium.utils.StringUtils;
 
 public class BacklogAndJournalUpdaterTest {
