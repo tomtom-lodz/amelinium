@@ -2,6 +2,7 @@ package com.tomtom.amelinium.confluence.server.controller;
 
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tomtom.amelinium.confluence.client.ConfluenceOperations;
 import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
 import com.tomtom.amelinium.confluence.logic.BacklogPageCorrector;
 import com.tomtom.amelinium.confluence.logic.ChartPageCorrector;
@@ -17,6 +19,7 @@ import com.tomtom.amelinium.confluence.logic.PlotPageGenerator;
 import com.tomtom.amelinium.confluence.logic.Plots;
 import com.tomtom.amelinium.confluence.server.model.BacklogForm;
 import com.tomtom.amelinium.confluence.server.model.ChartForm;
+import com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater;
 /**
  * Controller for all the actions concerning backlogs and charts on Confluence.
  * 
@@ -80,13 +83,20 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/plot/draw", method = RequestMethod.GET)
-	public ModelAndView drawPlot(@RequestParam String space, @RequestParam String pageTitle,
+	public ModelAndView drawPlot(@RequestParam String space, @RequestParam String title,
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
-			@RequestParam int sprintLength, @RequestParam double velocity, @RequestParam double scopeIncrease,
+			@RequestParam int sprintLength,
+			@RequestParam double velocity,
+			@RequestParam(required=false) Double scopeIncrease,
 			@RequestParam(required=false) Double effectiveVelocity) {
 
 		double dailyVelocity = velocity/sprintLength;
-		double dailyBlackMatter = scopeIncrease/sprintLength;
+		double dailyBlackMatter;
+		if(scopeIncrease==null) {
+			dailyBlackMatter = 0;
+		} else {
+			dailyBlackMatter = scopeIncrease/sprintLength;
+		}
 		double dailyEffectiveVelocity;
 		if(effectiveVelocity==null) {
 			dailyEffectiveVelocity = dailyVelocity - dailyBlackMatter;
@@ -94,7 +104,7 @@ public class MainController {
 			dailyEffectiveVelocity = effectiveVelocity/sprintLength;
 		}
 		
-		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, pageTitle, isCumulative,
+		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, title, isCumulative,
 				dailyVelocity, dailyBlackMatter, dailyEffectiveVelocity);
 		
 		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
@@ -104,6 +114,35 @@ public class MainController {
 		model.addObject("chartBody2", plots.chartBody2);
 		
 		return model;
+	}
+	
+	private ConfluenceConfig config = new ConfluenceConfig();
+	private BacklogAndJournalUpdater updater = new BacklogAndJournalUpdater();
+	
+	@RequestMapping(value = "/backlog/updateJournal", method = RequestMethod.GET)
+	public String updateJournal(@RequestParam String backlogSpace, @RequestParam String backlogTitle,
+			@RequestParam String journalSpace, @RequestParam String journalTitle) {
+//		backlogPageCorrector.correctBacklog(backlogTitle, backlogSpace, false);
+		
+		String backlogContent = ConfluenceOperations.getPageSource(config.SERVER,
+				config.USER, config.PASS, backlogSpace, backlogTitle);
+		
+		String journalContent = ConfluenceOperations.getPageSource(config.SERVER,
+				config.USER, config.PASS, journalSpace, journalTitle);
+		
+		DateTime dateTime = new DateTime();
+		
+		String updatedJournal = updater.generateUpdatedString(dateTime, backlogContent, journalContent);
+		
+		ConfluenceOperations.updatePageSource(config.SERVER,
+				config.USER, config.PASS, journalSpace, journalTitle, updatedJournal);
+		
+//		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
+		return "redirect:" + confluenceConfig.SERVER + "/display/" + journalSpace + "/" + journalTitle;
+	}
+
+	public void addNewReleasesToJournal() {
+		
 	}
 	
 //	public void drawPlot(HttpServletResponse response) throws IOException {
