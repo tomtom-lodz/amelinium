@@ -204,6 +204,13 @@ public class FeatureGroup {
 	
 	public String getTitle() {
 		String fgTitle = getContentLeft() + getContentRight();
-		return fgTitle.replace("h3. ", "");		
+		fgTitle = fgTitle.trim();
+		if(fgTitle.startsWith("h3. ")) {
+			fgTitle = fgTitle.substring(3);
+		}
+		if(fgTitle.endsWith("-")) {
+			fgTitle = fgTitle.substring(0,fgTitle.length() - 1);
+		}
+		return fgTitle.trim();		
 	}
 }
