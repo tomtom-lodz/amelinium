@@ -20,6 +20,8 @@ public class BurnupModelFactory {
 		if(model.merged.dates.size()<1 || model.merged.cols.size()<1) {
 			return model;
 		}
+		
+		model.minPoints = findMinPoints(model.merged);
 
 		int lastIdx = chunk.dates.size()-1;
 		DateTime lastDate = chunk.dates.get(lastIdx);
@@ -65,6 +67,24 @@ public class BurnupModelFactory {
 		}
 		
 		return model;
+	}
+
+	private double findMinPoints(BacklogChunk merged) {
+		double min = Double.MAX_VALUE;
+		for(ArrayList<Double> column : merged.cols) {
+			for(Double value : column) {
+				if(!Double.isNaN(value)) {
+					if(value<min) {
+						min = value;
+					}
+				}
+			}
+		}
+		if(min==Double.MAX_VALUE) {
+			return 0;
+		} else {
+			return min;
+		}
 	}
 
 	private int findNumberOfColumnsWithTrends(BacklogChunk chunk) {
