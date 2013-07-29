@@ -6,6 +6,10 @@ $(document).ready(function(){
         xaxis:{
             renderer:$.jqplot.DateAxisRenderer,
 //            max: <MAXX>,
+			label: 'Date',
+        tickOptions:{
+            formatString:'%#d-%b<br>%Y',
+        } 
         },
         yaxis: {
 			min: <MINY>,

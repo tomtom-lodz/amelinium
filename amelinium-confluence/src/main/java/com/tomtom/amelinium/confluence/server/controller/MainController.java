@@ -112,6 +112,7 @@ public class MainController {
 		model.addObject("chartBody1", plots.chartBody1);
 		model.addObject("chartName2", plots.chartName2);
 		model.addObject("chartBody2", plots.chartBody2);
+		model.addObject("burnupTable", plots.burnupTable);
 		
 		return model;
 	}

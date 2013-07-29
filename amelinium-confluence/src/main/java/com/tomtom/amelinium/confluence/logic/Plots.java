@@ -6,5 +6,6 @@ public class Plots {
 	public String chartBody1;
 	public String chartName2;
 	public String chartBody2;
+	public String burnupTable;
 
 }
