@@ -15,7 +15,7 @@ public class BacklogAndJournalUpdater {
 	private BacklogJournalReader backlogJournalReader = new BacklogJournalReader();
 	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
 	
-	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks, boolean isCumulative, boolean addNew) {
+	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks, boolean isCumulative, boolean addNewFeatureGroups) {
 		
 		int points = backlogModel.getOverallBurnedStoryPoints();
 		ArrayList<FeatureGroup> fetureGroups = backlogModel
@@ -35,7 +35,7 @@ public class BacklogAndJournalUpdater {
 		BacklogJournalUpdater updater = new BacklogJournalUpdater();
 
 		// when
-		if(addNew) {
+		if(addNewFeatureGroups) {
 			updater.addAll(chunks, dateTime, points, headers, values);
 		} else {
 			if(isCumulative) {
@@ -46,7 +46,7 @@ public class BacklogAndJournalUpdater {
 		}
 	}
 	
-	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNew) {
+	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overWriteExistingDate) {
 
 		boolean allowingMultilineFeatures = false;
 		
@@ -54,14 +54,37 @@ public class BacklogAndJournalUpdater {
 				backlogContent, allowingMultilineFeatures);
 
 		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromString(journalContent);
+		
+		if(overWriteExistingDate) {
+			removeLastRowIfDateMatches(dateTime, chunks);
+		}
 
-		update(dateTime, backlogModel, chunks, isCumulative, addNew);
+		update(dateTime, backlogModel, chunks, isCumulative, addNewFeatureGroups);
 		
 		return chunks;
 	}
 
-	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNew) {
-		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNew);
+	private void removeLastRowIfDateMatches(DateTime dateTime, ArrayList<BacklogChunk> chunks) {
+		if(chunks.isEmpty()) {
+			return;
+		}
+		BacklogChunk lastChunk = chunks.get(chunks.size()-1);
+		if(lastChunk.dates.isEmpty()) {
+			return;
+		}
+		int pos = lastChunk.dates.size()-1;
+		DateTime existingDate = lastChunk.dates.get(pos);
+		if(!existingDate.equals(dateTime)) {
+			return;
+		}
+		lastChunk.dates.remove(pos);
+		for(ArrayList<Double> col : lastChunk.cols) {
+			col.remove(pos);
+		}
+	}
+
+	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overWriteExistingDate) {
+		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNewFeatureGroups, overWriteExistingDate);
 		return backlogJournalSerializer.serialize(chunks);
 	}
 	

@@ -11,6 +11,8 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
+<!--     <default-servlet-handler/> -->
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -22,7 +24,23 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.tomtom.amelinium" />
-	
-	
+		
+    <!--See ExampleDocumentationController if you want to extend ApiDocumentationController for the purpose of
+        defining a different RequestMapping-->
+    <!--<beans:bean id="documentationController" class="com.knappsack.swagger4springweb.controller.ApiDocumentationController"-->
+                <!--p:baseControllerPackage="com.knappsack.swagger4springweb.controllers.api"-->
+                <!--p:baseModelPackage="com.knappsack.swagger4springweb.models"-->
+                <!--p:additionalControllerPackages-ref="additionalControllerPackages"-->
+                <!--p:additionalModelPackages-ref="additionalModelPackages"-->
+                <!--p:apiVersion="v1" />-->
+
+    <!--<util:list id="additionalControllerPackages" value-type="java.lang.String" list-class="java.util.ArrayList">-->
+        <!--<beans:value>com.knappsack.swagger4springweb.controllers.additionalApi</beans:value>-->
+    <!--</util:list>-->
+    <!--<util:list id="additionalModelPackages">-->
+        <!--<beans:value>com.knappsack.swagger4springweb.additionalModels</beans:value>-->
+    <!--</util:list>-->
+    
+    <beans:bean class="com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater"/>
 	
 </beans:beans>
