@@ -123,7 +123,8 @@ public class MainController {
 	@RequestMapping(value = "/backlog/updateJournal", method = RequestMethod.GET)
 	public String updateJournal(@RequestParam String backlogSpace, @RequestParam String backlogTitle,
 			@RequestParam String journalSpace, @RequestParam String journalTitle,
-			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative) {
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+			@RequestParam(value = "addNew", defaultValue = "true", required=false) boolean addNew) {
 //		backlogPageCorrector.correctBacklog(backlogTitle, backlogSpace, false);
 		
 		String backlogContent = ConfluenceOperations.getPageSource(config.SERVER,
@@ -134,7 +135,7 @@ public class MainController {
 		
 		DateTime dateTime = new DateTime();
 		
-		String updatedJournal = updater.generateUpdatedString(dateTime, backlogContent, journalContent, isCumulative);
+		String updatedJournal = updater.generateUpdatedString(dateTime, backlogContent, journalContent, isCumulative, addNew);
 		
 		ConfluenceOperations.updatePageSource(config.SERVER,
 				config.USER, config.PASS, journalSpace, journalTitle, updatedJournal);
