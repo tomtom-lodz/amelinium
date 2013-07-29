@@ -75,7 +75,7 @@ public class BacklogAndJournalUpdaterTest {
 		ArrayList<BacklogChunk> chunks = reader
 				.readFromFile("src/test/resources/backlog_journals/example1_cumulative.txt");
 
-		updater.update(dateTime, backlogModel, chunks);
+		updater.update(dateTime, backlogModel, chunks, false, true);
 		return chunks;
 	}
 
