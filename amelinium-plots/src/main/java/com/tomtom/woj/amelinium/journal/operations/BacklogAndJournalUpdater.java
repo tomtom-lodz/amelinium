@@ -15,7 +15,7 @@ public class BacklogAndJournalUpdater {
 	private BacklogJournalReader backlogJournalReader = new BacklogJournalReader();
 	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
 	
-	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks) {
+	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks, boolean isCumulative) {
 		
 		int points = backlogModel.getOverallBurnedStoryPoints();
 		ArrayList<FeatureGroup> fetureGroups = backlogModel
@@ -25,7 +25,11 @@ public class BacklogAndJournalUpdater {
 		ArrayList<Double> values = new ArrayList<Double>();
 		for (FeatureGroup featureGroup : fetureGroups) {
 			headers.add(featureGroup.getTitle());
-			values.add((double) (featureGroup.getPoints() - featureGroup.getDonePoints()));
+			if(isCumulative) {
+				values.add((double) featureGroup.getCummulativePoints());
+			} else {
+				values.add((double) (featureGroup.getPoints() - featureGroup.getDonePoints()));
+			}
 		}
 
 		BacklogJournalUpdater updater = new BacklogJournalUpdater();
@@ -34,7 +38,7 @@ public class BacklogAndJournalUpdater {
 		updater.addAll(chunks, dateTime, points, headers, values);
 	}
 	
-	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent) {
+	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative) {
 
 		boolean allowingMultilineFeatures = false;
 		
@@ -43,13 +47,13 @@ public class BacklogAndJournalUpdater {
 
 		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromString(journalContent);
 
-		update(dateTime, backlogModel, chunks);
+		update(dateTime, backlogModel, chunks, isCumulative);
 		
 		return chunks;
 	}
 
-	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent) {
-		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent);
+	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative) {
+		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative);
 		return backlogJournalSerializer.serialize(chunks);
 	}
 	
