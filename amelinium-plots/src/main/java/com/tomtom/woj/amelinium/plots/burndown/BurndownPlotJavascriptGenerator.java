@@ -139,9 +139,10 @@ public class BurndownPlotJavascriptGenerator {
 			sb.append("'},");
 		}
 		for(int i=0; i<model.releasesTrends.size(); i++) {
-			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Trend (");
-			sb.append(StringEscapeUtils.escapeJavaScript(model.merged.header.get(i)));
-			sb.append(")'},");
+//			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Trend (");
+//			sb.append(StringEscapeUtils.escapeJavaScript(model.merged.header.get(i)));
+//			sb.append(")'},");
+			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: ' '},");
 		}
 		String seriesDefinition = sb.toString();
 		return seriesDefinition;
