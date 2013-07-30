@@ -41,7 +41,7 @@ public class BurndownPlotJavascriptGenerator {
 		sb = new StringBuffer();
 		for(int i=0; i<model.merged.cols.size();i++) {
 			sb.append("\"");
-			sb.append(colors.getColor(i));
+			sb.append(colors.getColor(i+1));
 			sb.append("\",");
 		}
 		
