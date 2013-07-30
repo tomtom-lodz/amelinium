@@ -33,30 +33,6 @@ public class BacklogController {
 	@Autowired
 	private BacklogPageCorrector backlogPageCorrector;
 
-    //@ApiExclude
-    @ApiOperation(value = "Display update backlog form",
-    		notes = "Display update backlog form",
-    		responseClass = "VOID")
-	@RequestMapping("/")
-	public ModelAndView updateFormWelcomeHandler(ModelAndView model) {
-		return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
-	}
-
-    // bug https://github.com/wordnik/swagger-ui/issues/208
-    //@ApiExclude
-    @ApiOperation(value = "Recalculate and update Confluence backlog page",
-    		notes = "Recalculate and update Confluence backlog page",
-    		responseClass = "VOID")
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView add(@Valid BacklogForm form, BindingResult result) {
-		if (!result.hasErrors()) {
-			backlogPageCorrector.correctBacklog(form.getTitle(), form.getSpace(), form.getAllowMultilineFeatures());
-			return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
-		} else {
-			return new ModelAndView("confluence/updateFormSpring", "command", form);
-		}
-	}
-
     @ApiOperation(value = "Recalculate and update Confluence backlog page",
     		notes = "Recalculate and update Confluence backlog page",
     		responseClass = "VOID")

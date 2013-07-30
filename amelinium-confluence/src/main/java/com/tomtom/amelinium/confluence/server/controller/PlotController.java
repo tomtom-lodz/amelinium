@@ -80,8 +80,8 @@ public class PlotController {
 		return model;
 	}
 	
-    @ApiOperation(value = "Update the journal based on current Confluence backlog",
-    		notes = "Update the journal based on current Confluence backlog",
+    @ApiOperation(value = "Update the journal to current values in Confluence backlog",
+    		notes = "Update the journal to current values in Confluence backlog",
     		responseClass = "VOID")
 	@RequestMapping(value = "/updateJournal", method = RequestMethod.GET)
 	public String updateJournal(

@@ -1,4 +1,4 @@
-package com.tomtom.amelinium.confluence.doc.controller;
+package com.tomtom.amelinium.confluence.other.controller;
 
 import com.knappsack.swagger4springweb.controller.ApiDocumentationController;
 import com.wordnik.swagger.core.Documentation;
@@ -43,28 +43,32 @@ public class ExampleDocumentationController extends ApiDocumentationController {
         return "documentation";
     }
     
-    @RequestMapping(value = "/resourceList", method = RequestMethod.GET, produces = "application/json")
-    public
-    @ResponseBody
-    Documentation getResources(HttpServletRequest request) {
-    	// hack to support overwritting response to void
-    	Documentation doc = super.getResources(request);
-    	if(doc.getApis()==null) {
-    		return doc;
-    	}
-    	for(DocumentationEndPoint api : doc.getApis()) {
-    		if(api.getOperations()==null) {
-    			continue;
-    		}
-    		for(DocumentationOperation operation : api.getOperations()) {
-    			if("VOID".equals(operation.getResponseClass())) {
-    				operation.setResponseClass("void");
-    			}
-    		}
-    	}
-        return doc;
-//        return super.getResources(request);
-    }
-
-    
+//    @RequestMapping(value = "/resourceList", method = RequestMethod.GET, produces = "application/json")
+//    public
+//    @ResponseBody
+//    Documentation getResources(HttpServletRequest request) {
+//    	// hack to support overwritting response to void and excluding api
+//    	Documentation doc = super.getResources(request);
+//    	if(doc.getApis()==null) {
+//    		return doc;
+//    	}
+//    	for(DocumentationEndPoint api : doc.getApis()) {
+//    		if(api.getOperations()==null) {
+//    			continue;
+//    		}
+////    		for(DocumentationOperation operation : api.getOperations()) {
+//    		for(int i=0; i<api.getOperations().size(); i++) {
+//    			DocumentationOperation operation = api.getOperations().get(i);
+//    			if("EXCLUDE".equals(operation.getNotes())) {
+//    				api.getOperations().remove(i);
+//    				continue;
+//    			}
+//    			if("VOID".equals(operation.getResponseClass())) {
+//    				operation.setResponseClass("void");
+//    			}
+//    		}
+//    	}
+//        return doc;
+////        return super.getResources(request);
+//    }
 }

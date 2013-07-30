@@ -34,29 +34,6 @@ public class ChartAndBacklogController {
 	@Autowired
 	private ChartPageCorrector chartPageCorrector;
 
-    //@ApiExclude
-    @ApiOperation(value = "Display update backlog and chart form",
-    		notes = "Display update backlog and chart form",
-    		responseClass = "VOID")
-	@RequestMapping("/")
-	public ModelAndView chartFormWelcomeHandler() {
-		return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
-	}
-
-    //@ApiExclude
-    @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
-    		notes = "Recalculate and update Confluence backlog and chart page",
-    		responseClass = "VOID")
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView chartFormHandlerPost(@Valid ChartForm form, BindingResult result) {
-		if (!result.hasErrors()) {
-			chartPageCorrector.correctChart(form.getChartTitle(), form.getChartSpace(), form.getBacklogTitle(), form.getBacklogSpace(), form.getAllowMultilineFeatures());
-			return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
-		} else {
-			return new ModelAndView("confluence/chartFormSpring", "command", form);
-		}
-	}
-
     @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
     		notes = "Recalculate and update Confluence backlog and chart page",
     		responseClass = "VOID")
