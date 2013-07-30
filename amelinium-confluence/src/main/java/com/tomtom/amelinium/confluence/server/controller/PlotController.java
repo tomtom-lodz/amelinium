@@ -26,6 +26,7 @@ import com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiError;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 /**
  * Controller for all the actions concerning backlogs and charts on Confluence.
  * 
@@ -46,11 +47,20 @@ public class PlotController {
     @ApiOperation(value = "Draw plots based on journal",
     		notes = "Draw plots based on journal")
 	@RequestMapping(value = "/draw", method = RequestMethod.GET)
-	public void drawPlot(@RequestParam String space, @RequestParam String title,
+	public void drawPlot(
+			@ApiParam("Confluence space")
+			@RequestParam String space,
+			@ApiParam("Confluence page title")
+			@RequestParam String title,
+			@ApiParam("Length of sprint in days")
 			@RequestParam int sprintLength,
+			@ApiParam("Team velocity")
 			@RequestParam double velocity,
+			@ApiParam("Number of story points added to scope per sprint")
 			@RequestParam(required=false) Double scopeIncrease,
+			@ApiParam("Effective velocity for burndown plot (velocity - scopeIncrease)")
 			@RequestParam(required=false) Double effectiveVelocity,
+			@ApiParam("Is journal expressed in cumulative form")
 			@RequestParam(defaultValue = "false", required=false) boolean isCumulative,
 			ModelAndView model) {
 
@@ -85,10 +95,20 @@ public class PlotController {
     @ApiOperation(value = "Update the journal based on current Confluence backlog",
     		notes = "Update the journal based on current Confluence backlog")
 	@RequestMapping(value = "/updateJournal", method = RequestMethod.GET)
-	public void updateJournal(@RequestParam String backlogSpace, @RequestParam String backlogTitle,
-			@RequestParam String journalSpace, @RequestParam String journalTitle,
+	public void updateJournal(
+			@ApiParam("Confluence space of backlog")
+			@RequestParam String backlogSpace,
+			@ApiParam("Confluence page title of backlog")
+			@RequestParam String backlogTitle,
+			@ApiParam("Confluence space of journal")
+			@RequestParam String journalSpace,
+			@ApiParam("Confluence page title of journal")
+			@RequestParam String journalTitle,
+			@ApiParam("Is journal expressed in cumulative form")
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+			@ApiParam("Wheather new groups should be added to journal")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
+			@ApiParam("Wheather last low in journal should be overwritten has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overWriteExistingDate,
 			HttpServletResponse response) throws IOException {
 		

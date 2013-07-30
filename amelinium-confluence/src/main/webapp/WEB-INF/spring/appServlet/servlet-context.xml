@@ -24,7 +24,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.tomtom.amelinium" />
-		
+
+	<!-- see https://github.com/wkennedy/swagger4spring-web-example for examples of swagger -->
+
     <!--See ExampleDocumentationController if you want to extend ApiDocumentationController for the purpose of
         defining a different RequestMapping-->
     <!--<beans:bean id="documentationController" class="com.knappsack.swagger4springweb.controller.ApiDocumentationController"-->
