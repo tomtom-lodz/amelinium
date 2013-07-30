@@ -1,5 +1,8 @@
 package com.tomtom.amelinium.confluence.server.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.joda.time.DateTime;
@@ -40,13 +43,16 @@ public class PlotController {
 	@Autowired
 	private BacklogAndJournalUpdater backlogAndJournalUpdater;
 	
+    @ApiOperation(value = "Draw plots based on journal",
+    		notes = "Draw plots based on journal")
 	@RequestMapping(value = "/draw", method = RequestMethod.GET)
-	public ModelAndView drawPlot(@RequestParam String space, @RequestParam String title,
-			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+	public void drawPlot(@RequestParam String space, @RequestParam String title,
 			@RequestParam int sprintLength,
 			@RequestParam double velocity,
 			@RequestParam(required=false) Double scopeIncrease,
-			@RequestParam(required=false) Double effectiveVelocity) {
+			@RequestParam(required=false) Double effectiveVelocity,
+			@RequestParam(defaultValue = "false", required=false) boolean isCumulative,
+			ModelAndView model) {
 
 		double dailyVelocity = velocity/sprintLength;
 		double dailyBlackMatter;
@@ -65,22 +71,26 @@ public class PlotController {
 		Plots plots = plotPageGenerator.generatePlotsFromConfluencePage(space, title, isCumulative,
 				dailyVelocity, dailyBlackMatter, dailyEffectiveVelocity);
 		
-		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
+//		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
+		model.setViewName("plots/plotBurnupBurndown");
 		model.addObject("chartName1", plots.chartName1);
 		model.addObject("chartBody1", plots.chartBody1);
 		model.addObject("chartName2", plots.chartName2);
 		model.addObject("chartBody2", plots.chartBody2);
 		model.addObject("burnupTable", plots.burnupTable);
 		
-		return model;
+//		return model;
 	}
 	
+    @ApiOperation(value = "Update the journal based on current Confluence backlog",
+    		notes = "Update the journal based on current Confluence backlog")
 	@RequestMapping(value = "/updateJournal", method = RequestMethod.GET)
-	public String updateJournal(@RequestParam String backlogSpace, @RequestParam String backlogTitle,
+	public void updateJournal(@RequestParam String backlogSpace, @RequestParam String backlogTitle,
 			@RequestParam String journalSpace, @RequestParam String journalTitle,
-			@RequestParam(defaultValue = "false", required=false) boolean isCumulative,
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
-			@RequestParam(defaultValue = "true", required=false) boolean overWriteExistingDate) {
+			@RequestParam(defaultValue = "true", required=false) boolean overWriteExistingDate,
+			HttpServletResponse response) throws IOException {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -98,7 +108,9 @@ public class PlotController {
 				confluenceConfig.USER, confluenceConfig.PASS, journalSpace, journalTitle, updatedJournal);
 		
 //		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
-		return "redirect:" + confluenceConfig.SERVER + "/display/" + journalSpace + "/" + journalTitle;
+//		return "redirect:" + confluenceConfig.SERVER + "/display/" + journalSpace + "/" + journalTitle;
+
+		response.sendRedirect(confluenceConfig.SERVER + "/display/" + journalSpace + "/" + journalTitle);
 	}
 	
 //	public void drawPlot(HttpServletResponse response) throws IOException {

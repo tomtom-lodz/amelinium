@@ -1,5 +1,8 @@
 package com.tomtom.amelinium.confluence.server.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.joda.time.DateTime;
@@ -40,26 +43,38 @@ public class ChartAndBacklogController {
 	@Autowired
 	private ChartPageCorrector chartPageCorrector;
 
+    @ApiOperation(value = "Display update backlog and chart form",
+    		notes = "Display update backlog and chart form")
 	@RequestMapping("/")
-	public ModelAndView chartFormWelcomeHandler() {
-		return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
+	public void chartFormWelcomeHandler(ModelAndView model) {
+		model.setViewName("confluence/chartFormSpring");
+		model.addObject("command", new ChartForm());
+//		return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
 	}
 
+    @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
+    		notes = "Recalculate and update Confluence backlog and chart page")
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String chartFormHandlerGet(@RequestParam String chartTitle, @RequestParam String chartSpace, @RequestParam String backlogTitle, @RequestParam String backlogSpace,
-			@RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures) {
+	public void chartFormHandlerGet(@RequestParam String chartTitle, @RequestParam String chartSpace, @RequestParam String backlogTitle, @RequestParam String backlogSpace,
+			@RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures,
+			HttpServletResponse response) throws IOException {
 		chartPageCorrector.correctChart(chartTitle, chartSpace, backlogTitle, backlogSpace, allowMultilineFeatures);
-		return "redirect:" + confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle;
+//		return "redirect:" + confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle;
+		response.sendRedirect(confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle);
 	}
 
+    @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
+    		notes = "Recalculate and update Confluence backlog and chart page")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView chartFormHandlerPost(@Valid ChartForm form, BindingResult result) {
+	public void chartFormHandlerPost(@Valid ChartForm form, BindingResult result, ModelAndView model) {
 		if (!result.hasErrors()) {
 			chartPageCorrector.correctChart(form.getChartTitle(), form.getChartSpace(), form.getBacklogTitle(), form.getBacklogSpace(), form.getAllowMultilineFeatures());
-			return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
+//			return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
+			model.addObject("command", new ChartForm());
 		} else {
-			return new ModelAndView("confluence/chartFormSpring", "command", form);
+//			return new ModelAndView("confluence/chartFormSpring", "command", form);
+			model.addObject("command", form);
 		}
-
+		model.setViewName("confluence/chartFormSpring");
 	}
 }

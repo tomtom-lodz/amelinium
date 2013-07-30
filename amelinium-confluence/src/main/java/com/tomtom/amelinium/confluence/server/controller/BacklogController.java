@@ -1,10 +1,14 @@
 package com.tomtom.amelinium.confluence.server.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,26 +42,38 @@ public class BacklogController {
 	@Autowired
 	private BacklogPageCorrector backlogPageCorrector;
 
+    @ApiOperation(value = "Display update backlog form",
+    		notes = "Display update backlog form")
 	@RequestMapping("/")
-	public ModelAndView updateFormWelcomeHandler() {
-		return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
+	public void updateFormWelcomeHandler(ModelAndView model) {
+		model.setViewName("confluence/updateFormSpring");
+		model.addObject("command", new BacklogForm());
+//		return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
 	}
 
+    @ApiOperation(value = "Recalculate and update Confluence backlog page",
+    		notes = "Recalculate and update Confluence backlog page")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView add(@Valid BacklogForm form, BindingResult result) {
+	public void add(@Valid BacklogForm form, BindingResult result, ModelAndView model) {
 		if (!result.hasErrors()) {
 			backlogPageCorrector.correctBacklog(form.getTitle(), form.getSpace(), form.getAllowMultilineFeatures());
-			return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
+			model.addObject("command", new BacklogForm());
+//			return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
 		} else {
-			return new ModelAndView("confluence/updateFormSpring", "command", form);
+			model.addObject("command", form);
+//			return new ModelAndView("confluence/updateFormSpring", "command", form);
 		}
-
+		model.setViewName("confluence/updateFormSpring");
 	}
 
+    @ApiOperation(value = "Recalculate and update Confluence backlog page",
+    		notes = "Recalculate and update Confluence backlog page")
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String formHandler(@RequestParam String space, @RequestParam String title, @RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures) {
+	public void formHandler(@RequestParam String space, @RequestParam String title, @RequestParam(value = "allowMultilineFeatures", defaultValue = "false", required=false) boolean allowMultilineFeatures,
+			HttpServletResponse response) throws IOException {
 		backlogPageCorrector.correctBacklog(title, space, allowMultilineFeatures);
-		return "redirect:" + confluenceConfig.SERVER + "/display/" + space + "/" + title;
+//		return "redirect:" + confluenceConfig.SERVER + "/display/" + space + "/" + title;
+		response.sendRedirect(confluenceConfig.SERVER + "/display/" + space + "/" + title);
 	}
 	
 }
