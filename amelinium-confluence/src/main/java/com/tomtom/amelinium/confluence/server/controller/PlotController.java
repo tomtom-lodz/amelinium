@@ -33,14 +33,14 @@ public class PlotController {
 	@Autowired
 	private BacklogAndJournalUpdater backlogAndJournalUpdater;
 	
-    @ApiOperation(value = "Draw plots based on journal",
-    		notes = "Draw plots based on journal",
+    @ApiOperation(value = "Draw plots from CSV file",
+    		notes = "Draw plots from CSV file",
     		responseClass = "VOID")
 	@RequestMapping(value = "/draw", method = RequestMethod.GET)
 	public ModelAndView drawPlot(
 			@ApiParam("Confluence space")
 			@RequestParam String space,
-			@ApiParam("Confluence page title")
+			@ApiParam("Confluence page with CSV")
 			@RequestParam String title,
 			@ApiParam("Length of sprint in days")
 			@RequestParam int sprintLength,
@@ -50,7 +50,7 @@ public class PlotController {
 			@RequestParam(required=false) Double scopeIncrease,
 			@ApiParam("Effective velocity for burndown plot (velocity - scopeIncrease)")
 			@RequestParam(required=false) Double effectiveVelocity,
-			@ApiParam("Is journal expressed in cumulative form")
+			@ApiParam("Is CSV in cumulative form")
 			@RequestParam(defaultValue = "false", required=false) boolean isCumulative) {
 
 		double dailyVelocity = velocity/sprintLength;
@@ -80,24 +80,24 @@ public class PlotController {
 		return model;
 	}
 	
-    @ApiOperation(value = "Update the journal to current values in Confluence backlog",
-    		notes = "Update the journal to current values in Confluence backlog",
+    @ApiOperation(value = "Update CSV page according to backlog",
+    		notes = "Update CSV page according to backlog",
     		responseClass = "VOID")
-	@RequestMapping(value = "/updateJournal", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateCsv", method = RequestMethod.GET)
 	public String updateJournal(
 			@ApiParam("Confluence space of backlog")
 			@RequestParam String backlogSpace,
-			@ApiParam("Confluence page title of backlog")
+			@ApiParam("Confluence page with backlog")
 			@RequestParam String backlogTitle,
-			@ApiParam("Confluence space of journal")
+			@ApiParam("Confluence space of CSV")
 			@RequestParam String journalSpace,
-			@ApiParam("Confluence page title of journal")
+			@ApiParam("Confluence page with CSV")
 			@RequestParam String journalTitle,
-			@ApiParam("Is journal expressed in cumulative form")
+			@ApiParam("Is CSV in cumulative form")
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
-			@ApiParam("Wheather new groups should be added to journal")
+			@ApiParam("Wheather new groups should be added to CSV")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
-			@ApiParam("Wheather last low in journal should be overwritten has the same date")
+			@ApiParam("Wheather last low in CSV should be overwritten when it has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overWriteExistingDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
