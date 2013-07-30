@@ -2,6 +2,8 @@ package com.tomtom.amelinium.confluence.doc.controller;
 
 import com.knappsack.swagger4springweb.controller.ApiDocumentationController;
 import com.wordnik.swagger.core.Documentation;
+import com.wordnik.swagger.core.DocumentationEndPoint;
+import com.wordnik.swagger.core.DocumentationOperation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,7 @@ public class ExampleDocumentationController extends ApiDocumentationController {
 //        controllerPackages.add("com.knappsack.swagger4springweb.controllers.additionalApi");
 //        setAdditionalControllerPackages(controllerPackages);
 //
-//        setBaseModelPackage("com.knappsack.swagger4springweb.models");
+        setBaseModelPackage("com.tomtom.amelinium.confluence.server.model");
 //        List<String> modelPackages = new ArrayList<String>();
 //        controllerPackages.add("com.knappsack.swagger4springweb.additionalModels");
 //        setAdditionalModelPackages(modelPackages);
@@ -41,12 +43,28 @@ public class ExampleDocumentationController extends ApiDocumentationController {
         return "documentation";
     }
     
-//    @RequestMapping(value = "/resourceList", method = RequestMethod.GET, produces = "application/json")
-//    public
-//    @ResponseBody
-//    Documentation getResources(HttpServletRequest request) {
+    @RequestMapping(value = "/resourceList", method = RequestMethod.GET, produces = "application/json")
+    public
+    @ResponseBody
+    Documentation getResources(HttpServletRequest request) {
+    	// hack to support overwritting response to void
+    	Documentation doc = super.getResources(request);
+    	if(doc.getApis()==null) {
+    		return doc;
+    	}
+    	for(DocumentationEndPoint api : doc.getApis()) {
+    		if(api.getOperations()==null) {
+    			continue;
+    		}
+    		for(DocumentationOperation operation : api.getOperations()) {
+    			if("VOID".equals(operation.getResponseClass())) {
+    				operation.setResponseClass("void");
+    			}
+    		}
+    	}
+        return doc;
 //        return super.getResources(request);
-//    }
+    }
 
     
 }

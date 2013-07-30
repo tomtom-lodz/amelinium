@@ -71,7 +71,7 @@
                             console.log(data);
                         }
                     },
-                    docExpansion: "none"
+                    docExpansion: "list"
                 });
 
                 window.swaggerUi.load();
