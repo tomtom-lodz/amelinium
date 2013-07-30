@@ -12,15 +12,20 @@
 <script class="include" type="text/javascript" src="<c:url value="/resources/jqplot/jquery.jqplot.min.js"/>"></script>
 
 <div id="<c:out value="${chartName1}"/>" style="height:600px; width:1024px;"></div>
+<button class="button-reset-zoom-${chartName1}">Reset Zoom</button>
+You can also double-click to reset the zoom.
 <script class="code" type="text/javascript">
 <c:out value="${chartBody1}" escapeXml="false"/>
 </script>
 
 <br/>
+<br/>
 <c:out value="${burnupTable}" escapeXml="false"/>
 <br/>
 
 <div id="<c:out value="${chartName2}"/>" style="height:600px; width:1024px;"></div>
+<button class="button-reset-zoom-${chartName2}">Reset Zoom</button>
+You can also double-click to reset the zoom.
 <script class="code" type="text/javascript">
 <c:out value="${chartBody2}" escapeXml="false"/>
 </script>

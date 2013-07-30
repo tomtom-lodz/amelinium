@@ -19,7 +19,8 @@ $(document).ready(function(){
     },
     series:[<SERIES>],
 	cursor: {
-	     show: true
+	    show: true,
+        zoom: true,
 	},
     highlighter: {
         show: true,
@@ -33,4 +34,6 @@ $(document).ready(function(){
         placement: 'outsideGrid',
     }
   });
+  
+  $('.button-reset-zoom-<PLOT>').click(function() { <PLOT>.resetZoom() });
 });

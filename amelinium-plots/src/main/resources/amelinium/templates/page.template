@@ -18,10 +18,12 @@
   
 <!-- Example scripts go here -->
 <div id="chart1" style="height:600px; width:1024px;"></div>
+<button class="button-reset-zoom-chart1">Reset Zoom</button>
 <br/>
 <br/>
 <br/>
 <div id="chart2" style="height:600px; width:1024px;"></div>
+<button class="button-reset-zoom-chart2">Reset Zoom</button>
 
 <script class="code" type="text/javascript">
 <CHART1>
