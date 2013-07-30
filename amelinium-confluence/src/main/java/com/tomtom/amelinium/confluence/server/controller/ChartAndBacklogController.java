@@ -16,6 +16,7 @@ import com.tomtom.amelinium.confluence.logic.ChartPageCorrector;
 import com.tomtom.amelinium.confluence.server.model.ChartForm;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 /**
  * Controller for all the actions concerning backlogs and charts on Confluence.
  * 
@@ -33,6 +34,7 @@ public class ChartAndBacklogController {
 	@Autowired
 	private ChartPageCorrector chartPageCorrector;
 
+    //@ApiExclude
     @ApiOperation(value = "Display update backlog and chart form",
     		notes = "Display update backlog and chart form",
     		responseClass = "VOID")
@@ -41,16 +43,7 @@ public class ChartAndBacklogController {
 		return new ModelAndView("confluence/chartFormSpring", "command", new ChartForm());
 	}
 
-    @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
-    		notes = "Recalculate and update Confluence backlog and chart page",
-    		responseClass = "VOID")
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String chartFormHandlerGet(@RequestParam String chartTitle, @RequestParam String chartSpace, @RequestParam String backlogTitle, @RequestParam String backlogSpace,
-			@RequestParam(defaultValue = "false", required=false) boolean allowMultilineFeatures) {
-		chartPageCorrector.correctChart(chartTitle, chartSpace, backlogTitle, backlogSpace, allowMultilineFeatures);
-		return "redirect:" + confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle;
-	}
-
+    //@ApiExclude
     @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
     		notes = "Recalculate and update Confluence backlog and chart page",
     		responseClass = "VOID")
@@ -62,5 +55,24 @@ public class ChartAndBacklogController {
 		} else {
 			return new ModelAndView("confluence/chartFormSpring", "command", form);
 		}
+	}
+
+    @ApiOperation(value = "Recalculate and update Confluence backlog and chart page",
+    		notes = "Recalculate and update Confluence backlog and chart page",
+    		responseClass = "VOID")
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String chartFormHandlerGet(
+			@ApiParam("Confluence space of backlog")
+			@RequestParam String backlogSpace,
+			@ApiParam("Confluence page title of backlog")
+			@RequestParam String backlogTitle,
+			@ApiParam("Confluence space of chart")
+			@RequestParam String chartSpace,
+			@ApiParam("Confluence page title of chart")
+			@RequestParam String chartTitle,
+			@ApiParam("If features can be spanned through multiple lines")
+			@RequestParam(defaultValue = "false", required=false) boolean allowMultilineFeatures) {
+		chartPageCorrector.correctChart(chartTitle, chartSpace, backlogTitle, backlogSpace, allowMultilineFeatures);
+		return "redirect:" + confluenceConfig.SERVER + "/display/" + chartSpace + "/" + chartTitle;
 	}
 }

@@ -17,6 +17,7 @@ import com.tomtom.amelinium.confluence.logic.BacklogPageCorrector;
 import com.tomtom.amelinium.confluence.server.model.BacklogForm;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 /**
  * Controller for all the actions concerning backlogs and charts on Confluence.
  * 
@@ -32,7 +33,7 @@ public class BacklogController {
 	@Autowired
 	private BacklogPageCorrector backlogPageCorrector;
 
-//  @ApiExclude
+    //@ApiExclude
     @ApiOperation(value = "Display update backlog form",
     		notes = "Display update backlog form",
     		responseClass = "VOID")
@@ -41,7 +42,8 @@ public class BacklogController {
 		return new ModelAndView("confluence/updateFormSpring", "command", new BacklogForm());
 	}
 
-//  @ApiExclude
+    // bug https://github.com/wordnik/swagger-ui/issues/208
+    //@ApiExclude
     @ApiOperation(value = "Recalculate and update Confluence backlog page",
     		notes = "Recalculate and update Confluence backlog page",
     		responseClass = "VOID")
@@ -59,7 +61,13 @@ public class BacklogController {
     		notes = "Recalculate and update Confluence backlog page",
     		responseClass = "VOID")
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String formHandler(@RequestParam String space, @RequestParam String title, @RequestParam(defaultValue = "false", required=false) boolean allowMultilineFeatures) throws IOException {
+	public String formHandler(
+			@ApiParam("Confluence space of backlog")
+			@RequestParam String space,
+			@ApiParam("Confluence page title of backlog")
+			@RequestParam String title,
+			@ApiParam("If features can be spanned through multiple lines")
+			@RequestParam(defaultValue = "false", required=false) boolean allowMultilineFeatures) throws IOException {
 		backlogPageCorrector.correctBacklog(title, space, allowMultilineFeatures);
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + space + "/" + title;
 	}
