@@ -3,8 +3,6 @@ package com.tomtom.woj.amelinium.plots.burnup;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.joda.time.DateTime;
 
-import com.tomtom.woj.amelinium.plots.burndown.BurndownModel;
-
 public class BurnupTableGenerator {
 
 	public String generateTable(BurnupModel model) {

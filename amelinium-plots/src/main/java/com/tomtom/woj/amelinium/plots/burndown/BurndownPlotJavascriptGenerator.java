@@ -3,21 +3,21 @@ package com.tomtom.woj.amelinium.plots.burndown;
 import java.util.HashMap;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.joda.time.DateTime;
 
+import com.tomtom.woj.amelinium.plots.common.PlotColors;
 import com.tomtom.woj.amelinium.trendline.PlotTrendLine;
 import com.tomtom.woj.amelinium.utils.TemplateRenderer;
 
 public class BurndownPlotJavascriptGenerator {
 
-	public DateTime startDate;
-	public DateTime endDate;
-
+	private PlotColors colors = new PlotColors();
+	
 	public String generateBurndown(BurndownModel model, String plotName, String title) {
 
 		String variableNames = variableNamesString(model);
 		String variableDefinitions = variableDefinitionString(model);
 		String seriesDefinition = seriesDefinitionString(model);
+		String seriesColors = seriesColorsString(model);
 		
 		HashMap<String, String> templateModel = new HashMap<String, String>();
 		
@@ -28,8 +28,24 @@ public class BurndownPlotJavascriptGenerator {
 		templateModel.put("<MINY>", Double.toString(model.minPoints));
 		templateModel.put("<PLOT>", plotName);
 		templateModel.put("<TITLE>", title);
+		templateModel.put("<SERIESCOLORS>", seriesColors);
 		
 		return TemplateRenderer.render("/amelinium/templates/plot1.template", templateModel);
+	}
+
+	private String seriesColorsString(BurndownModel model) {
+		StringBuffer sb;
+		
+		// merged lines (burned + feature groups)
+		
+		sb = new StringBuffer();
+		for(int i=0; i<model.merged.cols.size();i++) {
+			sb.append("\"");
+			sb.append(colors.getColor(i));
+			sb.append("\",");
+		}
+		
+		return sb.toString();
 	}
 
 	private String variableDefinitionString(BurndownModel model) {

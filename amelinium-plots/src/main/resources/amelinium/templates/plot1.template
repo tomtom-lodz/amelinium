@@ -18,6 +18,7 @@ $(document).ready(function(){
         },
     },
     series:[<SERIES>],
+    seriesColors:[<SERIESCOLORS>],
 	cursor: {
 	    show: true,
         zoom: true,

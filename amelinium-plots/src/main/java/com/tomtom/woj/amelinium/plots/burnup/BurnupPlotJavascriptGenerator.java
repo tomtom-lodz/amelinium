@@ -4,16 +4,20 @@ import java.util.HashMap;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+import com.tomtom.woj.amelinium.plots.common.PlotColors;
 import com.tomtom.woj.amelinium.trendline.PlotTrendLine;
 import com.tomtom.woj.amelinium.utils.TemplateRenderer;
 
 public class BurnupPlotJavascriptGenerator {
+	
+	private PlotColors colors = new PlotColors();
 
 	public String generateBurnup(BurnupModel model, String plotName, String title) {
 
 		String variableNames = variableNamesString(model);
 		String variableDefinitions = variableDefinitionString(model);
 		String seriesDefinition = seriesDefinitionString(model);
+		String seriesColors = seriesColorsString(model);
 		
 		HashMap<String, String> templateModel = new HashMap<String, String>();
 		
@@ -24,8 +28,24 @@ public class BurnupPlotJavascriptGenerator {
 		templateModel.put("<MINY>", Double.toString(model.minPoints));
 		templateModel.put("<PLOT>", plotName);
 		templateModel.put("<TITLE>", title);
+		templateModel.put("<SERIESCOLORS>", seriesColors);
 		
 		return TemplateRenderer.render("/amelinium/templates/plot1.template", templateModel);
+	}
+
+	private String seriesColorsString(BurnupModel model) {
+		StringBuffer sb;
+		
+		// merged lines (burned + feature groups)
+		
+		sb = new StringBuffer();
+		for(int i=0; i<model.merged.cols.size();i++) {
+			sb.append("\"");
+			sb.append(colors.getColor(i));
+			sb.append("\",");
+		}
+		
+		return sb.toString();
 	}
 
 	private String variableDefinitionString(BurnupModel model) {
@@ -136,9 +156,10 @@ public class BurnupPlotJavascriptGenerator {
 			sb.append("'},");
 		}
 		for(int i=0; i<=model.releasesTrends.size(); i++) {
-			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Trend (");
-			sb.append(StringEscapeUtils.escapeJavaScript(model.merged.header.get(i)));
-			sb.append(")'},");
+//			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: 'Trend (");
+//			sb.append(StringEscapeUtils.escapeJavaScript(model.merged.header.get(i)));
+//			sb.append(")'},");
+			sb.append("{lineWidth:1, showMarker:false, linePattern: 'dashed', label: ' '},");
 		}
 		String seriesDefinition = sb.toString();
 		return seriesDefinition;
