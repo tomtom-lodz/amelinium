@@ -18,6 +18,44 @@ public class BacklogAndJournalUpdater {
 	private DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
 	private BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
 	private BacklogJournalConverterIntoCumulative convert = new BacklogJournalConverterIntoCumulative();
+
+	public String create(DateTime dateTime, String backlogContent, boolean isCumulative) {
+		boolean allowingMultilineFeatures = false;
+		
+		BacklogModel backlogModel = backlogServiceFactory.readAndCorrectBacklogModelFromString(
+				backlogContent, allowingMultilineFeatures);
+		
+		return create(dateTime, backlogModel, isCumulative).toString();
+	}
+	
+	public BacklogChunk create(DateTime dateTime, BacklogModel backlogModel, boolean isCumulative) {
+		int burnedPoints = backlogModel.getOverallBurnedStoryPoints();
+		ArrayList<FeatureGroup> fetureGroups = backlogModel.getFeatureGroupsFromAllSubProjects();
+		
+		BacklogChunk chunk = new BacklogChunk();
+		chunk.dates = new ArrayList<DateTime>();
+		chunk.dates.add(dateTime);
+		chunk.header = new ArrayList<String>();
+		chunk.header.add("Burned");
+		chunk.cols = new ArrayList<ArrayList<Double>>();
+		chunk.cols.add(new ArrayList<Double>());
+		chunk.cols.get(0).add((double) burnedPoints);
+
+		for (FeatureGroup featureGroup : fetureGroups) {
+			if(featureGroup.getCummulativePoints()<=burnedPoints) {
+				continue;
+			}
+			chunk.header.add(featureGroup.getTitle());
+			ArrayList<Double> values = new ArrayList<Double>();
+			if(isCumulative) {
+				values.add((double) featureGroup.getCummulativePoints());
+			} else {
+				values.add((double) (featureGroup.getPoints() - featureGroup.getDonePoints()));
+			}
+			chunk.cols.add(values);
+		}
+		return chunk;
+	}
 	
 	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks, boolean isCumulative, boolean addNewFeatureGroups) {
 		

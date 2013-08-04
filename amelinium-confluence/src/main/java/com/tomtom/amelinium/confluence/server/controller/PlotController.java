@@ -118,7 +118,39 @@ public class PlotController {
 //		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + csvSpace + "/" + csvTitle;
 	}
-	
+
+    @ApiOperation(value = "Create new CSV page according to backlog",
+    		notes = "Create new CSV page according to backlog",
+    		responseClass = "VOID")
+	@RequestMapping(value = "/createCsv", method = RequestMethod.GET)
+	public String createCsv(
+			@ApiParam("Confluence space of backlog")
+			@RequestParam String backlogSpace,
+			@ApiParam("Confluence page with backlog")
+			@RequestParam String backlogTitle,
+			@ApiParam("Confluence space of new CSV")
+			@RequestParam String csvSpace,
+			@ApiParam("Name of Parent Confluence page with new CSV")
+			@RequestParam String csvParentTitle,
+			@ApiParam("Name of Confluence page with CSV")
+			@RequestParam String csvTitle,
+			@ApiParam("Is CSV in cumulative form")
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative) {
+		
+		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
+		
+		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
+		
+		String newJournal = backlogAndJournalUpdater.create(dateTime,
+				backlogContent, isCumulative);
+		
+		ConfluenceOperations.addPage(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvParentTitle, csvTitle, newJournal);
+		
+		return "redirect:" + confluenceConfig.SERVER + "/display/" + csvSpace + "/" + csvTitle;
+	}
+    
 //	public void drawPlot(HttpServletResponse response) throws IOException {
 //		response.setContentType("text/html");
 //		PrintWriter out = response.getWriter();
