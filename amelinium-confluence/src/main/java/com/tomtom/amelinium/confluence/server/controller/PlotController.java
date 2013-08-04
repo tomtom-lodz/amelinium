@@ -90,9 +90,9 @@ public class PlotController {
 			@ApiParam("Confluence page with backlog")
 			@RequestParam String backlogTitle,
 			@ApiParam("Confluence space of CSV")
-			@RequestParam String journalSpace,
+			@RequestParam String csvSpace,
 			@ApiParam("Confluence page with CSV")
-			@RequestParam String journalTitle,
+			@RequestParam String csvTitle,
 			@ApiParam("Is CSV in cumulative form")
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
 			@ApiParam("Wheather new groups should be added to CSV")
@@ -104,7 +104,7 @@ public class PlotController {
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
 		
 		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
-				confluenceConfig.USER, confluenceConfig.PASS, journalSpace, journalTitle);
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
 		
 		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
 		
@@ -113,10 +113,10 @@ public class PlotController {
 				isCumulative, addNewFeatureGroups, overWriteExistingDate);
 		
 		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
-				confluenceConfig.USER, confluenceConfig.PASS, journalSpace, journalTitle, updatedJournal);
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle, updatedJournal);
 		
 //		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
-		return "redirect:" + confluenceConfig.SERVER + "/display/" + journalSpace + "/" + journalTitle;
+		return "redirect:" + confluenceConfig.SERVER + "/display/" + csvSpace + "/" + csvTitle;
 	}
 	
 //	public void drawPlot(HttpServletResponse response) throws IOException {
