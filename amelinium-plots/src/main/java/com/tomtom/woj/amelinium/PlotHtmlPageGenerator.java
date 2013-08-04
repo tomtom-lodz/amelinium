@@ -8,6 +8,7 @@ import com.tomtom.woj.amelinium.journal.operations.BacklogJournalConverterIntoCu
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalMultipleChunksMerger;
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSubtractorIntoBurndown;
+import com.tomtom.woj.amelinium.journal.operations.DoneLinesRemover;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModel;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModelFactory;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownPlotJavascriptGenerator;
@@ -28,6 +29,8 @@ public class PlotHtmlPageGenerator {
 	static BacklogJournalSubtractorIntoBurndown subtractor = new BacklogJournalSubtractorIntoBurndown();
 	static BurndownModelFactory burndownModelFactory = new BurndownModelFactory();
 	static BurndownPlotJavascriptGenerator burndownGenerator = new BurndownPlotJavascriptGenerator();
+	
+	static DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
 		
 	public static String createHtmlPageWithPlots(String csv, boolean isCumulative, double dailyVelocity,
 			double dailyBlackMatter, double effecticeVelocity) {
@@ -36,7 +39,12 @@ public class PlotHtmlPageGenerator {
 		if(!isCumulative) {
 			cumulativeConverter.convertIntoCumulative(chunks);
 		}
+		
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
+		
+		// remove done lines from the plot
+		doneLinesRemover.removeDoneLinesFromCumulativeMerged(merged);
+		
 		BurnupModel burnupModel = burnupModelFactory.createModel(merged, dailyVelocity, dailyBlackMatter);
 		BacklogChunk merged2 = subtractor.subtractBurnedFromMerged(merged);
 		BurndownModel burndownModel = burndownModelFactory.createModel(merged2, effecticeVelocity);

@@ -14,10 +14,14 @@ public class BacklogAndJournalUpdater {
 	private BacklogServiceFactory backlogServiceFactory = new BacklogServiceFactory();
 	private BacklogJournalReader backlogJournalReader = new BacklogJournalReader();
 	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
+	private BacklogJournalUpdater updater = new BacklogJournalUpdater();
+	private DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
+	private BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+	private BacklogJournalConverterIntoCumulative convert = new BacklogJournalConverterIntoCumulative();
 	
 	public void update(DateTime dateTime, BacklogModel backlogModel, ArrayList<BacklogChunk> chunks, boolean isCumulative, boolean addNewFeatureGroups) {
 		
-		int points = backlogModel.getOverallBurnedStoryPoints();
+		int burnedPoints = backlogModel.getOverallBurnedStoryPoints();
 		ArrayList<FeatureGroup> fetureGroups = backlogModel
 				.getFeatureGroupsFromAllSubProjects();
 
@@ -31,17 +35,22 @@ public class BacklogAndJournalUpdater {
 				values.add((double) (featureGroup.getPoints() - featureGroup.getDonePoints()));
 			}
 		}
-
-		BacklogJournalUpdater updater = new BacklogJournalUpdater();
+		
+		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
+		if(!isCumulative) {
+			convert.convertIntoCumulative(merged);
+			
+		}
+		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burnedPoints,headers,values,isCumulative);
 
 		// when
 		if(addNewFeatureGroups) {
-			updater.addAll(chunks, dateTime, points, headers, values);
+			updater.addAll(chunks, dateTime, burnedPoints, headers, values);
 		} else {
 			if(isCumulative) {
-				updater.addOnlyExistingColumnsCumulative(chunks, dateTime, points, headers, values);
+				updater.addOnlyExistingColumnsCumulative(chunks, dateTime, burnedPoints, headers, values);
 			} else {
-				updater.addOnlyExistingColumnsAbsolute(chunks, dateTime, points, headers, values);
+				updater.addOnlyExistingColumnsAbsolute(chunks, dateTime, burnedPoints, headers, values);
 			}
 		}
 	}

@@ -23,15 +23,15 @@ public class BacklogChunk {
 		}
 	}
 
-	public void addline(String[] line) {
+	public void addline(String[] line, boolean nullAllowed) {
 		DateTime date = new DateTime(line[0]);
 		dates.add(date);
 		for(int i=1; i<line.length; i++) {
-//			if("".equals(line[i].trim())) {
-//				cols.get(i-1).add(Double.NaN);
-//			} else {
+			if(nullAllowed && line[i].trim().isEmpty()) {
+				cols.get(i-1).add(Double.NaN);
+			} else {
 				cols.get(i-1).add(Double.parseDouble(line[i]));
-//			}
+			}
 		}
 	}
 
@@ -46,7 +46,7 @@ public class BacklogChunk {
 			sb.append(header.get(i));
 		}
 		sb.append("\n");
-		for(int j = 0; j<cols.get(0).size(); j++) {
+		for(int j = 0; j<dates.size(); j++) {
 			sb.append(dates.get(j).toString("yyyy-MM-dd"));
 			for(int i = 0; i<cols.size(); i++) {
 //				if(i!=0) {
@@ -59,5 +59,30 @@ public class BacklogChunk {
 		return sb.toString();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cols == null) ? 0 : cols.hashCode());
+		result = prime * result + ((dates == null) ? 0 : dates.hashCode());
+		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BacklogChunk other = (BacklogChunk) obj;
+		if (!cols.equals(other.cols))
+			return false;
+		if (!dates.equals(other.dates))
+			return false;
+		if (!header.equals(other.header))
+			return false;
+		return true;
+	}
 	
 }

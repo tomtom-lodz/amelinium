@@ -18,29 +18,41 @@ public class BacklogJournalReader {
 	private static final char QUOTE = '"';
 	private static final char ESCAPE = '\\';
 
+	public ArrayList<BacklogChunk> readFromStringNullAllowed(String string) {
+		try {
+			return readAndClose(new StringReader(string),true);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	public ArrayList<BacklogChunk> readFromString(String string) {
 		try {
-			return readAndClose(new StringReader(string));
+			return readAndClose(new StringReader(string),false);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	public ArrayList<BacklogChunk> readFromFile(String fileName) throws IOException {
-		return readAndClose(new FileReader(fileName));
+		return readAndClose(new FileReader(fileName),false);
 	}
 
-	private ArrayList<BacklogChunk> readAndClose(Reader reader) throws IOException {
+	public ArrayList<BacklogChunk> readFromFileNullAllowed(String fileName) throws IOException {
+		return readAndClose(new FileReader(fileName),true);
+	}
+
+	private ArrayList<BacklogChunk> readAndClose(Reader reader, boolean nullAllowed) throws IOException {
 		ArrayList<BacklogChunk> chunks;
 		try {
-			chunks = read(new CSVReader(reader,SEPARATOR,QUOTE,ESCAPE));
+			chunks = read(new CSVReader(reader,SEPARATOR,QUOTE,ESCAPE), nullAllowed);
 		} finally {
 			reader.close();
 		}
 		return chunks;
 	}
 
-	private ArrayList<BacklogChunk> read(CSVReader csvReader)
+	private ArrayList<BacklogChunk> read(CSVReader csvReader, boolean nullAllowed)
 			throws IOException {
 		ArrayList<BacklogChunk> chunks = new ArrayList<BacklogChunk>();
 
@@ -74,7 +86,7 @@ public class BacklogJournalReader {
 			} else {
 				// add line
 				try {
-					chunk.addline(line);
+					chunk.addline(line,nullAllowed);
 				} catch (Exception e) {
 					throw new RuntimeException("CSV parsing error in line " + lineNumber + ", " + e.getMessage(),e);
 				}
