@@ -100,7 +100,7 @@ public class BacklogAndJournalUpdater {
 		BacklogModel backlogModel = backlogServiceFactory.readAndCorrectBacklogModelFromString(
 				backlogContent, allowingMultilineFeatures);
 
-		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromString(journalContent);
+		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromStringNullAllowed(journalContent);
 		
 		if(overwriteExistingDate) {
 			removeLastRowIfDateMatches(dateTime, chunks);

@@ -41,7 +41,7 @@ public class PlotPageGenerator {
 			double dailyVelocity, double dailyBlackMatter, double effectiveVelocity) {
 		String csv = ConfluenceOperations.getPageSource(config.SERVER, config.USER, config.PASS, space, title);
 		
-		ArrayList<BacklogChunk> chunks = reader.readFromString(csv);
+		ArrayList<BacklogChunk> chunks = reader.readFromStringNullAllowed(csv);
 		if(!isCumulative) {
 			cumulativeConverter.convertIntoCumulative(chunks);
 		}

@@ -2,6 +2,8 @@ package com.tomtom.woj.amelinium.journal.model;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 
 public class BacklogChunk {
@@ -43,7 +45,7 @@ public class BacklogChunk {
 //			if(i!=0) {
 				sb.append(",");
 //			}
-			sb.append(header.get(i));
+			sb.append(StringEscapeUtils.escapeCsv(header.get(i)));
 		}
 		sb.append("\n");
 		for(int j = 0; j<dates.size(); j++) {
@@ -52,7 +54,12 @@ public class BacklogChunk {
 //				if(i!=0) {
 					sb.append(",");
 //				}
-				sb.append(cols.get(i).get(j));
+				double value = cols.get(i).get(j);
+				if(Double.isNaN(value)) {
+					sb.append("");
+				} else {
+					sb.append(value);
+				}
 			}
 			sb.append("\n");
 		}

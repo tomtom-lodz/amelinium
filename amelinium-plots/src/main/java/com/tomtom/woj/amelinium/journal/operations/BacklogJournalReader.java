@@ -46,7 +46,9 @@ public class BacklogJournalReader {
 	private ArrayList<BacklogChunk> readAndClose(Reader reader, boolean nullAllowed) throws IOException {
 		ArrayList<BacklogChunk> chunks;
 		try {
-			chunks = read(new CSVReader(reader,SEPARATOR,QUOTE,ESCAPE), nullAllowed);
+//			chunks = read(new CSVReader(reader,SEPARATOR,QUOTE,ESCAPE), nullAllowed);
+			// do not use special escape characters, " will be escaped by ""
+			chunks = read(new CSVReader(reader,SEPARATOR,QUOTE), nullAllowed);
 		} finally {
 			reader.close();
 		}
@@ -69,7 +71,7 @@ public class BacklogJournalReader {
 				// end of file
 				break;
 			}
-			if(line.length==1 && "".equals(line[0].trim())) {
+			if(line.length==1 && line[0].isEmpty()) {
 				// skip empty line
 				continue;
 			} else if("Date".equals(line[0])) {
