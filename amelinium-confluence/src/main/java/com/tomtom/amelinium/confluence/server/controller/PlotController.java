@@ -98,7 +98,7 @@ public class PlotController {
 			@ApiParam("Wheather new groups should be added to CSV")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
 			@ApiParam("Wheather last low in CSV should be overwritten when it has the same date")
-			@RequestParam(defaultValue = "true", required=false) boolean overWriteExistingDate) {
+			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -110,7 +110,7 @@ public class PlotController {
 		
 		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
 				backlogContent, journalContent,
-				isCumulative, addNewFeatureGroups, overWriteExistingDate);
+				isCumulative, addNewFeatureGroups, overwriteExistingDate);
 		
 		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle, updatedJournal);

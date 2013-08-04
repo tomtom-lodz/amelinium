@@ -55,7 +55,7 @@ public class BacklogAndJournalUpdater {
 		}
 	}
 	
-	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overWriteExistingDate) {
+	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate) {
 
 		boolean allowingMultilineFeatures = false;
 		
@@ -64,7 +64,7 @@ public class BacklogAndJournalUpdater {
 
 		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromString(journalContent);
 		
-		if(overWriteExistingDate) {
+		if(overwriteExistingDate) {
 			removeLastRowIfDateMatches(dateTime, chunks);
 		}
 
@@ -92,8 +92,8 @@ public class BacklogAndJournalUpdater {
 		}
 	}
 
-	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overWriteExistingDate) {
-		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNewFeatureGroups, overWriteExistingDate);
+	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate) {
+		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNewFeatureGroups, overwriteExistingDate);
 		return backlogJournalSerializer.serialize(chunks);
 	}
 	
