@@ -60,10 +60,16 @@ public class BurnupModelFactory {
 		// compute start and end date for burnup
 
 		model.burnedStartDate = model.merged.dates.get(0);
-		if(numColsWithTrends>1) {
-			model.burnedEndDate = model.releasesEndDates.get(numColsWithTrends-2);
-		} else {
-			model.burnedEndDate = model.merged.dates.get(lastIdx);
+//		if(numColsWithTrends>1) {
+//			model.burnedEndDate = model.releasesEndDates.get(numColsWithTrends-2);
+//		} else {
+//			model.burnedEndDate = model.merged.dates.get(lastIdx);
+//		}
+		model.burnedEndDate = model.merged.dates.get(lastIdx);
+		for(DateTime date : model.releasesEndDates) {
+			if(model.burnedEndDate.isBefore(date)) {
+				model.burnedEndDate = date;
+			}
 		}
 		
 		return model;
@@ -100,11 +106,10 @@ public class BurnupModelFactory {
 
 	private DateTime findFirstNonNanDate(ArrayList<DateTime> dates, ArrayList<Double> values) {
 		DateTime date = dates.get(values.size()-1);
-		for(int i=values.size()-1; i>=0; i--) {
-			if(Double.isNaN(values.get(i))) {
-				return date;
+		for(int i=0; i<values.size(); i++) {
+			if(!Double.isNaN(values.get(i))) {
+				return dates.get(i);
 			}
-			date = dates.get(i);
 		}
 		return date;
 	}
