@@ -43,4 +43,13 @@ public class StringUtils {
 		} catch (Exception e) {
 		}
 	}
+
+	public static void trimAllStrings(String[] lines) {
+		if(lines==null) {
+			return;
+		}
+		for(int i=0; i<lines.length; i++) {
+			lines[i] = lines[i].trim();
+		}
+	}
 }

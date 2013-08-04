@@ -11,6 +11,7 @@ import org.apache.commons.lang.ArrayUtils;
 import au.com.bytecode.opencsv.CSVReader;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.utils.StringUtils;
 
 public class BacklogJournalReader {
 
@@ -18,17 +19,17 @@ public class BacklogJournalReader {
 	private static final char QUOTE = '"';
 	private static final char ESCAPE = '\\';
 
-	public ArrayList<BacklogChunk> readFromStringNullAllowed(String string) {
+	public ArrayList<BacklogChunk> readFromString(String string) {
 		try {
-			return readAndClose(new StringReader(string),true);
+			return readAndClose(new StringReader(string),false);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public ArrayList<BacklogChunk> readFromString(String string) {
+	public ArrayList<BacklogChunk> readFromStringNullAllowed(String string) {
 		try {
-			return readAndClose(new StringReader(string),false);
+			return readAndClose(new StringReader(string),true);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -62,6 +63,7 @@ public class BacklogJournalReader {
 		
 		while(true) {
 			String[] line = csvReader.readNext();
+			StringUtils.trimAllStrings(line);
 			lineNumber++;
 			if(line==null) {
 				// end of file
