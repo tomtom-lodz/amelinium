@@ -129,6 +129,10 @@ public class DoneLinesRemover {
 		// 2. jeszcze poprzedni tez sa burned
 		// 3. nie ma w poprzedniej linijce
 		
+		if(merged.cols.size()<1) {
+			return;
+		}
+		
 		for(int i=merged.dates.size()-1; i>=0; i--) {
 
 			HashSet<String> allowedToRemove = new HashSet<String>();
