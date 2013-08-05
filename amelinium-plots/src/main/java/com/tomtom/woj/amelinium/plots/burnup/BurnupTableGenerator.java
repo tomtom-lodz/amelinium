@@ -9,7 +9,7 @@ public class BurnupTableGenerator {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<table border=\"1\">"
 				+ "<tr><th>Feature Group</th><th>End of Development</th></tr>");
-		for(int i=0; i<model.releasesEndDates.size(); i++) {
+		for(int i=model.releasesEndDates.size()-1; i>=0; i--) {
 			String name = model.merged.header.get(i+1);
 			DateTime dateTime = model.releasesEndDates.get(i);
 			sb.append("<tr><td>");
