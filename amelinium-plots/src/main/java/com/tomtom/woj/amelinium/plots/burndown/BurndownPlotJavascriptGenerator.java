@@ -19,6 +19,8 @@ public class BurndownPlotJavascriptGenerator {
 		String seriesDefinition = seriesDefinitionString(model);
 		String seriesColors = seriesColorsString(model);
 		
+		int numLegendRows=model.merged.header.size();
+		
 		HashMap<String, String> templateModel = new HashMap<String, String>();
 		
 		templateModel.put("<LINES1>", variableDefinitions);
@@ -29,6 +31,7 @@ public class BurndownPlotJavascriptGenerator {
 		templateModel.put("<PLOT>", plotName);
 		templateModel.put("<TITLE>", title);
 		templateModel.put("<SERIESCOLORS>", seriesColors);
+		templateModel.put("<NUMLEGENDROWS>", Integer.toString(numLegendRows));
 		
 		return TemplateRenderer.render("/amelinium/templates/plot1.template", templateModel);
 	}

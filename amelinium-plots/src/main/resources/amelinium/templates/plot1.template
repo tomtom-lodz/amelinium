@@ -33,6 +33,11 @@ $(document).ready(function(){
         show:true,
         showSwatches: true,
         placement: 'outsideGrid',
+        rendererOptions: {
+            numberRows: <NUMLEGENDROWS>,
+            numberColumns: 1,
+        }
+        
     }
   });
   
