@@ -11,6 +11,7 @@ import com.tomtom.woj.amelinium.journal.operations.BacklogJournalConverterIntoCu
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalMultipleChunksMerger;
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSubtractorIntoBurndown;
+import com.tomtom.woj.amelinium.journal.operations.DoneLinesRemover;
 import com.tomtom.woj.amelinium.journal.operations.MergedBacklogColumnSorter;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModel;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModelFactory;
@@ -37,8 +38,10 @@ public class PlotPageGenerator {
 	private BurndownPlotJavascriptGenerator burndownGenerator = new BurndownPlotJavascriptGenerator();
 	private BurnupTableGenerator burnupTableGenerator = new BurnupTableGenerator();
 	private MergedBacklogColumnSorter columnSorter = new MergedBacklogColumnSorter();
+	private DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
 
 
+	// todo: test
 	public Plots generatePlotsFromConfluencePage(String space, String title, boolean isCumulative,
 			double dailyVelocity, double dailyBlackMatter, double effectiveVelocity) {
 		String csv = ConfluenceOperations.getPageSource(config.SERVER, config.USER, config.PASS, space, title);
@@ -48,6 +51,9 @@ public class PlotPageGenerator {
 			cumulativeConverter.convertIntoCumulative(chunks);
 		}
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
+		
+		doneLinesRemover.removeDoneLinesFromCumulativeMerged(merged);
+		
 		columnSorter.sortColumns(merged);
 		BurnupModel burnupModel = burnupModelFactory.createModel(merged, dailyVelocity, dailyBlackMatter);
 		String chart1 = burnupGenerator.generateBurnup(burnupModel, "chart1", "Burnup chart");
