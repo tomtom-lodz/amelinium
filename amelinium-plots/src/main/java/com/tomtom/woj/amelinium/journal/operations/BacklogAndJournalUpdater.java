@@ -8,6 +8,7 @@ import com.tomtom.amelinium.backlogservice.factory.BacklogServiceFactory;
 import com.tomtom.amelinium.backlogservice.model.BacklogModel;
 import com.tomtom.amelinium.backlogservice.model.FeatureGroup;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.utils.ConfluenceCleaningUtils;
 
 public class BacklogAndJournalUpdater {
 
@@ -66,7 +67,8 @@ public class BacklogAndJournalUpdater {
 		ArrayList<String> headers = new ArrayList<String>();
 		ArrayList<Double> values = new ArrayList<Double>();
 		for (FeatureGroup featureGroup : fetureGroups) {
-			headers.add(featureGroup.getTitle());
+			String title = ConfluenceCleaningUtils.cleanConfluenceStringForCsv(featureGroup.getTitle());
+			headers.add(title);
 			if(isCumulative) {
 				values.add((double) featureGroup.getCummulativePoints());
 			} else {
