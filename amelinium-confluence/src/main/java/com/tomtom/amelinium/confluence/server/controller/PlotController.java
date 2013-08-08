@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tomtom.amelinium.confluence.client.ConfluenceOperations;
 import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
+import com.tomtom.amelinium.confluence.logic.BacklogPageCorrector;
 import com.tomtom.amelinium.confluence.logic.PlotPageGenerator;
 import com.tomtom.amelinium.confluence.logic.Plots;
 import com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater;
@@ -32,6 +33,8 @@ public class PlotController {
 	private PlotPageGenerator plotPageGenerator;
 	@Autowired
 	private BacklogAndJournalUpdater backlogAndJournalUpdater;
+	
+	private BacklogPageCorrector backlogPageCorrector = new BacklogPageCorrector();
 	
     @ApiOperation(value = "Draw plots from CSV file",
     		notes = "Draw plots from CSV file",
@@ -97,7 +100,7 @@ public class PlotController {
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
 			@ApiParam("Wheather new groups should be added to CSV")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
-			@ApiParam("Wheather last low in CSV should be overwritten when it has the same date")
+			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
@@ -150,6 +153,52 @@ public class PlotController {
 		
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + csvSpace + "/" + csvTitle;
 	}
+
+
+    @ApiOperation(value = "Update backlog and CSV page",
+    		notes = "Update backlog and CSV page",
+    		responseClass = "VOID")
+	@RequestMapping(value = "/updateBacklogAndCsv", method = RequestMethod.GET)
+	public String updateBacklogAndCsv(
+			@ApiParam("Confluence space of backlog")
+			@RequestParam String backlogSpace,
+			@ApiParam("Confluence page with backlog")
+			@RequestParam String backlogTitle,
+			@ApiParam("Confluence space of CSV")
+			@RequestParam String csvSpace,
+			@ApiParam("Confluence page with CSV")
+			@RequestParam String csvTitle,
+			@ApiParam("Is CSV in cumulative form")
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+			@ApiParam("Wheather new groups should be added to CSV")
+			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
+			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
+			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate) {
+		
+		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
+		
+		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
+		
+		boolean allowingMultilineFeatures = true;
+		String updatedBacklogContent = backlogPageCorrector.generateNewBacklogContent(backlogContent, allowingMultilineFeatures);		
+		
+		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
+		
+		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
+				updatedBacklogContent, journalContent,
+				isCumulative, addNewFeatureGroups, overwriteExistingDate);
+
+		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle, updatedBacklogContent);
+		
+		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle, updatedJournal);
+		
+		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
+	}
+
     
 //	public void drawPlot(HttpServletResponse response) throws IOException {
 //		response.setContentType("text/html");

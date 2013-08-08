@@ -73,7 +73,7 @@ public class BacklogPageCorrector {
 	 *            The content to be update.
 	 * @return Updated content.
 	 */
-	private String generateNewBacklogContent(String oldContent, boolean allowingMultilineFeatures) {
+	public String generateNewBacklogContent(String oldContent, boolean allowingMultilineFeatures) {
 		LineProducer producer = new LineProducer();
 		BacklogModelBuilder builder = new BacklogModelBuilder();
 		BacklogModelCorrector backlogModelCorrector = new BacklogModelCorrector();
