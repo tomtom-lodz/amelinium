@@ -111,7 +111,15 @@ public class BacklogAndJournalUpdater {
 		return chunks;
 	}
 
+	// TODO: test this
 	private void removeLastRowIfDateMatches(DateTime dateTime, ArrayList<BacklogChunk> chunks) {
+		while(!chunks.isEmpty()) {
+			BacklogChunk lastChunk = chunks.get(chunks.size()-1);
+			if(!lastChunk.dates.isEmpty()) {
+				break;
+			}
+			chunks.remove(chunks.size()-1);
+		}
 		if(chunks.isEmpty()) {
 			return;
 		}
@@ -127,6 +135,13 @@ public class BacklogAndJournalUpdater {
 		lastChunk.dates.remove(pos);
 		for(ArrayList<Double> col : lastChunk.cols) {
 			col.remove(pos);
+		}
+		while(!chunks.isEmpty()) {
+			lastChunk = chunks.get(chunks.size()-1);
+			if(!lastChunk.dates.isEmpty()) {
+				break;
+			}
+			chunks.remove(chunks.size()-1);
 		}
 	}
 
