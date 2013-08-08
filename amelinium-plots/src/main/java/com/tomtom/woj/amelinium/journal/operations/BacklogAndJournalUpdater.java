@@ -95,10 +95,8 @@ public class BacklogAndJournalUpdater {
 		}
 	}
 	
-	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate) {
+	public ArrayList<BacklogChunk> update(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate, boolean allowingMultilineFeatures) {
 
-		boolean allowingMultilineFeatures = false;
-		
 		BacklogModel backlogModel = backlogServiceFactory.readAndCorrectBacklogModelFromString(
 				backlogContent, allowingMultilineFeatures);
 
@@ -132,8 +130,8 @@ public class BacklogAndJournalUpdater {
 		}
 	}
 
-	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate) {
-		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNewFeatureGroups, overwriteExistingDate);
+	public String generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures) {
+		ArrayList<BacklogChunk> chunks = update(dateTime, backlogContent, journalContent, isCumulative, addNewFeatureGroups, overwriteExistingDate,allowingMultilineFeatures);
 		return backlogJournalSerializer.serialize(chunks);
 	}
 	

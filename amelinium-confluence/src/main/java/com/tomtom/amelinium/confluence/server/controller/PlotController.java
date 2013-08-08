@@ -111,9 +111,11 @@ public class PlotController {
 		
 		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
 		
+		boolean allowingMultilineFeatures = true;
+		
 		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
 				backlogContent, journalContent,
-				isCumulative, addNewFeatureGroups, overwriteExistingDate);
+				isCumulative, addNewFeatureGroups, overwriteExistingDate, allowingMultilineFeatures);
 		
 		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle, updatedJournal);
@@ -188,7 +190,7 @@ public class PlotController {
 		
 		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
 				updatedBacklogContent, journalContent,
-				isCumulative, addNewFeatureGroups, overwriteExistingDate);
+				isCumulative, addNewFeatureGroups, overwriteExistingDate, allowingMultilineFeatures);
 
 		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle, updatedBacklogContent);
