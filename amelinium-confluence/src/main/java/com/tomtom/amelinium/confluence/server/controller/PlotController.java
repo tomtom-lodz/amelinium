@@ -1,5 +1,11 @@
 package com.tomtom.amelinium.confluence.server.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +19,11 @@ import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
 import com.tomtom.amelinium.confluence.logic.BacklogPageCorrector;
 import com.tomtom.amelinium.confluence.logic.PlotPageGenerator;
 import com.tomtom.amelinium.confluence.logic.Plots;
+import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 import com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater;
+import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
+import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSerializer;
+import com.tomtom.woj.amelinium.journal.operations.CumulativeToAbsoluteConverter;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -35,6 +45,10 @@ public class PlotController {
 	private BacklogAndJournalUpdater backlogAndJournalUpdater;
 	
 	private BacklogPageCorrector backlogPageCorrector = new BacklogPageCorrector();
+	
+	private CumulativeToAbsoluteConverter cumulativeToAbsoluteConverter = new CumulativeToAbsoluteConverter();
+
+	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
 	
     @ApiOperation(value = "Draw plots from CSV file",
     		notes = "Draw plots from CSV file",
@@ -201,7 +215,32 @@ public class PlotController {
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
 	}
 
-    
+    @ApiOperation(value = "Convert CSV page from cumulative to absolute",
+    		notes = "Convert CSV page from cumulative to absolute",
+    		responseClass = "String")
+	@RequestMapping(value = "/convertCsvCumulativeToAbsolute", method = RequestMethod.GET)
+	public void convertCsvCumulativeToAbsolute(
+			@ApiParam("Confluence space of CSV")
+			@RequestParam String csvSpace,
+			@ApiParam("Confluence page with CSV")
+			@RequestParam String csvTitle,
+			HttpServletResponse response) throws IOException {
+
+		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
+		
+		BacklogJournalReader reader = new BacklogJournalReader();
+		ArrayList<BacklogChunk> chunks = reader.readFromStringNullAllowed(journalContent);
+		ArrayList<BacklogChunk> newChunks = cumulativeToAbsoluteConverter.convert(chunks);
+		String newContent = backlogJournalSerializer.serialize(newChunks);
+
+		
+		response.setContentType("text/plain");
+		PrintWriter out = response.getWriter();
+		out.println(newContent);
+	}
+
+
 //	public void drawPlot(HttpServletResponse response) throws IOException {
 //		response.setContentType("text/html");
 //		PrintWriter out = response.getWriter();
