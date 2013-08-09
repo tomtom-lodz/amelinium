@@ -34,6 +34,7 @@ public class BacklogModelSerializer {
 		result += MarkupConfig.WARNING_LINE;
 		result += serializeSubProjectsArray(subProjects);
 		if(!backlogModel.getOutro().isEmpty()) {
+			result += "\n";
 			result += MarkupConfig.BACKLOG_END_MARKER;
 			result += "\n";
 			result += backlogModel.getOutro();

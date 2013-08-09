@@ -69,7 +69,7 @@ public class SerializerTest {
 		// when
 		String result = factory.readCorrectAndSerializeModelFromFile(fileName,this.allowingMultilineFeatures);
 		// then
-		assertEquals(MarkupConfig.WARNING_LINE + "BACKLOG END\nsome outro\n", result);
+		assertEquals(MarkupConfig.WARNING_LINE + "\nBACKLOG END\nsome outro\n", result);
 
 	}
 
