@@ -46,4 +46,13 @@ public class IntroBuilder {
 		
 	}
 
+	public static void buildOutro(State state, String line) {
+		if (line.contains(MarkupConfig.BACKLOG_END_MARKER)) {
+			//skip line, summary has to be rebuilt after summing up anyway
+		}
+		else{
+			state.getBacklogModel().addLineToOutro(line);
+		}
+	}
+
 }

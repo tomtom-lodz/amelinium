@@ -87,7 +87,7 @@ public class BacklogModelBuilder {
 		if (state.getStep().equals(Step.DECIDING)) {
 			// skip empty lines
 		} else if (state.getStep().equals(Step.END_OF_BACKLOG)) {
-			// skip lines till end of backlog
+			IntroBuilder.buildOutro(state, line);
 		} else if (state.getStep().equals(Step.BUILDING_INTRO)) {
 			IntroBuilder.buildIntro(state, line);
 		} else if (state.getStep().equals(Step.SKIPPING_SUMMARY)) {

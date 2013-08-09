@@ -18,6 +18,12 @@ public class BacklogModel {
 	private String intro = "";
 
 	/**
+	 * Represents the text on the Confluence page after the BACKLOG END marker (not
+	 * to be parsed).
+	 */
+	private String outro = "";
+	
+	/**
 	 * Sum of all the points burned in the backlog.
 	 */
 	private int overallBurnedStoryPoints = 0;
@@ -100,6 +106,13 @@ public class BacklogModel {
 			}
 		}
 		return featureGroups;
+	}
+
+	public String getOutro() {
+		return outro;
+	}
+	public void addLineToOutro(String line) {
+		this.outro += line + "\n";
 	}
 
 }

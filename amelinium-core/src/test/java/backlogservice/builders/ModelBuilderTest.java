@@ -447,4 +447,18 @@ public class ModelBuilderTest {
 		assertEquals(1, featureGroups.size());
 		
 	}
+	
+	@Test
+	public void testBacklogEndOutro() throws IOException {
+		// given
+		String fileName = "src/test/resources/backlogservice/backlogs/backlog_end_outro.txt";
+		BacklogServiceFactory factory = new BacklogServiceFactory();
+
+		// when
+		BacklogModel backlogModel = factory.readBacklogModelFromFile(fileName,this.allowingMultilineFeatures);
+		
+		// then
+		assertEquals("some outro\n", backlogModel.getOutro());
+		
+	}
 }
