@@ -33,6 +33,11 @@ public class BacklogModelSerializer {
 		result += backlogModel.getIntro();
 		result += MarkupConfig.WARNING_LINE;
 		result += serializeSubProjectsArray(subProjects);
+		if(!backlogModel.getOutro().isEmpty()) {
+			result += MarkupConfig.BACKLOG_END_MARKER;
+			result += "\n";
+			result += backlogModel.getOutro();
+		}
 
 		result = result.replaceAll(" +", " ");
 		result = result.replaceAll("^\n+", "");

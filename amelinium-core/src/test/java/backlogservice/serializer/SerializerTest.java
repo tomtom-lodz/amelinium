@@ -59,4 +59,18 @@ public class SerializerTest {
 				result);
 
 	}
+	
+	@Test
+	public void testBacklogEnd() throws IOException {
+		// given
+		BacklogServiceFactory factory = new BacklogServiceFactory();
+		String fileName = "src/test/resources/backlogservice/serializer/backlog_end.txt";
+
+		// when
+		String result = factory.readCorrectAndSerializeModelFromFile(fileName,this.allowingMultilineFeatures);
+		// then
+		assertEquals(MarkupConfig.WARNING_LINE + "BACKLOG END\nsome outro\n", result);
+
+	}
+
 }
