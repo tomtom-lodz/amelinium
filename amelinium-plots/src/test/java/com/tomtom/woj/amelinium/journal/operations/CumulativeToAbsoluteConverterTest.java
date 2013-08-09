@@ -22,7 +22,7 @@ public class CumulativeToAbsoluteConverterTest {
 		ArrayList<BacklogChunk> newChunks = converter.convert(chunks);
 
 //		System.out.println(expectedChunks);
-		System.out.println(newChunks);
+//		System.out.println(newChunks);
 		
 		// then
 		ArrayList<BacklogChunk> expectedChunks = reader.readFromFile("src/test/resources/backlog_journals/expected_after_converting_to_absolute/example2_cumulative_to_absolute.txt");

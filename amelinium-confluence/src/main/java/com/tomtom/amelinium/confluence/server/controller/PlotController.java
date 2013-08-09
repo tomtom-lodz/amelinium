@@ -235,7 +235,7 @@ public class PlotController {
 		String newContent = backlogJournalSerializer.serialize(newChunks);
 
 		
-		response.setContentType("text/plain");
+		response.setContentType("text/plain; charset=windows-1250");
 		PrintWriter out = response.getWriter();
 		out.println(newContent);
 	}
