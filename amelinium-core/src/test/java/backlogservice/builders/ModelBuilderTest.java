@@ -432,4 +432,19 @@ public class ModelBuilderTest {
 		assertEquals(0, featureGroups.size());
 		
 	}
+	
+	@Test
+	public void testBacklogEnd2() throws IOException {
+		// given
+		String fileName = "src/test/resources/backlogservice/backlogs/backlog_end_2.txt";
+		BacklogServiceFactory factory = new BacklogServiceFactory();
+
+		// when
+		BacklogModel backlogModel = factory.readBacklogModelFromFile(fileName,this.allowingMultilineFeatures);
+		ArrayList<FeatureGroup> featureGroups = backlogModel.getFirstSubProject().getFeatureGroups();
+		
+		// then
+		assertEquals(1, featureGroups.size());
+		
+	}
 }
