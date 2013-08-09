@@ -16,6 +16,7 @@ public class MarkupConfig {
 	public static final String SECTION_TAG = "{section}";
 	public static final String SUMMARY_START_MARKER="SUMMARY";
 	public static final String INTRO_END_MARKER="BACKLOG";
+	public static final String BACKLOG_END_MARKER="BACKLOG END";
 	public static final String WARNING_LINE="BACKLOG - do not remove this line (needed for automatic recalculation)\n";
 
 }

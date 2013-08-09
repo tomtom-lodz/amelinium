@@ -417,4 +417,19 @@ public class ModelBuilderTest {
 		assertEquals(false, featureGroups.get(0).getLastColumn().getFeatures().get(0).getStories().get(2).isDone());
 		assertEquals(true, featureGroups.get(0).getLastColumn().getFeatures().get(0).getStories().get(2).isEstimated());
 	}
+	
+	@Test
+	public void testBacklogEnd() throws IOException {
+		// given
+		String fileName = "src/test/resources/backlogservice/backlogs/backlog_end.txt";
+		BacklogServiceFactory factory = new BacklogServiceFactory();
+
+		// when
+		BacklogModel backlogModel = factory.readBacklogModelFromFile(fileName,this.allowingMultilineFeatures);
+		ArrayList<FeatureGroup> featureGroups = backlogModel.getFirstSubProject().getFeatureGroups();
+		
+		// then
+		assertEquals(0, featureGroups.size());
+		
+	}
 }

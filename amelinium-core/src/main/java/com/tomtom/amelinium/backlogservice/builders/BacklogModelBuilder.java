@@ -57,7 +57,9 @@ public class BacklogModelBuilder {
 			if (line.isEmpty()) {
 				state.setPreviousLineEmpty(true);
 			} else {
-				if (line.trim().startsWith(MarkupConfig.COLUMN_MARKER)) {
+				if (line.trim().startsWith(MarkupConfig.BACKLOG_END_MARKER)) {
+					state.setStep(Step.END_OF_BACKLOG);
+				} else if (line.trim().startsWith(MarkupConfig.COLUMN_MARKER)) {
 					state.setStep(Step.BUILDING_COLUMN);
 				} else if (line.trim().startsWith(MarkupConfig.SECTION_TAG)) {
 					state.setStep(Step.DECIDING);
@@ -84,6 +86,8 @@ public class BacklogModelBuilder {
 	private void updateModel(State state, String line) {
 		if (state.getStep().equals(Step.DECIDING)) {
 			// skip empty lines
+		} else if (state.getStep().equals(Step.END_OF_BACKLOG)) {
+			// skip lines till end of backlog
 		} else if (state.getStep().equals(Step.BUILDING_INTRO)) {
 			IntroBuilder.buildIntro(state, line);
 		} else if (state.getStep().equals(Step.SKIPPING_SUMMARY)) {
