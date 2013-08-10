@@ -7,12 +7,11 @@ import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
 public class DoneLinesRemover {
 
-	// przechodzac od ostatniej linijki do pierwszej
-	// usuwac wszystkie wpisy ktore sa zakonczone pod takim warunkiem
-	// 1. sa w pierwszej linii
-	// 2. jeszcze poprzedni tez sa zakonczone
-	// 3. nie ma tego wpisu w zadnej poprzedniej linijce
-	//
+	/**
+	 * Remove from new lines all values that are complete unless they are
+	 * 1. not finished in previous line in merged
+	 * 2. not present in merged
+	 */
 	public void removeDoneFromNewLinesUsingCumulativeMerged(BacklogChunk cumulativeMerged,
 			double burned, ArrayList<String> newHeaders, ArrayList<Double> newValues,
 			boolean areNewValuesCumulative) {
@@ -23,33 +22,26 @@ public class DoneLinesRemover {
 		
 		HashSet<String> dontRemove = analysePreviousLinesToDetermineWhichShouldNotBeRemoved(cumulativeMerged, cumulativeMerged.dates.size()-1);
 
-		if(!areNewValuesCumulative) {
-			burned = 0;
+		if(areNewValuesCumulative) {
+			removeValuesIfLessThan(burned, dontRemove, newHeaders, newValues);
+		} else {
+			removeValuesIfLessThan(0, dontRemove, newHeaders, newValues);
 		}
-		
-		removeValuesIfLessThan(burned, dontRemove, newHeaders, newValues);
 	}
 
-	private void removeValuesIfLessThan(double burned, HashSet<String> dontRemove,
-			ArrayList<String> newHeaders, ArrayList<Double> newValues) {
-		
-		for(int i=newValues.size()-1; i>=0; i--) {
-			if(newValues.get(i)<=burned) {
-				String header = newHeaders.get(i);
-				if(!dontRemove.contains(header)) {
-					newHeaders.remove(i);
-					newValues.remove(i);
-				}
-			}
-		}
-	}
-	
 	// przechodzac od ostatniej linijki do pierwszej
 	// usuwac wszystkie wpisy ktore sa zakonczone pod takim warunkiem
 	// 1. sa w pierwszej linii
 	// 2. jeszcze poprzedni tez sa zakonczone
 	// 3. nie ma tego wpisu w zadnej poprzedniej linijce
 	//
+	/**
+	 * Starting from the last row in merged up to the first row.
+	 * Remove (make NaN) all values that are done unless they are
+	 * 1. not finished in previous line in merged
+	 * 2. not present in merged
+	 * Values from the first line can be removed if done
+	 */
 	public void removeDoneLinesFromCumulativeMerged(BacklogChunk cumulativeMerged) {
 		
 		if(cumulativeMerged.cols.size()<1) {
@@ -82,6 +74,20 @@ public class DoneLinesRemover {
 		removeEmptyColumns(cumulativeMerged);
 	}
 
+	private void removeValuesIfLessThan(double burned, HashSet<String> dontRemove,
+			ArrayList<String> newHeaders, ArrayList<Double> newValues) {
+		
+		for(int i=newValues.size()-1; i>=0; i--) {
+			if(newValues.get(i)<=burned) {
+				String header = newHeaders.get(i);
+				if(!dontRemove.contains(header)) {
+					newHeaders.remove(i);
+					newValues.remove(i);
+				}
+			}
+		}
+	}
+	
 	private HashSet<String> analysePreviousLinesToDetermineWhichShouldNotBeRemoved(BacklogChunk cumulativeMerged, int lineIndex) {
 
 		HashSet<String> dontRemove = new HashSet<String>();
