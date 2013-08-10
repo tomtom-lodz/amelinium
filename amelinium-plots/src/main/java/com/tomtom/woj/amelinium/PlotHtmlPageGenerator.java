@@ -3,12 +3,12 @@ package com.tomtom.woj.amelinium;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalConverterIntoCumulative;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalMultipleChunksMerger;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSubtractorIntoBurndown;
+import com.tomtom.woj.amelinium.journal.operations.BacklogChunksMerger;
 import com.tomtom.woj.amelinium.journal.operations.DoneLinesRemover;
+import com.tomtom.woj.amelinium.plots.burndown.BacklogJournalSubtractorIntoBurndown;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModel;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModelFactory;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownPlotJavascriptGenerator;
@@ -20,8 +20,8 @@ import com.tomtom.woj.amelinium.utils.TemplateRenderer;
 public class PlotHtmlPageGenerator {
 	
 	static BacklogJournalReader reader = new BacklogJournalReader();
-	static BacklogJournalConverterIntoCumulative cumulativeConverter = new BacklogJournalConverterIntoCumulative();
-	static BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+	static AbsoluteToCumulativeConverterInPlace cumulativeConverter = new AbsoluteToCumulativeConverterInPlace();
+	static BacklogChunksMerger merger = new BacklogChunksMerger();
 	
 	static BurnupModelFactory burnupModelFactory = new BurnupModelFactory();
 	static BurnupPlotJavascriptGenerator burnupGenerator = new BurnupPlotJavascriptGenerator();

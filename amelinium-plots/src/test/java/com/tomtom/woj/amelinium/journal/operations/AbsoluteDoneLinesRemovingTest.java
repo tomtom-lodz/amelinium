@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
 public class AbsoluteDoneLinesRemovingTest {
@@ -15,9 +17,9 @@ public class AbsoluteDoneLinesRemovingTest {
 	public void test() throws IOException {
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/absolute_removing_tests/absolute_burned1.txt");
-		BacklogJournalConverterIntoCumulative converter = new BacklogJournalConverterIntoCumulative();
+		AbsoluteToCumulativeConverterInPlace converter = new AbsoluteToCumulativeConverterInPlace();
 		converter.convertIntoCumulative(chunks);
 		BacklogChunk chunk = merger.mergeCumulativeChunks(chunks);
 
@@ -40,9 +42,9 @@ public class AbsoluteDoneLinesRemovingTest {
 	public void test2() throws IOException {
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/absolute_removing_tests/san_product_backlog.txt");
-		BacklogJournalConverterIntoCumulative converter = new BacklogJournalConverterIntoCumulative();
+		AbsoluteToCumulativeConverterInPlace converter = new AbsoluteToCumulativeConverterInPlace();
 		converter.convertIntoCumulative(chunks);
 		BacklogChunk chunk = merger.mergeCumulativeChunks(chunks);
 
@@ -63,9 +65,9 @@ public class AbsoluteDoneLinesRemovingTest {
 	public void test3() throws IOException {
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/absolute_removing_tests/san_product_backlog_cut1.txt");
-		BacklogJournalConverterIntoCumulative converter = new BacklogJournalConverterIntoCumulative();
+		AbsoluteToCumulativeConverterInPlace converter = new AbsoluteToCumulativeConverterInPlace();
 		converter.convertIntoCumulative(chunks);
 		BacklogChunk chunk = merger.mergeCumulativeChunks(chunks);
 
@@ -96,7 +98,7 @@ public class AbsoluteDoneLinesRemovingTest {
 		
 //		System.out.println(headers);
 		
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(chunk,burnedPoints,headers,values,isCumulative);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(chunk,burnedPoints,headers,values,isCumulative);
 		
 		// then
 //		System.out.println(chunk);

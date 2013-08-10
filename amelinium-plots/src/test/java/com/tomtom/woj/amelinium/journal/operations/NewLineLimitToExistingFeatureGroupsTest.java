@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-public class LineCleanerTest {
+public class NewLineLimitToExistingFeatureGroupsTest {
 
 	@Test
 	public void test1() throws IOException {
@@ -29,7 +29,7 @@ public class LineCleanerTest {
 		values.add(2.);
 		values.add(3.);
 		
-		LineCleaner cleaner = new LineCleaner();
+		NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
 		
 		// when
 		cleaner.limitAbsolute(headers,line,values);
@@ -63,7 +63,7 @@ public class LineCleanerTest {
 		values.add(2.);
 		values.add(3.);
 		
-		LineCleaner cleaner = new LineCleaner();
+		NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
 		
 		// when
 		cleaner.limitAbsolute(headers,line,values);
@@ -102,7 +102,7 @@ public class LineCleanerTest {
 		values.add(4.);
 		values.add(5.);
 		
-		LineCleaner cleaner = new LineCleaner();
+		NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
 		
 		// when
 		cleaner.limitAbsolute(headers,line,values);
@@ -116,9 +116,40 @@ public class LineCleanerTest {
 		
 		assertEquals(expectedLine,line);
 	}
-
+	
 	@Test
-	public void test4() throws IOException {
+	public void test5() throws IOException {
+
+		// given
+		ArrayList<String> headers = new ArrayList<String>();
+		headers.add("Burned");
+		headers.add("A");
+		headers.add("B");
+		headers.add("C");
+		
+		ArrayList<String> line = new ArrayList<String>();
+		line.add("A");
+		line.add("C");
+		
+		ArrayList<Double> values = new ArrayList<Double>();
+		values.add(1.);
+		values.add(3.);
+		
+		NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
+		
+		// when
+		cleaner.limitCumulative(headers,line,values);
+		
+		// then
+		ArrayList<String> expectedLine = new ArrayList<String>();
+		expectedLine.add("A");
+		expectedLine.add("C");
+		
+		assertEquals(expectedLine,line);
+	}
+	
+	@Test
+	public void testLimitAbsoluteStrictly() throws IOException {
 
 		// given
 		ArrayList<String> headers = new ArrayList<String>();
@@ -141,7 +172,7 @@ public class LineCleanerTest {
 		values.add(4.);
 		values.add(5.);
 		
-		LineCleaner cleaner = new LineCleaner();
+		NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
 		
 		// when
 		cleaner.limitAbsoluteStrictly(headers,line,values);
@@ -159,37 +190,6 @@ public class LineCleanerTest {
 		
 		assertEquals(expectedLine,line);
 		assertEquals(expectedValues,values);
-	}
-	
-	@Test
-	public void test5() throws IOException {
-
-		// given
-		ArrayList<String> headers = new ArrayList<String>();
-		headers.add("Burned");
-		headers.add("A");
-		headers.add("B");
-		headers.add("C");
-		
-		ArrayList<String> line = new ArrayList<String>();
-		line.add("A");
-		line.add("C");
-		
-		ArrayList<Double> values = new ArrayList<Double>();
-		values.add(1.);
-		values.add(3.);
-		
-		LineCleaner cleaner = new LineCleaner();
-		
-		// when
-		cleaner.limitCumulative(headers,line,values);
-		
-		// then
-		ArrayList<String> expectedLine = new ArrayList<String>();
-		expectedLine.add("A");
-		expectedLine.add("C");
-		
-		assertEquals(expectedLine,line);
 	}
 	
 }

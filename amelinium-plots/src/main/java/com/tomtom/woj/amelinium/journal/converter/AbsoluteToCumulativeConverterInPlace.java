@@ -1,10 +1,10 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.journal.converter;
 
 import java.util.ArrayList;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
-public class BacklogJournalConverterIntoCumulative {
+public class AbsoluteToCumulativeConverterInPlace {
 
 	public void convertIntoCumulative(ArrayList<BacklogChunk> chunks) {
 		for(BacklogChunk chunk : chunks) {

@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.plots.burndown;
 
 import java.util.ArrayList;
 

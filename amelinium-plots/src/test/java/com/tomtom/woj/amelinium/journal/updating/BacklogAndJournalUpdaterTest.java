@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.journal.updating;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +10,9 @@ import org.junit.Test;
 
 import com.tomtom.amelinium.backlogservice.factory.BacklogServiceFactory;
 import com.tomtom.amelinium.backlogservice.model.BacklogModel;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.journal.updating.BacklogAndJournalUpdater;
 import com.tomtom.woj.amelinium.utils.StringUtils;
 
 public class BacklogAndJournalUpdaterTest {

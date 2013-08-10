@@ -2,10 +2,10 @@ package com.tomtom.woj.amelinium;
 
 import java.io.FileNotFoundException;
 
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalConverterIntoCumulative;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalMultipleChunksMerger;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSubtractorIntoBurndown;
+import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
+import com.tomtom.woj.amelinium.journal.operations.BacklogChunksMerger;
+import com.tomtom.woj.amelinium.plots.burndown.BacklogJournalSubtractorIntoBurndown;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModelFactory;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownPlotJavascriptGenerator;
 import com.tomtom.woj.amelinium.plots.burnup.BurnupModelFactory;
@@ -15,8 +15,8 @@ import com.tomtom.woj.amelinium.utils.StringUtils;
 public class MainNataszaWoj {
 
 	static BacklogJournalReader reader = new BacklogJournalReader();
-	static BacklogJournalConverterIntoCumulative cumulativeConverter = new BacklogJournalConverterIntoCumulative();
-	static BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+	static AbsoluteToCumulativeConverterInPlace cumulativeConverter = new AbsoluteToCumulativeConverterInPlace();
+	static BacklogChunksMerger merger = new BacklogChunksMerger();
 	
 	static BurnupModelFactory burnupModelFactory = new BurnupModelFactory();
 	static BurnupPlotJavascriptGenerator burnupGenerator = new BurnupPlotJavascriptGenerator();

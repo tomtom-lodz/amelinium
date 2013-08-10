@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
-public class BacklogJournalMergerTest {
+public class BacklogChunksMergerTest {
 
 	@Test
 	public void test() throws IOException {
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/example2_cumulative.txt");
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		
 		// when
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);

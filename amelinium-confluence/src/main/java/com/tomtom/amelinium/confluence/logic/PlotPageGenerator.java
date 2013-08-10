@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 
 import com.tomtom.amelinium.confluence.client.ConfluenceOperations;
 import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
+import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalConverterIntoCumulative;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalMultipleChunksMerger;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalReader;
-import com.tomtom.woj.amelinium.journal.operations.BacklogJournalSubtractorIntoBurndown;
+import com.tomtom.woj.amelinium.journal.operations.BacklogChunksMerger;
 import com.tomtom.woj.amelinium.journal.operations.DoneLinesRemover;
 import com.tomtom.woj.amelinium.journal.operations.MergedBacklogColumnSorter;
+import com.tomtom.woj.amelinium.plots.burndown.BacklogJournalSubtractorIntoBurndown;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModel;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownModelFactory;
 import com.tomtom.woj.amelinium.plots.burndown.BurndownPlotJavascriptGenerator;
@@ -27,8 +27,8 @@ public class PlotPageGenerator {
 	private ConfluenceConfig config = new ConfluenceConfig();
 
 	private BacklogJournalReader reader = new BacklogJournalReader();
-	private BacklogJournalConverterIntoCumulative cumulativeConverter = new BacklogJournalConverterIntoCumulative();
-	private BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+	private AbsoluteToCumulativeConverterInPlace cumulativeConverter = new AbsoluteToCumulativeConverterInPlace();
+	private BacklogChunksMerger merger = new BacklogChunksMerger();
 	
 	private BurnupModelFactory burnupModelFactory = new BurnupModelFactory();
 	private BurnupPlotJavascriptGenerator burnupGenerator = new BurnupPlotJavascriptGenerator();

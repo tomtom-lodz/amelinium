@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.journal.operations.BacklogJournalNewLineAdder;
 
-public class BacklogJournalUpdaterTest {
+public class BacklogJournalNewLineAdderTest {
 
 	@Test
 	public void test1() throws IOException {
 		
 		// given
-		BacklogJournalUpdater updater = new BacklogJournalUpdater();
+		BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();
 		BacklogJournalReader reader = new BacklogJournalReader();
 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/example1_cumulative.txt");
@@ -45,7 +47,7 @@ public class BacklogJournalUpdaterTest {
 	public void test2() throws IOException {
 		
 		// given
-		BacklogJournalUpdater updater = new BacklogJournalUpdater();
+		BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();
 		BacklogJournalReader reader = new BacklogJournalReader();
 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/example1_cumulative.txt");
@@ -77,7 +79,7 @@ public class BacklogJournalUpdaterTest {
 	public void test3() throws IOException {
 		
 		// given
-		BacklogJournalUpdater updater = new BacklogJournalUpdater();
+		BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();
 		BacklogJournalReader reader = new BacklogJournalReader();
 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/example1_cumulative.txt");
@@ -111,7 +113,7 @@ public class BacklogJournalUpdaterTest {
 	public void test4() throws IOException {
 		
 		// given
-		BacklogJournalUpdater updater = new BacklogJournalUpdater();
+		BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();
 		BacklogJournalReader reader = new BacklogJournalReader();
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/example1_cumulative.txt");
 		

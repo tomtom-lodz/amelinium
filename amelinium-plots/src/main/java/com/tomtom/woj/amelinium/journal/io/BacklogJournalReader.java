@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.journal.io;
 
 import java.io.FileReader;
 import java.io.IOException;

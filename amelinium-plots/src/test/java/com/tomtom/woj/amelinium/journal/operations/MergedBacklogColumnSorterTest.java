@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
 public class MergedBacklogColumnSorterTest {
@@ -15,7 +16,7 @@ public class MergedBacklogColumnSorterTest {
 	public void test() throws IOException {
 		BacklogJournalReader reader = new BacklogJournalReader();
 		ArrayList<BacklogChunk> chunks = reader.readFromFileNullAllowed("src/test/resources/csvs/csv1.txt");
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
 		System.out.println(merged);

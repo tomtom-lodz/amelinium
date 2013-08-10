@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,10 +6,11 @@ import java.util.Collections;
 import org.joda.time.DateTime;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.journal.operations.BacklogJournalNewLineAdder;
 
 public class CumulativeToAbsoluteConverter {
 	
-	private BacklogJournalUpdater updater = new BacklogJournalUpdater();	
+	private BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();	
 	
 	
 	// dla kazdej linijki

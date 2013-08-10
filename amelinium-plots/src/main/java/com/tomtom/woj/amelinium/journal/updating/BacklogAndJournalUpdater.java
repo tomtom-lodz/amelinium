@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.journal.updating;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,13 @@ import org.joda.time.DateTime;
 import com.tomtom.amelinium.backlogservice.factory.BacklogServiceFactory;
 import com.tomtom.amelinium.backlogservice.model.BacklogModel;
 import com.tomtom.amelinium.backlogservice.model.FeatureGroup;
+import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalSerializer;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.journal.operations.BacklogChunksMerger;
+import com.tomtom.woj.amelinium.journal.operations.BacklogJournalNewLineAdder;
+import com.tomtom.woj.amelinium.journal.operations.DoneLinesRemover;
 import com.tomtom.woj.amelinium.utils.ConfluenceCleaningUtils;
 
 public class BacklogAndJournalUpdater {
@@ -15,10 +21,10 @@ public class BacklogAndJournalUpdater {
 	private BacklogServiceFactory backlogServiceFactory = new BacklogServiceFactory();
 	private BacklogJournalReader backlogJournalReader = new BacklogJournalReader();
 	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
-	private BacklogJournalUpdater updater = new BacklogJournalUpdater();
+	private BacklogJournalNewLineAdder updater = new BacklogJournalNewLineAdder();
 	private DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
-	private BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
-	private BacklogJournalConverterIntoCumulative convert = new BacklogJournalConverterIntoCumulative();
+	private BacklogChunksMerger merger = new BacklogChunksMerger();
+	private AbsoluteToCumulativeConverterInPlace convert = new AbsoluteToCumulativeConverterInPlace();
 
 	public String create(DateTime dateTime, String backlogContent, boolean isCumulative) {
 		boolean allowingMultilineFeatures = false;
@@ -81,7 +87,7 @@ public class BacklogAndJournalUpdater {
 			convert.convertIntoCumulative(merged);
 			
 		}
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burnedPoints,headers,values,isCumulative);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(merged,burnedPoints,headers,values,isCumulative);
 
 		// when
 		if(addNewFeatureGroups) {

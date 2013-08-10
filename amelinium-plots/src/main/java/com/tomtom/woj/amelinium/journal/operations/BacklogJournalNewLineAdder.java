@@ -7,9 +7,9 @@ import org.joda.time.DateTime;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
-public class BacklogJournalUpdater {
+public class BacklogJournalNewLineAdder {
 
-	LineCleaner cleaner = new LineCleaner();
+	NewLineLimitToExistingFeatureGroups cleaner = new NewLineLimitToExistingFeatureGroups();
 	
 //	public void updateOnlyExistingColumns(ArrayList<BacklogChunk> chunks, ArrayList<String> newHeader) {
 //		if(chunks.isEmpty()) {

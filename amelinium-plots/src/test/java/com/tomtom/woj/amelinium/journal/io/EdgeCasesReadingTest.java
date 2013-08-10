@@ -1,4 +1,4 @@
-package com.tomtom.woj.amelinium.journal.operations;
+package com.tomtom.woj.amelinium.journal.io;
 
 import static org.junit.Assert.fail;
 
@@ -7,9 +7,10 @@ import java.io.IOException;
 import org.junit.Test;
 
 import com.tomtom.woj.amelinium.PlotHtmlPageGenerator;
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.utils.StringUtils;
 
-public class EdgeCasesTest {
+public class EdgeCasesReadingTest {
 
 	@Test
 	public void testEdgeCase() throws IOException {

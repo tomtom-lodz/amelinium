@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
+import com.tomtom.woj.amelinium.journal.updating.BacklogAndJournalUpdater;
 import com.tomtom.woj.amelinium.utils.StringUtils;
 
 public class AbsoluteDoneLinesRemovingBugTest {

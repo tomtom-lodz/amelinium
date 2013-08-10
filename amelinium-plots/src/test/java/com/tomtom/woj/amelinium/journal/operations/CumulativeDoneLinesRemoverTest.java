@@ -7,9 +7,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
-public class MergedDoneLinesRemoverTest {
+public class CumulativeDoneLinesRemoverTest {
 
 	@Test
 	public void testCumulative1() throws IOException {
@@ -27,7 +28,7 @@ public class MergedDoneLinesRemoverTest {
 		doneLinesRemover.removeDoneLinesFromCumulativeMerged(chunk);
 		
 		// then
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		BacklogChunk expectedChunk = merger.mergeCumulativeChunks(reader.readFromFileNullAllowed("src/test/resources/backlog_journals/expected_after_removing/merged_burned1.txt"));
 		assertEquals(expectedChunk, chunk);
 	}
@@ -48,7 +49,7 @@ public class MergedDoneLinesRemoverTest {
 		doneLinesRemover.removeDoneLinesFromCumulativeMerged(chunk);
 		
 		// then
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		BacklogChunk expectedChunk = merger.mergeCumulativeChunks(reader.readFromFileNullAllowed("src/test/resources/backlog_journals/expected_after_removing/merged_burned2.txt"));
 		assertEquals(expectedChunk, chunk);
 	}
@@ -61,7 +62,7 @@ public class MergedDoneLinesRemoverTest {
 		
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/merged_burned3.txt");
 		BacklogChunk chunk = merger.mergeCumulativeChunks(chunks);
 		
@@ -84,7 +85,7 @@ public class MergedDoneLinesRemoverTest {
 		
 		// given
 		BacklogJournalReader reader = new BacklogJournalReader();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger(); 
+		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		ArrayList<BacklogChunk> chunks = reader.readFromFile("src/test/resources/backlog_journals/merged_burned4.txt");
 		BacklogChunk chunk = merger.mergeCumulativeChunks(chunks);
 		

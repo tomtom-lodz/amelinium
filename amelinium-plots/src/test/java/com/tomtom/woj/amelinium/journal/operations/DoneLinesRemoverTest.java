@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
 public class DoneLinesRemoverTest {
@@ -32,11 +33,11 @@ public class DoneLinesRemoverTest {
 		double burned = 40;
 		
 		DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+		BacklogChunksMerger merger = new BacklogChunksMerger();
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
 		// when
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burned,lines,values,true);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(merged,burned,lines,values,true);
 		
 		// then
 		ArrayList<String> expectedLine = new ArrayList<String>();
@@ -74,11 +75,11 @@ public class DoneLinesRemoverTest {
 		double burned = 40;
 		
 		DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+		BacklogChunksMerger merger = new BacklogChunksMerger();
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
 		// when
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burned,lines,values,true);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(merged,burned,lines,values,true);
 		
 		// then
 		ArrayList<String> expectedLine = new ArrayList<String>();
@@ -113,11 +114,11 @@ public class DoneLinesRemoverTest {
 		double burned = 40;
 		
 		DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+		BacklogChunksMerger merger = new BacklogChunksMerger();
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
 		// when
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burned,lines,values,true);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(merged,burned,lines,values,true);
 		
 		// then
 		ArrayList<String> expectedLine = new ArrayList<String>();
@@ -152,11 +153,11 @@ public class DoneLinesRemoverTest {
 		double burned = 40;
 		
 		DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
-		BacklogJournalMultipleChunksMerger merger = new BacklogJournalMultipleChunksMerger();
+		BacklogChunksMerger merger = new BacklogChunksMerger();
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
 		// when
-		doneLinesRemover.removeDoneLinesUsingCumulativeMerged(merged,burned,lines,values,true);
+		doneLinesRemover.removeDoneFromNewLinesUsingCumulativeMerged(merged,burned,lines,values,true);
 		
 		// then
 		ArrayList<String> expectedLine = new ArrayList<String>();

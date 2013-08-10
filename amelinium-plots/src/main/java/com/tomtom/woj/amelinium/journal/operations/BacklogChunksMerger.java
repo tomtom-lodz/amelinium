@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
 
 import com.tomtom.woj.amelinium.journal.model.BacklogChunk;
 
-public class BacklogJournalMultipleChunksMerger {
+public class BacklogChunksMerger {
 
 	public BacklogChunk mergeCumulativeChunks(ArrayList<BacklogChunk> chunks) {
 		
