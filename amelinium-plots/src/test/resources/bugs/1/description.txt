@@ -1,0 +1,22 @@
+the bug is that when csv is updated
+done groups are added, and shouldn't be
+
+the result is as below. test is taking the backlog and csv and tries to update
+
+Date,Burned,aaaa,bbbb,ddd,hhhh,eee,ffff,gggg
+2013-04-12,0.0,34.0,31.0,17.0,31.0,5.0,21.0,45.0
+2013-04-26,9.0,25.0,31.0,17.0,31.0,5.0,21.0,45.0
+2013-05-10,18.0,16.0,31.0,17.0,31.0,5.0,21.0,45.0
+2013-05-24,42.0,0.0,23.0,17.0,31.0,5.0,21.0,45.0
+Date,Burned,bbbb,ddd,hhhh,eee,ffff,gggg
+2013-06-07,55.0,10.0,17.0,31.0,5.0,21.0,45.0
+Date,Burned,aaaa,bbbb,ddd,hhhh,eee,ffff,gggg
+2013-06-21,69.0,0.0,0.0,13.0,31.0,5.0,21.0,45.0
+Date,Burned,ddd,hhhh,eee,ffff,gggg
+2013-07-05,82.0,0.0,31.0,5.0,21.0,45.0
+Date,Burned,aaaa,bbbb,hhhh,eee,ffff,gggg
+2013-07-19,88.0,0.0,0.0,25.0,5.0,21.0,45.0
+Date,Burned,ddd,hhhh,eee,ffff,gggg
+2013-08-06,95.0,0.0,18.0,5.0,21.0,45.0
+Date,Burned,aaaa,bbbb,hhhh,iiii,ffff,gggg
+2013-08-07,95.0,0.0,0.0,10.0,22.0,43.0,25.0
