@@ -43,12 +43,8 @@ public class PlotController {
 	private PlotPageGenerator plotPageGenerator;
 	@Autowired
 	private BacklogAndJournalUpdater backlogAndJournalUpdater;
-	
-	private BacklogPageCorrector backlogPageCorrector = new BacklogPageCorrector();
-	
-	private CumulativeToAbsoluteConverter cumulativeToAbsoluteConverter = new CumulativeToAbsoluteConverter();
-
-	private BacklogJournalSerializer backlogJournalSerializer = new BacklogJournalSerializer();
+	@Autowired
+	private BacklogPageCorrector backlogPageCorrector;
 	
     @ApiOperation(value = "Draw plots from CSV file",
     		notes = "Draw plots from CSV file",
@@ -215,41 +211,4 @@ public class PlotController {
 		return "redirect:" + confluenceConfig.SERVER + "/display/" + backlogSpace + "/" + backlogTitle;
 	}
 
-    @ApiOperation(value = "Convert CSV page from cumulative to absolute",
-    		notes = "Convert CSV page from cumulative to absolute",
-    		responseClass = "String")
-	@RequestMapping(value = "/convertCsvCumulativeToAbsolute", method = RequestMethod.GET)
-	public void convertCsvCumulativeToAbsolute(
-			@ApiParam("Confluence space of CSV")
-			@RequestParam String csvSpace,
-			@ApiParam("Confluence page with CSV")
-			@RequestParam String csvTitle,
-			HttpServletResponse response) throws IOException {
-
-		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
-				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
-		
-		BacklogJournalReader reader = new BacklogJournalReader();
-		ArrayList<BacklogChunk> chunks = reader.readFromStringNullAllowed(journalContent);
-		ArrayList<BacklogChunk> newChunks = cumulativeToAbsoluteConverter.convert(chunks);
-		String newContent = backlogJournalSerializer.serialize(newChunks);
-
-		
-		response.setContentType("text/plain; charset=windows-1250");
-		PrintWriter out = response.getWriter();
-		out.println(newContent);
-	}
-
-
-//	public void drawPlot(HttpServletResponse response) throws IOException {
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-//		
-//		String csv = "Date, Burned,group 1, group 2\n2013-07-20, 0, 13, 13\n";
-//		
-//		String html = PlotHtmlPageGenerator.createHtmlPageWithPlots(csv,false,1,0,1);
-//		
-//		out.println(html);
-//	}
-	
 }

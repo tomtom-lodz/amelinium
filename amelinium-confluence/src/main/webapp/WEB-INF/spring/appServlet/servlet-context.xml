@@ -43,6 +43,10 @@
         <!--<beans:value>com.knappsack.swagger4springweb.additionalModels</beans:value>-->
     <!--</util:list>-->
     
-    <beans:bean class="com.tomtom.woj.amelinium.journal.operations.BacklogAndJournalUpdater"/>
+    <beans:bean class="com.tomtom.woj.amelinium.journal.updating.BacklogAndJournalUpdater"/>
+    <beans:bean class="com.tomtom.amelinium.confluence.logic.BacklogPageCorrector"/>
+    <beans:bean class="com.tomtom.woj.amelinium.journal.converter.CumulativeToAbsoluteConverter"/>
+    <beans:bean class="com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace"/>
+    <beans:bean class="com.tomtom.woj.amelinium.journal.io.BacklogJournalSerializer"/>    
 	
 </beans:beans>
