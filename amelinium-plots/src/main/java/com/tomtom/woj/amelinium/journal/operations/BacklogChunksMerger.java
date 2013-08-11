@@ -40,16 +40,13 @@ public class BacklogChunksMerger {
 			numRows = chunk.cols.get(0).size();
 		}
 		
-		// create array if NaNs to be used if column does not exist
-		ArrayList<Double> nansList = createNansList(numRows);
-		
 		// for each new column add members from chunk or NaNs if it does not exist
 		int columnIdx=0;
 		for(String columnName : newHeaders) {
 			ArrayList<Double> column = nameToColumnMap.get(columnName);
 			if(column==null) {
 				// if column does not exist in chunk then add NaNs
-				column = nansList;
+				column = createNansList(numRows);
 			}
 			newColumns.get(columnIdx++).addAll(column);
 		}
