@@ -14,12 +14,19 @@ public class Main {
 		
 		String input = StringUtils.readFile("src/test/resources/absolute_removing_tests/san_product_backlog.txt");
 		
-		TimeLapseStringBuilder aaa = new TimeLapseStringBuilder();
-		String output = aaa.createTimeLapseString(input, dailyVelocity, dailyBlackMatter,
+		TimeLapseStringBuilder modelBuilder = new TimeLapseStringBuilder();
+		
+		TimeLapseChunk model = modelBuilder.createTimeLapseString(input, dailyVelocity, dailyBlackMatter,
 				isCumulative);
+		
+		String output = model.toString();
 		
 		System.out.println(output);
 		
+		TimeLapseChartGenerator chartGenerator = new TimeLapseChartGenerator();
+		output = chartGenerator.generateTimeLaps(model, "chart1", "Time Lapse Plot");
+		
+		System.out.println(output);
 	}
 
 }

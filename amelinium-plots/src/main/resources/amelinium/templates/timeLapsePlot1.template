@@ -1,0 +1,37 @@
+$(document).ready(function(){
+<LINES1>
+  var <PLOT> = $.jqplot('<PLOT>', [<LINES2>], {
+    title:'<TITLE>',
+    axes:{
+        xaxis:{
+            renderer:$.jqplot.DateAxisRenderer,
+			label: 'Date',
+        tickOptions:{
+            formatString:'%#d-%b<br>%Y',
+        } 
+        },
+        yaxis: {
+            renderer:$.jqplot.DateAxisRenderer,
+			label: 'Story Points',
+        },
+    },
+    series:[<SERIES>],
+	cursor: {
+	    show: true,
+        zoom: true,
+	},
+    highlighter: {
+        show: true,
+//        sizeAdjust: 1,
+        tooltipOffset: 9
+    },
+	legend:{
+        renderer: $.jqplot.EnhancedLegendRenderer,
+        show:true,
+        showSwatches: true,
+        placement: 'outsideGrid',
+    }
+  });
+  
+  $('.button-reset-zoom-<PLOT>').click(function() { <PLOT>.resetZoom() });
+});

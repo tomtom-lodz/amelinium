@@ -21,7 +21,7 @@ public class TimeLapseStringBuilder {
 	private static MergedBacklogColumnSorter columnSorter = new MergedBacklogColumnSorter();
 	private static DoneLinesRemover doneLinesRemover = new DoneLinesRemover();
 	
-	public String createTimeLapseString(String input, double dailyVelocity,
+	public TimeLapseChunk createTimeLapseString(String input, double dailyVelocity,
 			double dailyBlackMatter, boolean isCumulative) {
 		
 		TimeLapseChunkFactory factory = new TimeLapseChunkFactory();
@@ -59,9 +59,7 @@ public class TimeLapseStringBuilder {
 		}
 		
 		TimeLapseChunk chunk = factory.build();
-		
-		String output = chunk.toString();
-		return output;
+		return chunk;
 	}
 
 }
