@@ -19,12 +19,17 @@ public class MergedBacklogColumnSorterTest {
 		BacklogChunksMerger merger = new BacklogChunksMerger(); 
 		BacklogChunk merged = merger.mergeCumulativeChunks(chunks);
 		
-		System.out.println(merged);
+//		System.out.println(merged);
 		
 		MergedBacklogColumnSorter columnSorter = new MergedBacklogColumnSorter();
 		columnSorter.sortColumns(merged);
 		
-		System.out.println(merged);
+//		System.out.println(merged);
+		
+		//then
+		ArrayList<BacklogChunk> chunksExpected = reader.readFromFileNullAllowed("src/test/resources/csvs/csv1_sorted.txt");
+		assertEquals(chunksExpected.get(0).toString(), merged.toString());
+		
 	}
 
 }
