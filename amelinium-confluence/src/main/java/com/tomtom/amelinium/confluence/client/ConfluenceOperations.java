@@ -47,8 +47,12 @@ public class ConfluenceOperations {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PrintStream ps = new PrintStream(baos);
 
+		ByteArrayOutputStream errbaos = new ByteArrayOutputStream();
+		PrintStream errps = new PrintStream(errbaos);
+		
 		ConfluenceClient client = new MyConfluenceClient();
 		client.setOut(ps);
+		client.setErr(errps);
 
 		client.doWork(params);
 
@@ -59,6 +63,16 @@ public class ConfluenceOperations {
 			throw new RuntimeException("Did not recognize UTF8?",e);
 		}
 
+		String errcontent;
+		try {
+			errcontent = errbaos.toString("UTF8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("Did not recognize UTF8?",e);
+		}
+		if(!errcontent.isEmpty()) {
+			throw new ConfluenceException(errcontent);
+		}
+		
 		return content;
 	}
 
@@ -88,14 +102,28 @@ public class ConfluenceOperations {
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException("Did not recognize UTF8?", e);
 		}
+
+		ByteArrayOutputStream errbaos = new ByteArrayOutputStream();
+		PrintStream errps = new PrintStream(errbaos);
 		
 		String action = "addPage";
 
 		String[] params = { "--server", server, "--user", user, "--password", password, "--action", action, "--space", space, "--title", title, "--content", content, "--replace" };
 
 		ConfluenceClient client = new MyConfluenceClient();
+		client.setErr(errps);
 
 		client.doWork(params);
+		
+		String errcontent;
+		try {
+			errcontent = errbaos.toString("UTF8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("Did not recognize UTF8?",e);
+		}
+		if(!errcontent.isEmpty()) {
+			throw new ConfluenceException(errcontent);
+		}
 	}
 
 	public static void addPage(String server, String user, String password, String space, String parent, String title, String content) {
@@ -105,14 +133,28 @@ public class ConfluenceOperations {
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException("Did not recognize UTF8?", e);
 		}
+
+		ByteArrayOutputStream errbaos = new ByteArrayOutputStream();
+		PrintStream errps = new PrintStream(errbaos);
 		
 		String action = "addPage";
 
 		String[] params = { "--server", server, "--user", user, "--password", password, "--action", action, "--space", space, "--parent", parent, "--title", title, "--content", content, "--replace" };
 
 		ConfluenceClient client = new MyConfluenceClient();
+		client.setErr(errps);
 
 		client.doWork(params);
+		
+		String errcontent;
+		try {
+			errcontent = errbaos.toString("UTF8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("Did not recognize UTF8?",e);
+		}
+		if(!errcontent.isEmpty()) {
+			throw new ConfluenceException(errcontent);
+		}
 	}
 	
 }
