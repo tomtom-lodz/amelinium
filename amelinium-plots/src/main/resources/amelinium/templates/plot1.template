@@ -38,7 +38,12 @@ $(document).ready(function(){
             numberColumns: 1,
         }
         
-    }
+    },
+    seriesDefaults: {
+    	markerOptions: {
+    		size: 4,
+    	}
+    },
   });
   
   $('.button-reset-zoom-<PLOT>').click(function() { <PLOT>.resetZoom() });
