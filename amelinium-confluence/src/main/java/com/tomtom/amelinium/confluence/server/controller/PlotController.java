@@ -112,7 +112,7 @@ public class PlotController {
 			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate,
 			@ApiParam("Force specific date of update")
-			@RequestParam(defaultValue = "null", required=false) String forceDate) {
+			@RequestParam(required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -121,7 +121,7 @@ public class PlotController {
 				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
 		
 		DateTime dateTime;
-		if(forceDate==null) {
+		if(forceDate == null) {
 			dateTime = new DateTime().toDateMidnight().toDateTime();
 		} else {
 			dateTime = new DateTime(forceDate);
@@ -158,7 +158,7 @@ public class PlotController {
 			@ApiParam("Is CSV in cumulative form")
 			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
 			@ApiParam("Force specific date of update")
-			@RequestParam(defaultValue = "null", required=false) String forceDate) {
+			@RequestParam(required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -200,7 +200,7 @@ public class PlotController {
 			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate,
 			@ApiParam("Force specific date of update")
-			@RequestParam(defaultValue = "null", required=false) String forceDate) {
+			@RequestParam(required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
