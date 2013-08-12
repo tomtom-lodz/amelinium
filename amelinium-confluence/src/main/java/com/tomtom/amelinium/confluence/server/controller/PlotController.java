@@ -60,19 +60,15 @@ public class PlotController {
 			@ApiParam("Team velocity")
 			@RequestParam double velocity,
 			@ApiParam("Number of story points added to scope per sprint")
-			@RequestParam(required=false) Double scopeIncrease,
+			@RequestParam(defaultValue = "0", required=false) double scopeIncrease,
 			@ApiParam("Effective velocity for burndown plot (velocity - scopeIncrease)")
 			@RequestParam(required=false) Double effectiveVelocity,
 			@ApiParam("Is CSV in cumulative form")
 			@RequestParam(defaultValue = "false", required=false) boolean isCumulative) {
 
 		double dailyVelocity = velocity/sprintLength;
-		double dailyBlackMatter;
-		if(scopeIncrease==null) {
-			dailyBlackMatter = 0;
-		} else {
-			dailyBlackMatter = scopeIncrease/sprintLength;
-		}
+		double dailyBlackMatter = scopeIncrease/sprintLength;
+
 		double dailyEffectiveVelocity;
 		if(effectiveVelocity==null) {
 			dailyEffectiveVelocity = dailyVelocity - dailyBlackMatter;
@@ -84,6 +80,9 @@ public class PlotController {
 				dailyVelocity, dailyBlackMatter, dailyEffectiveVelocity);
 		
 		ModelAndView model = new ModelAndView("plots/plotBurnupBurndown");
+		model.addObject("sprintLength", sprintLength);
+		model.addObject("velocity", velocity);
+		model.addObject("scopeIncrease", scopeIncrease);
 		model.addObject("chartName1", plots.chartName1);
 		model.addObject("chartBody1", plots.chartBody1);
 		model.addObject("chartName2", plots.chartName2);

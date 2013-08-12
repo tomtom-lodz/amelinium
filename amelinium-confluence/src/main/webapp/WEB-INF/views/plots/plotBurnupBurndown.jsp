@@ -11,6 +11,8 @@
 
 <script class="include" type="text/javascript" src="<c:url value="/resources/jqplot/jquery.jqplot.min.js"/>"></script>
 
+Sprint Length: <c:out value="${sprintLength}"/> days, Velocity: <c:out value="${velocity}"/>, Scope increase: <c:out value="${scopeIncrease}"/>
+
 <div id="<c:out value="${chartName1}"/>" style="height:600px; width:100%;"></div>
 <button class="button-reset-zoom-${chartName1}">Reset Zoom</button>
 You can also double-click to reset the zoom.
