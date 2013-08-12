@@ -110,7 +110,9 @@ public class PlotController {
 			@ApiParam("Wheather new groups should be added to CSV")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
 			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
-			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate) {
+			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate,
+			@ApiParam("Force specific date of update")
+			@RequestParam(defaultValue = "null", required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -118,7 +120,12 @@ public class PlotController {
 		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
 		
-		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
+		DateTime dateTime;
+		if(forceDate==null) {
+			dateTime = new DateTime().toDateMidnight().toDateTime();
+		} else {
+			dateTime = new DateTime(forceDate);
+		}
 		
 		boolean allowingMultilineFeatures = true;
 		
@@ -149,12 +156,19 @@ public class PlotController {
 			@ApiParam("Name of Confluence page with CSV")
 			@RequestParam String csvTitle,
 			@ApiParam("Is CSV in cumulative form")
-			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative) {
+			@RequestParam(value = "isCumulative", defaultValue = "false", required=false) boolean isCumulative,
+			@ApiParam("Force specific date of update")
+			@RequestParam(defaultValue = "null", required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
 		
-		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
+		DateTime dateTime;
+		if(forceDate==null) {
+			dateTime = new DateTime().toDateMidnight().toDateTime();
+		} else {
+			dateTime = new DateTime(forceDate);
+		}
 		
 		String newJournal = backlogAndJournalUpdater.create(dateTime,
 				backlogContent, isCumulative);
@@ -184,7 +198,9 @@ public class PlotController {
 			@ApiParam("Wheather new groups should be added to CSV")
 			@RequestParam(defaultValue = "true", required=false) boolean addNewFeatureGroups,
 			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
-			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate) {
+			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate,
+			@ApiParam("Force specific date of update")
+			@RequestParam(defaultValue = "null", required=false) String forceDate) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -195,7 +211,12 @@ public class PlotController {
 		boolean allowingMultilineFeatures = true;
 		String updatedBacklogContent = backlogPageCorrector.generateNewBacklogContent(backlogContent, allowingMultilineFeatures);		
 		
-		DateTime dateTime = new DateTime().toDateMidnight().toDateTime();
+		DateTime dateTime;
+		if(forceDate==null) {
+			dateTime = new DateTime().toDateMidnight().toDateTime();
+		} else {
+			dateTime = new DateTime(forceDate);
+		}
 		
 		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
 				updatedBacklogContent, journalContent,
