@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tomtom.amelinium.confluence.client.ConfluenceOperations;
 import com.tomtom.amelinium.confluence.config.ConfluenceConfig;
 import com.tomtom.woj.amelinium.journal.converter.AbsoluteToCumulativeConverterInPlace;
+import com.tomtom.woj.amelinium.journal.converter.BacklogJournalCleaner;
 import com.tomtom.woj.amelinium.journal.converter.CumulativeToAbsoluteConverter;
 import com.tomtom.woj.amelinium.journal.io.BacklogJournalReader;
 import com.tomtom.woj.amelinium.journal.io.BacklogJournalSerializer;
@@ -41,6 +42,8 @@ public class ConvertController {
 	private AbsoluteToCumulativeConverterInPlace absoluteToCumulativeConverterInPlace;
 	@Autowired
 	private BacklogJournalSerializer backlogJournalSerializer;
+	
+	private BacklogJournalCleaner backlogJournalCleaner = new BacklogJournalCleaner();
 	
     @ApiOperation(value = "Convert CSV page from cumulative to absolute",
     		notes = "Convert CSV page from cumulative to absolute",
@@ -92,4 +95,29 @@ public class ConvertController {
 		out.println(newContent);
 	}
 
+    @ApiOperation(value = "Cleanup CSV page",
+    		notes = "Cleanup CSV page",
+    		responseClass = "VOID")
+	@RequestMapping(value = "/cleanupCsv", method = RequestMethod.GET)
+	public void cleanupCsv(
+			@ApiParam("Confluence space of CSV")
+			@RequestParam String csvSpace,
+			@ApiParam("Confluence page with CSV")
+			@RequestParam String csvTitle,
+			HttpServletResponse response) throws IOException {
+
+		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
+				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
+		
+		BacklogJournalReader reader = new BacklogJournalReader();
+		ArrayList<BacklogChunk> chunks = reader.readFromStringNullAllowed(journalContent);
+		
+		ArrayList<BacklogChunk> newChunks = backlogJournalCleaner.clean(chunks);
+		String newContent = backlogJournalSerializer.serialize(newChunks);
+		
+		response.setContentType("text/plain; charset=windows-1250");
+		PrintWriter out = response.getWriter();
+		out.println(newContent);
+	}
+    
 }
