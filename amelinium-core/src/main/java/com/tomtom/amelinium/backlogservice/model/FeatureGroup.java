@@ -208,10 +208,14 @@ public class FeatureGroup {
 		if(fgTitle.startsWith("h3. ")) {
 			fgTitle = fgTitle.substring(3);
 		}
-		if(fgTitle.endsWith("\\-")) {
-			fgTitle = fgTitle.substring(0,fgTitle.length() - 2);
-		} else if(fgTitle.endsWith("-")) {
-			fgTitle = fgTitle.substring(0,fgTitle.length() - 1);
+		while(true) {
+			if(fgTitle.endsWith("\\-")) {
+				fgTitle = fgTitle.substring(0,fgTitle.length() - 2);
+			} else if(fgTitle.endsWith("-")) {
+				fgTitle = fgTitle.substring(0,fgTitle.length() - 1);
+			} else {
+				break;
+			}
 		}
 		return fgTitle.trim();		
 	}
