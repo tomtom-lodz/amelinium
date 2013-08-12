@@ -11,7 +11,7 @@
 
 <script class="include" type="text/javascript" src="<c:url value="/resources/jqplot/jquery.jqplot.min.js"/>"></script>
 
-<div id="<c:out value="${chartName1}"/>" style="height:600px; width:1024px;"></div>
+<div id="<c:out value="${chartName1}"/>" style="height:600px; width:100%;"></div>
 
 <button class="button-reset-zoom-${chartName1}">Reset Zoom</button>
 You can also double-click to reset the zoom.
