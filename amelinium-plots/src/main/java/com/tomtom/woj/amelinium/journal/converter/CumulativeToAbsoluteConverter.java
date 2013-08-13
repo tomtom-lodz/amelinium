@@ -47,7 +47,13 @@ public class CumulativeToAbsoluteConverter {
 			Collections.sort(pairs);
 			
 			double previousValue=chunk.cols.get(0).get(i);
+			if(Double.isNaN(previousValue)) {
+				previousValue = 0;
+			}
 			for(HeaderValuePair pair:pairs) {
+				if(Double.isNaN(pair.value)) {
+					continue;
+				}
 				headers.add(pair.header);
 				values.add(pair.value-previousValue);
 				previousValue = pair.value;
