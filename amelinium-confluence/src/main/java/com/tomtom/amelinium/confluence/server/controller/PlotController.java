@@ -200,7 +200,9 @@ public class PlotController {
 			@ApiParam("Wheather last row in CSV should be overwritten when it has the same date")
 			@RequestParam(defaultValue = "true", required=false) boolean overwriteExistingDate,
 			@ApiParam("Force specific date of update")
-			@RequestParam(required=false) String forceDate) {
+			@RequestParam(required=false) String forceDate,
+			@ApiParam("If features can be spanned through multiple lines")
+			@RequestParam(defaultValue = "false", required=false) boolean allowMultilineFeatures) {
 		
 		String backlogContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle);
@@ -208,8 +210,7 @@ public class PlotController {
 		String journalContent = ConfluenceOperations.getPageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, csvSpace, csvTitle);
 		
-		boolean allowingMultilineFeatures = true;
-		String updatedBacklogContent = backlogPageCorrector.generateNewBacklogContent(backlogContent, allowingMultilineFeatures);		
+		String updatedBacklogContent = backlogPageCorrector.generateNewBacklogContent(backlogContent, allowMultilineFeatures);		
 		
 		DateTime dateTime;
 		if(forceDate==null) {
@@ -220,7 +221,7 @@ public class PlotController {
 		
 		String updatedJournal = backlogAndJournalUpdater.generateUpdatedString(dateTime,
 				updatedBacklogContent, journalContent,
-				isCumulative, addNewFeatureGroups, overwriteExistingDate, allowingMultilineFeatures);
+				isCumulative, addNewFeatureGroups, overwriteExistingDate, allowMultilineFeatures);
 
 		ConfluenceOperations.updatePageSource(confluenceConfig.SERVER,
 				confluenceConfig.USER, confluenceConfig.PASS, backlogSpace, backlogTitle, updatedBacklogContent);
