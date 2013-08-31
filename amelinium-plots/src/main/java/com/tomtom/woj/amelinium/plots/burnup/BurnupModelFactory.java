@@ -100,6 +100,11 @@ public class BurnupModelFactory {
 			if(Double.isNaN(chunk.cols.get(i).get(lastIdx))) {
 				break;
 			}
+			if(chunk.cols.get(i).get(lastIdx)<=chunk.cols.get(0).get(lastIdx)) {
+				// dont draw columns that are done on this day
+				// TODO: test this!
+				break;
+			}
 		}
 		return i;
 	}
