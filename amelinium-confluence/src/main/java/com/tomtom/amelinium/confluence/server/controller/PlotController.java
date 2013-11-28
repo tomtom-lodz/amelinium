@@ -64,7 +64,13 @@ public class PlotController {
 			@ApiParam("Effective velocity for burndown plot (velocity - scopeIncrease)")
 			@RequestParam(required=false) Double effectiveVelocity,
 			@ApiParam("Is CSV in cumulative form")
-			@RequestParam(defaultValue = "false", required=false) boolean isCumulative) {
+			@RequestParam(defaultValue = "false", required=false) boolean isCumulative,
+			@ApiParam("Should burnup chart be rendered")
+			@RequestParam(defaultValue = "true", required=false) boolean renderBurnup,
+			@ApiParam("Should table with releases be rendered")
+			@RequestParam(defaultValue = "true", required=false) boolean renderTable,
+			@ApiParam("Should burndown chart be rendered")
+			@RequestParam(defaultValue = "false", required=false) boolean renderBurndown) {
 
 		double dailyVelocity = velocity/sprintLength;
 		double dailyBlackMatter = scopeIncrease/sprintLength;
@@ -88,6 +94,9 @@ public class PlotController {
 		model.addObject("chartName2", plots.chartName2);
 		model.addObject("chartBody2", plots.chartBody2);
 		model.addObject("burnupTable", plots.burnupTable);
+		model.addObject("renderBurnup", renderBurnup);
+		model.addObject("renderTable", renderTable);
+		model.addObject("renderBurndown", renderBurndown);
 		
 		return model;
 	}
