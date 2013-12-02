@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+import net.htmlparser.jericho.Source;
+
 import org.swift.confluence.cli.ConfluenceClient;
 
 
@@ -15,6 +17,11 @@ import org.swift.confluence.cli.ConfluenceClient;
  *
  */
 public class ConfluenceOperations {
+
+	/**
+	 * after confluence upgrade all page content is in html, so needs to convert back to text
+	 */
+	private static final boolean CONFLUENCE_CONVERT_FROM_HTML = true;
 
 	/**
 	 * Retrieves a specified Confluence Page from the server and returns contents as string.
@@ -71,6 +78,11 @@ public class ConfluenceOperations {
 		}
 		if(!errcontent.isEmpty()) {
 			throw new ConfluenceException(errcontent);
+		}
+		
+		if(CONFLUENCE_CONVERT_FROM_HTML) {
+			Source source = new Source(content);
+			content = source.getRenderer().setMaxLineLength(999999999).toString();
 		}
 		
 		return content;

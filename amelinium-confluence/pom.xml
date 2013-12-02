@@ -234,7 +234,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        
+        <!-- html cleanup -->
+		<dependency>
+			<groupId>net.htmlparser.jericho</groupId>
+			<artifactId>jericho-html</artifactId>
+			<version>3.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
