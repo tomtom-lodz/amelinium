@@ -1,13 +1,21 @@
 package amelinium1.grails
 
+import java.util.Date;
+
 class Csv {
 
 	int ver
 	String text
-	Comment comment
-	
+    Date dateCreated
+    Date lastUpdated
+    String editedBy
+    
     static constraints = {
-        text maxSize: 8000
-		comment nullable:true
+        text widget: 'textarea'
+        editedBy nullable:true
+    }
+    
+    static mapping = {
+        text sqlType:"varchar(max)"
     }
 }

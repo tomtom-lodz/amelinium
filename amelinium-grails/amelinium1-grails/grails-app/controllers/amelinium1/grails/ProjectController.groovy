@@ -1,21 +1,32 @@
 package amelinium1.grails
 
+import grails.plugin.springsecurity.annotation.Secured;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class ProjectController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    ProjectService projectService
+    def ProjectService projectService
+    def springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
-        params.max = 10
-        [projectInstanceList: Project.list(params), projectInstanceTotal: Project.count()]
+    def list() {
+        if(!params.max) {
+            params.max = 10
+        }
+        if(!params.order){
+            params.order = 'asc'
+        }
+        if(!params.sort){
+            params.sort = 'name'
+        }
+
+        [projectInstanceList: Project.list(params), projectInstanceTotal: Project.count(), projectsMax:params.max, sorted:params.sort, ordered:params.order ]
     }
 
     def close(Long id) {
@@ -50,19 +61,24 @@ class ProjectController {
         redirect(controller: "Revision", action:"list", id:projectInstance.id, params:params)
     }
 
+    @Secured(['ROLE_USER'])
     def create() {
         [projectInstance: new Project(params)]
     }
 
     def save() {
-        def projectInstance = projectService.createProject(params.name)
+        def projectInstance = projectService.createProject(params.name, params.user, params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
         if (projectInstance.hasErrors()) {
             render(view: "create", model: [projectInstance: projectInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.id])
-        redirect(action: "show", id: projectInstance.id)
+        flash.message = message(code: 'default.created.message', args: [
+            message(code: 'project.label', default: 'Project'),
+            "\""+projectInstance.name+"\""
+        ])
+        redirect(action: "list")
+        return
     }
 
     def show(Long id) {
@@ -76,6 +92,7 @@ class ProjectController {
         [projectInstance: projectInstance]
     }
 
+    @Secured(['ROLE_USER'])
     def edit(Long id) {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
@@ -106,14 +123,23 @@ class ProjectController {
         }
 
         projectInstance.name = params.name
+        projectInstance.status = params.status
+        projectInstance.editedBy = springSecurityService.getCurrentUser().getUsername()
+        projectInstance.sprintLength = params.sprintLength.toInteger()
+        projectInstance.velocity = params.velocity.toInteger()
+        projectInstance.scopeIncrease = params.scopeIncrease.toInteger()
 
         if (!projectInstance.save(flush: true)) {
             render(view: "edit", model: [projectInstance: projectInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.id])
-        redirect(action: "show", id: projectInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [
+            message(code: 'project.label', default: 'Project'),
+            "\""+projectInstance.name+"\""
+        ])
+        redirect(action: "list")
+        return
     }
 
     def delete(Long id) {

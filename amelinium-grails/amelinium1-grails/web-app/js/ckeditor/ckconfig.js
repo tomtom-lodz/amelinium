@@ -1,7 +1,7 @@
 CKEDITOR.editorConfig = function( config )
 {
         config.templates_files = [ '/ckplug/js/ckeditor/templates/template.js' ];
-        config.height='350px';
+        config.height='600px';
         config.width='100%';
         config.resize_enabled = false;
         config.toolbar_custom = [

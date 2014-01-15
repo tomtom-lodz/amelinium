@@ -1,63 +1,70 @@
 <!DOCTYPE html>
-<%-- <html lang="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).toString().replace('_', '-')}"> --%>
-<html lang="${session.'org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE'}">
-
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
-	<title><g:layoutTitle default="${meta(name:'app.name')}" /></title>
-	
-    <meta charset="utf-8">
-    <meta name="viewport"		content="width=device-width, initial-scale=1.0">
-    <meta name="description"	content="">
-    <meta name="author"			content="">
-    
-	<link rel="shortcut icon"		href="${resource(plugin: 'kickstart-with-bootstrap', dir:'images',file:'favicon.ico')}" type="image/x-icon" />
-	
-	<link rel="apple-touch-icon"	href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon"	href="assets/ico/apple-touch-icon-72x72.png"	sizes="72x72">
-    <link rel="apple-touch-icon"	href="assets/ico/apple-touch-icon-114x114.png"	sizes="114x114">
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-	<%--
-	 Manual switch for the skin can be found in /view/_menu/_config.gsp--%>
-	<r:require modules="jquery"/>
-	<r:require modules="bootstrap"/>
-	<r:require modules="bootstrap_utils"/>
-	<ckeditor:resources/>
-	<r:layoutResources />
-	<g:layoutHead />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title><g:layoutTitle default="Amelinium" /></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<g:layoutHead />
+<r:require modules="bootstrap" />
+<r:layoutResources />
+<ckeditor:resources />
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
+	type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}"
+	type="text/css">
+<link rel="stylesheet"
+	href="${resource(dir: 'js/jqplot', file: 'jquery.jqplot.min.css')}"
+	type="text/css">
 </head>
 <body>
-	<g:render template="/_menu/navbar"/>														
-
-	<!-- Enable to overwrite Header by individual page -->
-	<g:if test="${ pageProperty(name:'page.header') }">
-   		<g:pageProperty name="page.header" />
-	</g:if><%--
-	<g:else>
-		<g:render template="/layouts/header"/>														
-	</g:else>--%><%--
-	
-	--%><g:render template="/layouts/content"/>	<%--													
-
-	--%><!-- Enable to overwrite Footer by individual page --><%--
-	<g:if test="${ pageProperty(name:'page.footer') }">
-	    <g:pageProperty name="page.footer" />
-	</g:if>
-	<g:else>
-		<g:render template="/layouts/footer"/>														
-	</g:else>
-
-	--%><!-- Enable to insert additional components (e.g., modals, javascript, etc.) by any individual page -->
-	<g:if test="${ pageProperty(name:'page.include.bottom') }">
-   		<g:pageProperty name="page.include.bottom" />
-	</g:if>
-	<g:else>
-		<!-- Insert a modal dialog for registering (for an open site registering is possible on any page) -->
-		<g:render template="/_common/modals/registerDialog" model="[item: item]"/>
-	</g:else>
-	
-	<!-- Included Javascript files and other resources -->
+	<nav class="navbar navbar-inner" role="navigation">
+		<g:link class="navbar-brand" url="${createLink(uri: '/')}">
+			<g:img dir="images" file="tomtom.png" />
+		</g:link>
+		<div class="pull-right">
+			<ul class="nav navbar-nav">
+				<sec:ifLoggedIn>
+					<li><g:link class="white-link" url="${createLink(uri: '/')}">
+							${sec.username()}
+						</g:link></li>
+				</sec:ifLoggedIn>
+				<li><a class="white-link" href="${createLink(uri: '/systeminfo')}">Info</a></li>
+				<li class="dropdown "><a href="#" class="dropdown-toggle white-link"
+					data-toggle="dropdown">Panel <b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu">
+						<sec:ifNotLoggedIn>
+							<li><g:link controller="login" action="auth">Log in</g:link></li>
+						</sec:ifNotLoggedIn>
+						<sec:ifLoggedIn>
+							<li><g:link controller="logout">Log out</g:link></li>
+						</sec:ifLoggedIn>
+						<sec:ifNotLoggedIn>
+							<li class="divider"></li>
+							<li><g:link controller="secUser" action="create">Register</g:link></li>
+						</sec:ifNotLoggedIn>
+					</ul></li>
+			</ul>
+		</div>
+	</nav>
+	<g:layoutBody />
+	<g:javascript library="application" />
 	<r:layoutResources />
+	<footer class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<p class="navbar-text pull-left">
+				Page created using
+				<g:link url="http://getbootstrap.com/">bootstrap v3.0.3 </g:link>
+				by Daniel Hajduk
+			</p>
+		</div>
+	</footer>
 </body>
-
 </html>
