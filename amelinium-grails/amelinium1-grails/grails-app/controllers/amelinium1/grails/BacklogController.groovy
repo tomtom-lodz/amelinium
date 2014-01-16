@@ -166,7 +166,15 @@ class BacklogController {
         backlogInstance.state = "Recalculated"
         
         //generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures)
-        String updatedJournal = journalUpdater.generateUpdatedString(new DateTime(), newContent, csvInstance.text, true, true, true, true);
+        
+        DateTime dateTime  = new DateTime().toDateMidnight().toDateTime();
+        String updatedJournal;
+        try {
+            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, false, true, true, true);
+            
+        } catch (Exception e) {
+            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, true, true, true, true);
+        }
         
         csvInstance.text = updatedJournal;
         

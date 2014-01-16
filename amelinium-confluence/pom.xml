@@ -281,11 +281,11 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>confluence</id>
-			<url>https://maven.nuxeo.org/public/</url>
-		</repository>
-	</repositories>
+<!-- 	<repositories> -->
+<!-- 		<repository> -->
+<!-- 			<id>confluence</id> -->
+<!-- 			<url>https://maven.nuxeo.org/public/</url> -->
+<!-- 		</repository> -->
+<!-- 	</repositories> -->
 
 </project>

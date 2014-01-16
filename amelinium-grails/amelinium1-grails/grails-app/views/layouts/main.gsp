@@ -14,7 +14,6 @@
 <g:layoutHead />
 <r:require modules="bootstrap" />
 <r:layoutResources />
-<ckeditor:resources />
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}"

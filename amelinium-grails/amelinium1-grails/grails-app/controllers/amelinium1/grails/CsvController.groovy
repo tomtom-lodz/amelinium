@@ -240,7 +240,15 @@ class CsvController {
         def backlogInstance = projectInstance.revision.backlog
         def csvInstance = projectInstance.revision.csv
         
-        String updatedJournal = journalUpdater.generateUpdatedString(new DateTime(), backlogInstance.text, csvInstance.text, true, true, true, true);
+        //generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures)
+        DateTime dateTime  = new DateTime().toDateMidnight().toDateTime();
+        String updatedJournal;
+        try {
+            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, false, true, true, true);
+        } catch (Exception e) {
+            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, true, true, true, true);
+            println e
+        }
         
         csvInstance.text = updatedJournal;
         

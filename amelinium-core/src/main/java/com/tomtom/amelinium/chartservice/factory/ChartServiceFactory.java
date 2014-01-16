@@ -39,10 +39,8 @@ public class ChartServiceFactory {
 
 	}
 
-	public ChartModel readAndCorrectChartModel(String backlogFileName,
-			String chartFileName, boolean allowingMultilineFeatures) {
-		BacklogModel backlogModel = backlogServiceFactory
-				.readAndCorrectBacklogModelFromFile(backlogFileName,allowingMultilineFeatures);
+	public ChartModel readAndCorrectChartModel(String backlogFileName, String chartFileName, boolean allowingMultilineFeatures) {
+		BacklogModel backlogModel = backlogServiceFactory.readAndCorrectBacklogModelFromFile(backlogFileName,allowingMultilineFeatures);
 		ChartModel chartModel = readChartModelFromFile(chartFileName);
 		chartCorrector.correctTables(backlogModel, chartModel);
 

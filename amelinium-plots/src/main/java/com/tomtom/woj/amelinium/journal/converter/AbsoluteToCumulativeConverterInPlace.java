@@ -13,6 +13,9 @@ public class AbsoluteToCumulativeConverterInPlace {
 	}
 	
 	public void convertIntoCumulative(BacklogChunk chunk) {
+		if(chunk.cols.size()<1) {
+			return;
+		}
 		for(int j = 0; j<chunk.cols.get(0).size(); j++) {
 			double previous = chunk.cols.get(0).get(j);
 			for(int i = 1; i<chunk.cols.size(); i++) {
