@@ -48,9 +48,17 @@
 						${flash.message}
 					</div>
 				</g:if>
+				<g:if test="${projectInstance?.revision.backlog.state!='Recalculated'}">
+					<div class="errors" role="status">
+						<ul>
+							<li>Backlog is not recalculated</li>
+						</ul>
+					</div>
+				</g:if>
 				<h1>
 					${projectInstance?.name}
 					- csv
+					<g:if test="${projectInstance.revision.csv.ver!=csvInstance.ver}"> - old revision</g:if>
 				</h1>
 				<ol class="show">
 					<li class="text"><span class="created">Edited <g:formatDate

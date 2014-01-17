@@ -23,12 +23,27 @@
 				</ol>
 				<div class="buttons">
 					<button class="button-reset-zoom-chart1 button-reset-zoom-chart2 btn btn-primary pull-right">ResetZoom</button>
+					<g:link class="btn btn-primary pull-right offset-right"
+						controller="backlog" action="show" id="${projectInstance?.id}">
+						<g:message code="default.button.backlog.label" default="Backlog" />
+					</g:link>
+					<g:link class="btn btn-primary pull-right offset-right"
+						action="show" id="${projectInstance?.id}">
+						<g:message code="default.button.csv.label" default="Csv" />
+					</g:link>
 				</div>
 			</div>
 			<div class="content">
 				<g:if test="${flash.message}">
 					<div class="message" role="status">
 						${flash.message}
+					</div>
+				</g:if>
+				<g:if test="${projectInstance?.revision.backlog.state!='Recalculated'}">
+					<div class="errors" role="status">
+						<ul>
+							<li>Backlog is not recalculated</li>
+						</ul>
 					</div>
 				</g:if>
 				<h1>
@@ -40,10 +55,6 @@
 					<g:hiddenField name="version" value="${projectInstance?.version}" />
 					<fieldset class="form offset-top">
 						<g:render template="formPlot" />
-					</fieldset>
-					<fieldset class="buttons-plot pull-right">
-						<g:actionSubmit class="btn btn-primary" action="updateProject"
-							value="${message(code: 'default.button.save.label', default: 'Save values')}" />
 					</fieldset>
 				</g:form>
 				<div id="chart1" style="height: 600px; width: 100%;"></div>

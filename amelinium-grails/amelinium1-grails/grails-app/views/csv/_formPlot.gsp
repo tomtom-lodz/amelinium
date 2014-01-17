@@ -13,4 +13,6 @@
 		<g:message code="project.scope.increase.label" default="Scope increase:" />
 	</label>
 	<g:textField type="number" name="scopeIncrease" value="${projectInstance?.scopeIncrease}"/>
+	<g:actionSubmit class="btn btn-primary" action="updateProject"
+							value="${message(code: 'default.button.save.label', default: 'Update values')}" />
 </div>

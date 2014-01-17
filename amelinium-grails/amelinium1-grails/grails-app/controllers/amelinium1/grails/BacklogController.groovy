@@ -2,16 +2,6 @@ package amelinium1.grails
 
 import grails.plugin.springsecurity.annotation.Secured;
 
-import com.tomtom.amelinium.backlogservice.builders.BacklogModelBuilder
-import com.tomtom.amelinium.backlogservice.corrector.*;
-import com.tomtom.amelinium.backlogservice.model.BacklogModel
-import com.tomtom.amelinium.backlogservice.serializer.BacklogModelSerializer
-import com.tomtom.amelinium.backlogservice.serializer.WikiToHTMLSerializer
-import com.tomtom.amelinium.chartservice.factory.ChartServiceFactory
-import com.tomtom.amelinium.common.LineProducer
-import com.tomtom.woj.amelinium.journal.updating.BacklogAndJournalUpdater
-
-import org.joda.time.DateTime;
 import org.springframework.dao.DataIntegrityViolationException
 
 
@@ -22,12 +12,7 @@ class BacklogController {
 
     def ProjectService projectService
     def springSecurityService
-    def LineProducer producer = new LineProducer();
-    def BacklogModelBuilder builder = new BacklogModelBuilder();
-    def BacklogModelCorrector backlogModelCorrector = new BacklogModelCorrector();
-    def BacklogModelSerializer generator = new BacklogModelSerializer();
-    def BacklogAndJournalUpdater journalUpdater = new BacklogAndJournalUpdater();
-    def WikiToHTMLSerializer htmlSerializer = new WikiToHTMLSerializer();
+    def CoreService coreService
 
     def show(Long id) {
         def projectInstance = Project.get(id)
@@ -38,7 +23,7 @@ class BacklogController {
         }
         def backlogInstance = projectInstance.revision.backlog
         
-        String wiki = htmlSerializer.convert(backlogInstance.text);
+        String wiki = coreService.serializeText(backlogInstance.text)
 
         [backlogInstance: backlogInstance, projectInstance: projectInstance, text:wiki]
     }
@@ -74,7 +59,7 @@ class BacklogController {
             }
         }
         
-        projectService.updateBacklog(projectInstance, params.text, params.comment, springSecurityService.getCurrentUser().getUsername())
+        projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getCurrentUser().getUsername())
 
         flash.message = message(code: 'default.updated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),
@@ -103,7 +88,7 @@ class BacklogController {
 
         String restoredFrom = "Restored from revision - "+projectInstance.revision.ver
         
-        projectService.updateBacklog(projectInstance, backlogInstance.text,restoredFrom,springSecurityService.getCurrentUser().getUsername())
+        projectService.updateBacklog(projectInstance.id, backlogInstance.text, restoredFrom, "Not recalculated", springSecurityService.getCurrentUser().getUsername())
 
         redirect(action: "show", id: projectInstance.id)
     }
@@ -126,7 +111,7 @@ class BacklogController {
             return
         }
         
-        String wiki = htmlSerializer.convert(backlogInstance.text);
+        String wiki = coreService.serializeText(backlogInstance.text)
 
         render(view:"show", model: [backlogInstance: backlogInstance, projectInstance: projectInstance, text:wiki]);
     }
@@ -156,27 +141,16 @@ class BacklogController {
         def csvInstance = projectInstance.revision.csv
 
         String oldContent = backlogInstance.text + "\nBACKLOG END"
-
-        ArrayList<String> lines = producer.readLinesFromString(oldContent);
-        BacklogModel backlogModel = builder.buildBacklogModel(lines,true);
-        backlogModel = backlogModelCorrector.correctModelPoints(backlogModel);
-        String newContent = generator.serializeModel(backlogModel);
-
-        backlogInstance.text = newContent
-        backlogInstance.state = "Recalculated"
+        String newBacklog = coreService.recalculateBacklog(oldContent)
         
-        //generateUpdatedString(DateTime dateTime, String backlogContent, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures)
-        
-        DateTime dateTime  = new DateTime().toDateMidnight().toDateTime();
         String updatedJournal;
         try {
-            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, false, true, true, true);
-            
-        } catch (Exception e) {
-            updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogInstance.text, csvInstance.text, true, true, true, true);
+            updatedJournal =  coreService.recalculateCsv(backlogInstance.text, csvInstance.text, false, true, true, true);
+        } catch (IndexOutOfBoundsException e) {
+            updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, true, true, true, true);
         }
         
-        csvInstance.text = updatedJournal;
+        projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getCurrentUser().getUsername())
         
         flash.message = message(code: 'default.recalculated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),

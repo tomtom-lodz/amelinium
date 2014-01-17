@@ -3,9 +3,6 @@
 input, select, textarea {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 } */
-h1,h2,h3,h4,h5,h6 {
-	line-height: 1.1;
-}
 
 /* BASE LAYOUT */
 html {
@@ -239,6 +236,19 @@ span.cke_skin_kama {
 	width: 100%;
 }
 
+.content>.show>.text>div.value>h1, .content>.show>.text>div.value>h2, .content>.show>.text>div.value>h3{
+	margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.content>.show>.text>div.value>ul{
+	list-style-type:disc;
+}
+
+.content>.show>.text>div.value>ul>li{
+	text-indent: 10px;
+}
+
 .content>.show>.comment>span.value {
 	display: block;
 }
@@ -382,6 +392,11 @@ span.cke_skin_kama {
 	width:50px
 }
 
+.form-plot input.btn{
+	width:120px;
+	margin-left:15px;
+}
+
 #create-secUser>.form-horizontal {
 	margin: auto;
 	width: 300px;
@@ -469,12 +484,6 @@ span.cke_skin_kama {
 	position: relative;
 	top: -52px;
 	right: 0px;
-}
-
-.buttons-plot {
-	position: relative;
-	top: -146px;
-	right: 120px;
 }
 
 .form-buttons {

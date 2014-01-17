@@ -39,10 +39,12 @@ class ProjectService {
         project
     }
 
-    def updateBacklog(Project project, String backlogText, String commentText, String editedBy) {
+    def updateBacklog(Long projectId, String backlogText, String commentText, String state, String editedBy) {
 
+        Project project = Project.get(projectId)
+        
         def backlogVer = project.revision.backlog.ver + 1
-        def backlog = new Backlog(ver:backlogVer,text:backlogText, state:"Not recalculated", editedBy:editedBy)
+        def backlog = new Backlog(ver:backlogVer,text:backlogText, state:state, editedBy:editedBy)
         if (!backlog.save(flush: true)) {
             backlog.errors.each { println it }
         }
@@ -50,7 +52,7 @@ class ProjectService {
         def csv = project.revision.csv
 
         def revisionVer = project.revision.ver + 1
-        def revision = new Revision(ver:revisionVer,backlog:backlog,csv:csv,project:project,comment:commentText,changedBy:editedBy)
+        def revision = new Revision(ver:revisionVer, backlog:backlog, csv:csv, project:project, comment:commentText, changedBy:editedBy)
         if (!revision.save(flush: true)) {
             revision.errors.each { println it }
         }
@@ -64,8 +66,10 @@ class ProjectService {
         project
     }
 
-    def updateCsv(Project project, String csvText, String commentText, String editedBy) {
-
+    def updateCsv(Long projectId, String csvText, String commentText, String editedBy) {
+        
+        Project project = Project.get(projectId)
+        
         def csvVer = project.revision.csv.ver + 1
         def csv = new Csv(ver:csvVer, text:csvText, editedBy:editedBy)
         if (!csv.save(flush: true)) {
@@ -86,34 +90,41 @@ class ProjectService {
         if (!project.save(flush: true)) {
             project.errors.each { println it }
         }
+          
         project
     }
-
-/*    def updateBacklogCsv(Project project, String backlogText, String csvText) {
-
-        def backlogVer = project.revision.backlog.ver + 1
-        def backlog = new Backlog(ver:backlogVer,text:backlogText)
-        if (!backlog.save(flush: true)) {
-            backlog.errors.each { println it }
-        }
-
+    
+    def updateBacklogAndCsv(Long projectId, String backlogText, String csvText, String commentText, String state, String editedBy) {
+        
+        Project project = Project.get(projectId)
+        
         def csvVer = project.revision.csv.ver + 1
-        def csv = new Csv(ver:csvVer,text:csvText)
+        def csv = new Csv(ver:csvVer, text:csvText, editedBy:editedBy)
         if (!csv.save(flush: true)) {
             csv.errors.each { println it }
         }
 
+        def backlogVer = project.revision.backlog.ver + 1
+        def backlog = new Backlog(ver:backlogVer,text:backlogText, state:state, editedBy:editedBy)
+        if (!backlog.save(flush: true)) {
+            backlog.errors.each { println it }
+        }
+
         def revisionVer = project.revision.ver + 1
-        def revision = new Revision(ver:revisionVer,backlog:backlog,csv:csv, project:project)
+        def revision = new Revision(ver:revisionVer, backlog:backlog, csv:csv, project:project,comment:commentText,changedBy:editedBy)
         if (!revision.save(flush: true)) {
             revision.errors.each { println it }
         }
 
         project.revision = revision
+        project.editedBy = editedBy
+        project.revisions.size()
         project.addToRevisions(revision)
         if (!project.save(flush: true)) {
             project.errors.each { println it }
         }
+          
         project
-    }*/
+    }
+
 }

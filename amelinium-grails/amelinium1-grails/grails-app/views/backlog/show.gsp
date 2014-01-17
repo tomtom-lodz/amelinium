@@ -61,6 +61,7 @@
 				<h1>
 					${projectInstance?.name}
 					- backlog
+					<g:if test="${projectInstance.revision.backlog.ver!=backlogInstance.ver}"> - old revision</g:if>
 				</h1>
 				<ol class="show">
 					<li class="text"><span class="created">Edited <g:formatDate

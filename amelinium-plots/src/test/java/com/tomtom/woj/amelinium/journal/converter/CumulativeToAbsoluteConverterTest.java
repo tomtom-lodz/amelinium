@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.tomtom.woj.amelinium.journal.converter.CumulativeToAbsoluteConverter;
@@ -32,6 +33,7 @@ public class CumulativeToAbsoluteConverterTest {
 		assertEquals(expectedChunks.toString(), newChunks.toString());
 	}
 
+	@Ignore
 	@Test
 	public void testBugWhenNulls() throws IOException {
 		// given

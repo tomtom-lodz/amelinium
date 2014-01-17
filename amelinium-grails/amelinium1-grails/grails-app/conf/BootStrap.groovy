@@ -25,6 +25,9 @@ class BootStrap {
 			projectService.createProject("project11","jasio",1,1,1)
             def userRole = SecRole.findByAuthority('ROLE_USER') ?: new SecRole(authority: 'ROLE_USER').save(failOnError: true, flush:true)
             def adminRole = SecRole.findByAuthority('ROLE_ADMIN') ?: new SecRole(authority: 'ROLE_ADMIN').save(failOnError: true, flush:true)
+            def secUser = SecUser.findByUsername("admin") ?: new SecUser(username:"admin", password:"nimda", accountExpired:false, accountLocked:false, passwordExpired:false).save(failOnError: true, flush:true)
+            SecUserSecRole.create secUser, userRole, true
+            
         } else if (currentEnv == Environment.TEST) {
 
         } else if (currentEnv == Environment.PRODUCTION) {

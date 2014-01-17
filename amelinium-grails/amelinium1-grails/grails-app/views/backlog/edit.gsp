@@ -24,8 +24,8 @@
 			<h1>Edit - ${projectInstance?.name} - backlog</h1>
 		</div>
 		<div class="btn-group offset-top">
-  			<input type="button" class="button-podkresl btn btn-default" value="Skreśl">
-			<input type="button" class="button-lista btn btn-default" value="Lista">
+  			<input type="button" class="button-podkresl btn btn-default" value="Strikethrough">
+			<input type="button" class="button-lista btn btn-default" value="List">
 
   			<div class="btn-group">
     		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
