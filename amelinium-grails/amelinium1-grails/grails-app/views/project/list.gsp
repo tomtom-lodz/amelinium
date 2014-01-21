@@ -46,7 +46,7 @@
 							<th><g:message code="project.revision.label"
 									default="Project history" /></th>
 							<th><g:message code="project.status.label" default="Status" /></th>
-							<g:if test="${sorted=='lastUpdated'&&ordered=='asc'}">
+							<g:if test="${sorted=='lastUpdated'&&ordered=='desc'}">
 								<g:sortableColumn property="lastUpdated"
 									title="${message(code: 'project.updated.label', default: 'Last update')}"
 									class="sorted-asc date" />
@@ -82,7 +82,7 @@
 			</div>
 			<div class="pages pull-right">
 				<g:form action="list">
-					<g:select name="max" from="${['2', '10', '20', '50']}" onchange="submit()"
+					<g:select name="max" from="${['5', '10', '20', '50']}" onchange="submit()"
 						value="${projectsMax}" />
 				</g:form>
 			</div>

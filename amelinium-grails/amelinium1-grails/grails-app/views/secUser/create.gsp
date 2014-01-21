@@ -33,8 +33,6 @@
 			</div>
 		</g:form>
 	</section>
-	<script type="text/javascript">
-		changeBg();
-	</script>
+<g:javascript src="bg.js" />
 </body>
 </html>

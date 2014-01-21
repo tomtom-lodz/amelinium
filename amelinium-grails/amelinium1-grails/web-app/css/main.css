@@ -17,7 +17,7 @@ html * {
 }
 
 body {
-	background: #111FFF font-family: Arial, sans-serif;
+	background: #FFF font-family: Arial, sans-serif;
 	font-size: 16px;
 	height:100%;
 	min-height:400px;
@@ -239,6 +239,7 @@ span.cke_skin_kama {
 .content>.show>.text>div.value>h1, .content>.show>.text>div.value>h2, .content>.show>.text>div.value>h3{
 	margin-top: 20px;
     margin-bottom: 10px;
+    /* text-align: center; */
 }
 
 .content>.show>.text>div.value>ul{
@@ -364,12 +365,27 @@ span.cke_skin_kama {
 	margin-top: 25px;
 }
 
+.login-content{
+	width:100%;
+	
+}
+
+.login-content>.form-horizontal{
+	width:600px;
+	margin:100px auto 0 auto;
+}
+
+.login-content>.form-horizontal>.form-group>.btn{
+
+}
+
 .form-horizontal {
-	padding: 50px;
+	/*width:50%;*/
+	padding: 30px 50px 30px 50px;
 	border: 1px solid rgb(204, 204, 204);
-	-webkit-box-shadow: 0 0 5px rgb(112, 112, 112);
-	-moz-box-shadow: 0 0 5px rgb(112, 112, 112);
-	box-shadow: 0 0 5px rgb(112, 112, 112);
+	-webkit-box-shadow: 0 0 5px rgb(154, 154, 154);
+	-moz-box-shadow: 0 0 5px rgb(154, 154, 154);
+	box-shadow: 0 0 5px rgb(154, 154, 154);
 	border-radius: 10px;
 	background: white;
 }
@@ -379,9 +395,15 @@ span.cke_skin_kama {
 	padding-bottom: 10px;
 }
 
-.form-horizontal>.form-group>.btn {
-	width: 15%;
-	font-size: 15px;
+.form-horizontal>.form-group>.btn{
+	width: 25%;
+	font-size: 16px;
+	margin-left: 200px;
+}
+
+.form-horizontal>.form-actions>.btn{
+	width: 48%;
+	font-size: 16px;
 }
 
 .form-plot{
@@ -398,7 +420,7 @@ span.cke_skin_kama {
 }
 
 #create-secUser>.form-horizontal {
-	margin: auto;
+	margin: 100px auto 0 auto;
 	width: 300px;
 }
 
