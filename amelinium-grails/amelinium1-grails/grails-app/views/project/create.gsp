@@ -37,7 +37,6 @@
 				</ul>
 			</g:hasErrors>
 			<g:form action="save">
-				<g:hiddenField name="user" value="${sec.username()}" />
 				<fieldset class="form">
 					<g:render template="formCreate" />
 				</fieldset>

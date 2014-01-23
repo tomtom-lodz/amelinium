@@ -45,10 +45,6 @@
 						<sec:ifLoggedIn>
 							<li><g:link controller="logout">Log out</g:link></li>
 						</sec:ifLoggedIn>
-						<sec:ifNotLoggedIn>
-							<li class="divider"></li>
-							<li><g:link controller="secUser" action="create">Register</g:link></li>
-						</sec:ifNotLoggedIn>
 					</ul></li>
 			</ul>
 		</div>

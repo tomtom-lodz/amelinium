@@ -59,7 +59,7 @@ class BacklogController {
             }
         }
         
-        projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getCurrentUser().getUsername())
+        projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getPrincipal().getUsername())
 
         flash.message = message(code: 'default.updated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),
@@ -88,7 +88,7 @@ class BacklogController {
 
         String restoredFrom = "Restored from revision - "+projectInstance.revision.ver
         
-        projectService.updateBacklog(projectInstance.id, backlogInstance.text, restoredFrom, "Not recalculated", springSecurityService.getCurrentUser().getUsername())
+        projectService.updateBacklog(projectInstance.id, backlogInstance.text, restoredFrom, "Not recalculated", springSecurityService.getPrincipal().getUsername())
 
         redirect(action: "show", id: projectInstance.id)
     }
@@ -150,7 +150,7 @@ class BacklogController {
             updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, true, true, true, true);
         }
         
-        projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getCurrentUser().getUsername())
+        projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getPrincipal().getUsername())
         
         flash.message = message(code: 'default.recalculated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),

@@ -65,7 +65,7 @@ grails.project.dependency.resolution = {
 //        compile ":ckeditor:3.6.6.1.0"
         compile ":twitter-bootstrap:3.0.3"
         compile ":lesscss-resources:1.3.3"
-        //compile ':spring-security-core:2.0-RC2'
+        compile ':spring-security-core:2.0-RC2'
         compile ":spring-security-ldap:2.0-RC2"
     }
 }

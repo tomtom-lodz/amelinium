@@ -61,19 +61,11 @@
 				<div>
 					${burnuptable}
 				</div>
-				<%--<div id="chart2" style="height: 600px; width: 100%;"></div>--%>
 				<script class="code" type="text/javascript">
 					
 				${chart}
 					
 				</script>
-				<%--
-				<script
-					class="code"
-					type="text/javascript">
-				${chart2}		
-				</script>
-				--%>
 				<!-- Don't touch this! -->
 				<g:javascript src="jqplot/jquery.jqplot.min.js" />
 				<!-- End Don't touch this! -->

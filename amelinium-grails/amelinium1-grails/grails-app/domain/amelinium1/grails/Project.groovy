@@ -20,9 +20,9 @@ class Project {
 		name size: 2..100, blank: false, unique: true
 		revision nullable: true
 		status nullable: true, inList: ["Open","Closed"]
-        sprintLength nullable:true, matches: ["[0-9]+"]
-        velocity nullable:true, matches: ["[0-9]+"]
-        scopeIncrease nullable:true, matches: ["[0-9]+"]
+        sprintLength nullable:true, blank: false, matches: ["[0-9]+"]
+        velocity nullable:true, blank: false, matches: ["[0-9]+"]
+        scopeIncrease nullable:true, blank: false, matches: ["[0-9]+"]
         createdBy nullable:true
         editedBy nullable:true
     }

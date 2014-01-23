@@ -3,15 +3,17 @@ package amelinium1.grails
 import grails.plugin.springsecurity.annotation.Secured;
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.core.userdetails.User
 
 class ProjectController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def ProjectService projectService
-    def springSecurityService
-
+	def springSecurityService
+	
     def index() {
+
         redirect(action: "list", params: params)
     }
 
@@ -67,7 +69,17 @@ class ProjectController {
     }
 
     def save() {
-        def projectInstance = projectService.createProject(params.name, params.user, params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
+		if(!params.sprintLength){
+			params.sprintLength = "1"
+		}
+		if(!params.velocity){
+			params.velocity = "1"
+		}
+		if(!params.scopeIncrease){
+			params.scopeIncrease = "1"
+		}
+		
+        def projectInstance = projectService.createProject(params.name, springSecurityService.getPrincipal().getUsername(), params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
         if (projectInstance.hasErrors()) {
             render(view: "create", model: [projectInstance: projectInstance])
             return
@@ -124,7 +136,7 @@ class ProjectController {
 
         projectInstance.name = params.name
         projectInstance.status = params.status
-        projectInstance.editedBy = springSecurityService.getCurrentUser().getUsername()
+        projectInstance.editedBy = springSecurityService.getPrincipal().getUsername()
         projectInstance.sprintLength = params.sprintLength.toInteger()
         projectInstance.velocity = params.velocity.toInteger()
         projectInstance.scopeIncrease = params.scopeIncrease.toInteger()
