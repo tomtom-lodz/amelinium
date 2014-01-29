@@ -112,6 +112,11 @@ input:invalid:focus,select:invalid:focus,textarea:invalid:focus {
 
 /* ACTION BUTTONS */
 
+#dialog {
+    display: none;
+}
+.noTitleStuff .ui-dialog-titlebar {display:none}
+
 /*  BOOTSTRAP  */
 .scroller{
 	overflow:auto;

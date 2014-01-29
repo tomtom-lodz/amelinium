@@ -40,7 +40,7 @@
 							default="Update backlog and csv" />
 					</g:link>
 					<g:link class="btn btn-success pull-right offset-right" controller="csv"
-						action="plot" id="${projectInstance?.id}">
+						action="plotFromProject" id="${projectInstance?.id}">
 						<g:message code="default.button.plot.label" default="View plot" />
 					</g:link>
 				</div>

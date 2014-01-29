@@ -36,8 +36,8 @@
 						action="recalculate" id="${projectInstance?.id}">
 						<g:message code="default.button.update.csv.label" default="Update csv" />
 					</g:link>
-					<g:link class="btn btn-success pull-right offset-right" action="plot"
-						id="${projectInstance?.id}">
+					<g:link class="btn btn-success pull-right offset-right" action="plotFromCsv"
+						id="${csvInstance?.id}">
 						<g:message code="default.button.plot.label" default="View plot" />
 					</g:link>
 				</div>

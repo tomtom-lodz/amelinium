@@ -8,39 +8,27 @@ class ProjectServiceTests {
 	
 	ProjectService projectService = new ProjectService()
 
-    @Before
-    void setUp() {
-        // Setup logic here
-    }
-
-    @After
-    void tearDown() {
-        // Tear down logic here
-    }
-
     @Test
     void testCreateProject() {
+		//when
+		def project = projectService.createProject("aa", "aa", 0, 0, 0)
 		
-//		log.info "aaa"
-//
-//		assert Project.count() == 0
-//		def project=new Project(name:"aaa")
-//		project.save(flush:true)
-//		assertFalse project.hasErrors()
-//		assert Project.count() == 1
-//		
-//		log.info "bbb"
-		
-		def project = projectService.createProject("name")
+		//then
 		assert Project.count() == 1
 		assert project.revisions.last().ver == 1
     }
 	
     @Test
-    void testUpdateBacklog() {
-		def project = projectService.createProject("name")
-		projectService.updateBacklog(project, "new backlog 1")
-		projectService.updateBacklog(project, "new backlog 2")
+    void testUpdateBacklogTwice() {
+		//given
+		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		
+		//when
+		projectService.updateBacklog(project.id, "text", "text", "Recalculated", "test")
+		projectService.updateBacklog(project.id, "text2", "text2", "Recalculated", "test")
+		
+		//update set on test
+		//then
 		assert Project.count() == 1
 		assert project.revision.backlog.ver == 3 
 		assert project.revision.csv.ver == 1
@@ -48,10 +36,15 @@ class ProjectServiceTests {
 	}
 	
     @Test
-    void testUpdateCsv() {
-		def project = projectService.createProject("name")
-		projectService.updateCsv(project, "new csv 1")
-		projectService.updateCsv(project, "new csv 2")
+    void testUpdateCsvTwice() {
+		//given
+		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		
+		//when
+		projectService.updateCsv(project.id, "text", "text", "test")
+		projectService.updateCsv(project.id, "text2", "text2", "test")
+		
+		//then
 		assert Project.count() == 1
 		assert project.revision.backlog.ver == 1
 		assert project.revision.csv.ver == 3
@@ -59,10 +52,15 @@ class ProjectServiceTests {
 	}
 	
     @Test
-    void testUpdateBacklogCsv() {
-		def project = projectService.createProject("name")
-		projectService.updateBacklogCsv(project, "new backlog 1", "new csv 1")
-		projectService.updateBacklogCsv(project, "new backlog 2", "new csv 2")
+    void testUpdateBacklogCsvTwice() {
+		//given
+		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		
+		//when
+		projectService.updateBacklogAndCsv(project.id, "text", "text", "text", "Recalculated", "test")
+		projectService.updateBacklogAndCsv(project.id, "text2", "text2", "text2", "Recalculated", "test")
+		
+		//then
 		assert Project.count() == 1
 		assert project.revision.backlog.ver == 3
 		assert project.revision.csv.ver == 3

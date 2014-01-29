@@ -20,6 +20,7 @@ import com.tomtom.woj.amelinium.plots.burnup.BurnupModel
 import com.tomtom.woj.amelinium.plots.burnup.BurnupModelFactory;
 import com.tomtom.woj.amelinium.plots.burnup.BurnupPlotJavascriptGenerator;
 import com.tomtom.woj.amelinium.plots.burnup.BurnupTableGenerator;
+
 import org.joda.time.DateTime
 
 /**
@@ -47,12 +48,12 @@ class CoreService {
     def WikiToHTMLSerializer htmlSerializer = new WikiToHTMLSerializer();
     
 
-    def recalculateCsv(String backlogText,String csvText, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures){
+    String recalculateCsv(String backlogText,String csvText, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate,boolean allowingMultilineFeatures){
         DateTime dateTime  = new DateTime().toDateMidnight().toDateTime();
         String updatedJournal = journalUpdater.generateUpdatedString(dateTime, backlogText, csvText, isCumulative, addNewFeatureGroups, overwriteExistingDate, allowingMultilineFeatures);
     }
     
-    def recalculateBacklog(String oldContent){
+    String recalculateBacklog(String oldContent){
         ArrayList<String> lines = producer.readLinesFromString(oldContent);
         BacklogModel backlogModel = builder.buildBacklogModel(lines,true);
         backlogModel = backlogModelCorrector.correctModelPoints(backlogModel);
@@ -60,7 +61,7 @@ class CoreService {
     }
     
     
-    def createCsvChartAndTable(String csvText, boolean isCumulative,double dailyVelocity, double dailyScopeIncrease, String chartName){
+    String[] createCsvChartAndTable(String csvText, boolean isCumulative,double dailyVelocity, double dailyScopeIncrease, String chartName){
         ArrayList<BacklogChunk> chunks = reader.readFromStringNullAllowed(csvText);
 
         if(!isCumulative) {
@@ -77,7 +78,7 @@ class CoreService {
         String [] result = [chart1, burnupTable];
     }
     
-    def serializeText(String csvText){
+    String serializeText(String csvText){
         htmlSerializer.convert(csvText);  
     }
 }

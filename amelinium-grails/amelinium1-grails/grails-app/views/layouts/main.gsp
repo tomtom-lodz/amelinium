@@ -13,10 +13,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <g:layoutHead />
 <r:require modules="bootstrap" />
+<r:require module="jquery-ui"/>
 <r:layoutResources />
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}"
+	type="text/css">
+	<link rel="stylesheet" href="${resource(dir: 'css/ui', file: 'jquery-ui.css')}"
 	type="text/css">
 <link rel="stylesheet"
 	href="${resource(dir: 'js/jqplot', file: 'jquery.jqplot.min.css')}"
@@ -31,7 +34,7 @@
 			<ul class="nav navbar-nav">
 				<sec:ifLoggedIn>
 					<li><g:link class="white-link" url="${createLink(uri: '/')}">
-							${sec.username()}
+							${sec.loggedInUserInfo(field:"dn").split(",")[0].substring(3)}
 						</g:link></li>
 				</sec:ifLoggedIn>
 				<li><a class="white-link" href="${createLink(uri: '/systeminfo')}">Info</a></li>

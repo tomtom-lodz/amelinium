@@ -50,7 +50,7 @@ class BacklogController {
         }
         def backlogInstance = projectInstance.revision.backlog
         if (version != null) {
-            if (projectInstance.version > version) {
+            if (projectInstance.revision.ver > version) {
                 backlogInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'backlog.label', default: 'Backlog')] as Object[],
                         "Another user has updated this Backlog while you were editing")
@@ -59,7 +59,7 @@ class BacklogController {
             }
         }
         
-        projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getPrincipal().getUsername())
+        projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
 
         flash.message = message(code: 'default.updated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),
@@ -76,10 +76,7 @@ class BacklogController {
             return
         }
 
-        def projectInstance = Project.executeQuery(
-                'select p from Project p inner join p.revisions r where r.backlog=:backlog',
-                [backlog: backlogInstance]).first()
-
+		Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.backlog=:backlog', [backlog: backlogInstance])
         if (!projectInstance) {
             flash.message = message(code: 'backlog.didnotfindproject', default: 'Did not find project for Backlog')
             redirect(controller:"project", action: "list")
@@ -88,7 +85,7 @@ class BacklogController {
 
         String restoredFrom = "Restored from revision - "+projectInstance.revision.ver
         
-        projectService.updateBacklog(projectInstance.id, backlogInstance.text, restoredFrom, "Not recalculated", springSecurityService.getPrincipal().getUsername())
+        projectService.updateBacklog(projectInstance.id, backlogInstance.text, restoredFrom, "Not recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
 
         redirect(action: "show", id: projectInstance.id)
     }
@@ -101,10 +98,7 @@ class BacklogController {
             return
         }
 
-        def projectInstance = Project.executeQuery(
-                'select p from Project p inner join p.revisions r where r.backlog=:backlog',
-                [backlog: backlogInstance]).first()
-
+		Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.backlog=:backlog', [backlog: backlogInstance])
         if (!projectInstance) {
             flash.message = message(code: 'backlog.didnotfindproject', default: 'Did not find project for Backlog')
             redirect(controller:"project", action: "list")
@@ -150,7 +144,7 @@ class BacklogController {
             updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, true, true, true, true);
         }
         
-        projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getPrincipal().getUsername())
+        projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
         
         flash.message = message(code: 'default.recalculated.message', args: [
             message(code: 'backlog.label', default: 'Backlog'),

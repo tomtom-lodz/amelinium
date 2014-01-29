@@ -46,7 +46,7 @@ class CsvController {
         }
         def csvInstance = projectInstance.revision.csv
         if (version != null) {
-            if (projectInstance.version > version) {
+            if (projectInstance.revision.ver > version) {
                 csvInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'csv.label', default: 'Csv')] as Object[],
                         "Another user has updated this Csv while you were editing")
@@ -54,7 +54,7 @@ class CsvController {
                 return
             }
         }
-        projectService.updateCsv(projectInstance.id, params.text, params.comment, springSecurityService.getPrincipal().getUsername())
+        projectService.updateCsv(projectInstance.id, params.text, params.comment, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
 
         flash.message = message(code: 'default.updated.message', args: [
             message(code: 'csv.label', default: 'Csv'),
@@ -91,11 +91,7 @@ class CsvController {
             redirect(controller:"project", action: "list")
             return
         }
-
-        def projectInstance = Project.executeQuery(
-                'select p from Project p inner join p.revisions r where r.csv=:csv',
-                [csv: csvInstance]).first()
-
+        Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.csv=:csv', [csv: csvInstance])
         if (!projectInstance) {
             flash.message = message(code: 'csv.didnotfindproject', default: 'Did not find project for Csv')
             redirect(controller:"project", action: "list")
@@ -104,7 +100,7 @@ class CsvController {
 
         String restoredFrom = "Restored from revision - "+csvInstance.ver
 
-        projectService.updateCsv(projectInstance.id, csvInstance.text, restoredFrom, springSecurityService.getPrincipal().getUsername())
+        projectService.updateCsv(projectInstance.id, csvInstance.text, restoredFrom, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
 
         redirect(action: "show", id: projectInstance.id)
     }
@@ -117,10 +113,7 @@ class CsvController {
             return
         }
 
-        def projectInstance = Project.executeQuery(
-                'select p from Project p inner join p.revisions r where r.csv=:csv',
-                [csv: csvInstance]).first()
-
+        Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.csv=:csv', [csv: csvInstance])
         if (!projectInstance) {
             flash.message = message(code: 'csv.didnotfindproject', default: 'Did not find project for Csv')
             redirect(controller:"project", action: "list")
@@ -136,7 +129,7 @@ class CsvController {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(action: "list")
+            redirect(controller:"project", action: "list")
             return
         }
 
@@ -145,7 +138,7 @@ class CsvController {
         redirect(controller: "Revision", action:"list", id:projectInstance.id, params:params)
     }
     @Secured(['ROLE_USER'])
-    def plot(Long id){
+    def plotFromProject(Long id){
         def projectInstance = Project.get(id)
         if (!projectInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
@@ -173,16 +166,53 @@ class CsvController {
 
         String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
 
-        /*        BacklogChunk merged2 = subtractor.subtractBurnedFromMerged(merged);
-         BurndownModel burndownModel = burndownModelFactory.createModel(merged2, dailyVelocity+dailyScopeIncrease); // ????? effectiveVelocity
-         String chart2 = burndownGenerator.generateBurndown(burndownModel, "chart2", "Burndown chart");*/
-
         String newTable = "<table class=\"table\""+chartAndTable[1].substring(17);
         String chart1 = chartAndTable[0];
         
-        render(view: "plot", model: [csvInstance: csvInstance, projectInstance: projectInstance, chart:chart1, burnuptable:newTable])//chart2:chart2])
+        render(view: "plot", model: [csvInstance: csvInstance, projectInstance: projectInstance, chart:chart1, burnuptable:newTable])
     }
     
+	@Secured(['ROLE_USER'])
+	def plotFromCsv(Long id){
+		def csvInstance = Csv.get(id)
+        if (!csvInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'csv.label', default: 'Csv'), id])
+            redirect(controller:"project", action: "list")
+            return
+        }
+
+        Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.csv=:csv', [csv: csvInstance])
+        if (!projectInstance) {
+            flash.message = message(code: 'csv.didnotfindproject', default: 'Did not find project for Csv')
+            redirect(controller:"project", action: "list")
+            return
+        }
+
+		if(csvInstance.text.size()<1) {
+			flash.message = message(code: 'default.empty.csv', default: 'Cannot create plot, csv is empty!')
+			redirect(controller:"project", action: "list")
+			return
+		}
+
+		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
+		double dailyScopeIncrease = projectInstance.scopeIncrease*1.0/projectInstance.sprintLength
+
+		boolean isCumulative
+		if(params.cumulative){
+			isCumulative = params.cumulative
+		}
+		else {
+			isCumulative = false;
+		}
+
+		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
+
+		String newTable = "<table class=\"table\""+chartAndTable[1].substring(17);
+		String chart1 = chartAndTable[0];
+		
+		render(view: "plot", model: [csvInstance: csvInstance, projectInstance: projectInstance, chart:chart1, burnuptable:newTable])
+	}
+	
     @Secured(['ROLE_USER'])
     def recalculate(Long id){
         def projectInstance = Project.get(id)
@@ -201,7 +231,7 @@ class CsvController {
         }
         println updatedJournal
 
-        projectService.updateCsv(projectInstance.id, updatedJournal, "Recalculated csv", springSecurityService.getPrincipal().getUsername())
+        projectService.updateCsv(projectInstance.id, updatedJournal, "Recalculated csv", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
         
         flash.message = message(code: 'default.recalculated.message', args: [
             message(code: 'csv.label', default: 'Csv'),
@@ -215,17 +245,21 @@ class CsvController {
 		def csvInstance = Csv.get(id)
         if (!csvInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'csv.label', default: 'Csv'), id])
+			render(view: "plot_template")
+			return
         }
 
-        def projectInstance = Project.executeQuery(
-                'select p from Project p inner join p.revisions r where r.csv=:csv',
-                [csv: csvInstance]).first()
+        Project projectInstance = Project.getProjectInstance('select p from Project p inner join p.revisions r where r.csv=:csv', [csv: csvInstance])
 		if(!projectInstance){
 			flash.message = message(code: 'default.fetch.project.error', default: "Couldn't find project in database")
+			render(view: "plot_template")
+			return
 		}
 				
 		if(csvInstance.text.size()<1) {
 			flash.message = message(code: 'default.empty.csv', default: 'Cannot create plot, csv is empty!')
+			render(view: "plot_template")
+			return
 		}
 
 		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
@@ -247,14 +281,18 @@ class CsvController {
 	}
 	
 	def plotApiProject(Long id){
-		 def projectInstance = Project.get(id)
+		def projectInstance = Project.get(id)
         if (!projectInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
+			render(view: "plot_template")
+			return
         }
         def csvInstance = projectInstance.revision.csv
 				
 		if(csvInstance.text.size()<1) {
 			flash.message = message(code: 'default.empty.csv', default: 'Cannot create plot, csv is empty!')
+			render(view: "plot_template")
+			return
 		}
 
 		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength

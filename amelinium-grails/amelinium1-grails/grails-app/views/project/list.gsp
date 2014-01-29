@@ -66,7 +66,7 @@
 									</g:link></td>
 								<td><g:link action="showBacklog" id="${projectInstance?.id}">Backlog</g:link>
 									| ${projectInstance?.revision.backlog.state}</td>
-								<td><g:link controller="csv" action="plot"
+								<td><g:link controller="csv" action="plotFromProject"
 										id="${projectInstance?.id}"> Plot</g:link> | <g:link action="showCsv"
 										id="${projectInstance?.id}">Csv</g:link></td>
 								<td><g:link action="listRevision" id="${projectInstance?.id}">History</g:link></td>

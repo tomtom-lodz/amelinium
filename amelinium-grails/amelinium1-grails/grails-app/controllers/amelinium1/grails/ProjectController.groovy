@@ -1,5 +1,7 @@
 package amelinium1.grails
 
+import java.util.Calendar;
+
 import grails.plugin.springsecurity.annotation.Secured;
 
 import org.springframework.dao.DataIntegrityViolationException
@@ -27,19 +29,8 @@ class ProjectController {
         if(!params.sort){
             params.sort = 'name'
         }
-
+		
         [projectInstanceList: Project.list(params), projectInstanceTotal: Project.count(), projectsMax:params.max, sorted:params.sort, ordered:params.order ]
-    }
-
-    def close(Long id) {
-        def projectInstance = Project.get(id)
-        if (!projectInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(action: "list")
-            return
-        }
-        projectInstance.setStatus("Closed")
-        redirect(action: "show", id: projectInstance.id)
     }
 
     def showBacklog(Long id) {
@@ -78,8 +69,8 @@ class ProjectController {
 		if(!params.scopeIncrease){
 			params.scopeIncrease = "1"
 		}
-		
-        def projectInstance = projectService.createProject(params.name, springSecurityService.getPrincipal().getUsername(), params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
+
+        def projectInstance = projectService.createProject(params.name, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3), params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
         if (projectInstance.hasErrors()) {
             render(view: "create", model: [projectInstance: projectInstance])
             return
@@ -112,7 +103,6 @@ class ProjectController {
             redirect(action: "list")
             return
         }
-
         [projectInstance: projectInstance]
     }
 
@@ -125,7 +115,7 @@ class ProjectController {
         }
 
         if (version != null) {
-            if (projectInstance.version > version) {
+            if (projectInstance.revision.ver > version) {
                 projectInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'project.label', default: 'Project')] as Object[],
                         "Another user has updated this Project while you were editing")
@@ -136,7 +126,7 @@ class ProjectController {
 
         projectInstance.name = params.name
         projectInstance.status = params.status
-        projectInstance.editedBy = springSecurityService.getPrincipal().getUsername()
+        projectInstance.editedBy = springSecurityService.getPrincipal().getDn().split(",")[0].substring(3)
         projectInstance.sprintLength = params.sprintLength.toInteger()
         projectInstance.velocity = params.velocity.toInteger()
         projectInstance.scopeIncrease = params.scopeIncrease.toInteger()
@@ -152,24 +142,5 @@ class ProjectController {
         ])
         redirect(action: "list")
         return
-    }
-
-    def delete(Long id) {
-        def projectInstance = Project.get(id)
-        if (!projectInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            projectInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(action: "show", id: id)
-        }
     }
 }

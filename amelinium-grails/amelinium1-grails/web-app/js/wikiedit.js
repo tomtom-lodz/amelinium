@@ -80,3 +80,19 @@ $('.header-button').click(function(e) {
 	}
 	$('#text-area').setSelectionRange(3, 3);
 });
+
+$(function() {
+	var myButtons = { Close: function() { $(this).dialog('close'); }  };
+	$("#dialog").dialog({
+		autoOpen: false,
+		width: 400,
+		height: 600,
+		draggable: false,
+		resizable: false,
+		dialogClass: 'noTitleStuff',
+		buttons: myButtons
+	});
+	$("#help-dialog").on("click", function() {
+		$("#dialog").dialog("open");
+	});
+});

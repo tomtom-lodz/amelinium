@@ -23,7 +23,11 @@ class Project {
         sprintLength nullable:true, blank: false, matches: ["[0-9]+"]
         velocity nullable:true, blank: false, matches: ["[0-9]+"]
         scopeIncrease nullable:true, blank: false, matches: ["[0-9]+"]
-        createdBy nullable:true
-        editedBy nullable:true
+        createdBy nullable:true, size:2..100
+        editedBy nullable:true, size:2..100
     }
+	// taken care of first element when null project
+	static Project getProjectInstance(query, map){
+		return Project.executeQuery(query, map).first()
+	}
 }

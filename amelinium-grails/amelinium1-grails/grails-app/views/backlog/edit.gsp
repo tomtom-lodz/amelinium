@@ -45,6 +45,18 @@
     			</ul>
   			</div>
 		</div>
+		<div class="btn-group offset-top pull-right offset-right">
+			<input id="help-dialog" type="button" class="btn btn-default pull-right" value="?">
+		</div>
+		<div id="dialog" title="Dialog">
+			<p><b><g:message code="wikimarkup.epic.header" default="Headers info for epics" /></b></p>
+			<p><b><g:message code="wikimarkup.task.header" default="Headers info for tasks" /></b></p>
+			<p><b><g:message code="wikimarkup.story.header" default="Headers info for stories" /></b></p>
+			<p><b><g:message code="wikimarkup.finished.story" default="Finished stories info" /></b></p>
+			<p><b><g:message code="wikimarkup.points.evaluation" default="Epic points evaluation info" /></b></p>
+			<p><b><g:message code="wikimarkup.points.evaluation.stories" default="Stories points evalutaion info" /></b></p>
+			<p><b><g:message code="wikimarkup.buttons.exmplain" default="Buttons info"/></b></p>
+		</div>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
@@ -76,7 +88,7 @@
 	</div>
 	<span class="for-footer"></span>
 	<g:javascript src="bg.js"/>
-	<g:javascript src="wikiedit.js"/>
 	<g:javascript src="text-area.js"/>
+	<g:javascript src="wikiedit.js"/>
 </body>
 </html>
