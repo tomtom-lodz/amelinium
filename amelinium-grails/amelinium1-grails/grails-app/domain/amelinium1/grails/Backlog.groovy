@@ -20,7 +20,7 @@ class Backlog {
     }
     
     static mapping = {
-        text sqlType:"varchar(max)"
+        text sqlType:"MEDIUMTEXT"
     }
     
 }

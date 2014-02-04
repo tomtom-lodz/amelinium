@@ -137,12 +137,8 @@ class BacklogController {
         String oldContent = backlogInstance.text + "\nBACKLOG END"
         String newBacklog = coreService.recalculateBacklog(oldContent)
         
-        String updatedJournal;
-        try {
-            updatedJournal =  coreService.recalculateCsv(backlogInstance.text, csvInstance.text, false, true, true, true);
-        } catch (IndexOutOfBoundsException e) {
-            updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, true, true, true, true);
-        }
+        String updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, projectInstance.isCumulative,
+										 projectInstance.addNewFeatureGroups, true, projectInstance.multilineFeature);
         
         projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
         

@@ -69,8 +69,19 @@ class ProjectController {
 		if(!params.scopeIncrease){
 			params.scopeIncrease = "1"
 		}
+		if(!params.cumulative){
+			params.cumulative = false
+		}
+		if(!params.multilineFeature){
+			params.multilineFeature = true
+		}
+		if(!params.addNewFeatureGroups){
+			params.addNewFeatureGroups = true
+		}
 
-        def projectInstance = projectService.createProject(params.name, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3), params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger())
+        def projectInstance = projectService.createProject(params.name, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3),
+			 					params.sprintLength.toInteger(), params.velocity.toInteger(), params.scopeIncrease.toInteger(),
+								params.cumulative.toBoolean().booleanValue(), params.multilineFeature.toBoolean().booleanValue(), params.addNewFeatureGroups.toBoolean().booleanValue())
         if (projectInstance.hasErrors()) {
             render(view: "create", model: [projectInstance: projectInstance])
             return
@@ -123,14 +134,17 @@ class ProjectController {
                 return
             }
         }
-
+		
         projectInstance.name = params.name
         projectInstance.status = params.status
         projectInstance.editedBy = springSecurityService.getPrincipal().getDn().split(",")[0].substring(3)
         projectInstance.sprintLength = params.sprintLength.toInteger()
         projectInstance.velocity = params.velocity.toInteger()
         projectInstance.scopeIncrease = params.scopeIncrease.toInteger()
-
+		projectInstance.isCumulative = params.cumulative.toBoolean().booleanValue()
+		projectInstance.multilineFeature = params.multilineFeature.toBoolean().booleanValue()
+		projectInstance.addNewFeatureGroups = params.addNewFeatureGroups.toBoolean().booleanValue()
+		
         if (!projectInstance.save(flush: true)) {
             render(view: "edit", model: [projectInstance: projectInstance])
             return

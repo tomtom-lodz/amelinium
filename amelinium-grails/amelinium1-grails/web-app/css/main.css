@@ -244,15 +244,21 @@ span.cke_skin_kama {
 .content>.show>.text>div.value>h1, .content>.show>.text>div.value>h2, .content>.show>.text>div.value>h3{
 	margin-top: 20px;
     margin-bottom: 10px;
-    /* text-align: center; */
+    font-weight: bold;
 }
 
+.content>.show>.text>div.value>p{
+	font-size:18px;
+	font-weight: bold;
+	margin-bottom:20px !important;
+	margin-top:20px !important;
+}
 .content>.show>.text>div.value>ul{
 	list-style-type:disc;
 }
 
 .content>.show>.text>div.value>ul>li{
-	text-indent: 10px;
+	text-indent: 30px;
 }
 
 .content>.show>.comment>span.value {

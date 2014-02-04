@@ -42,9 +42,10 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
-        // runtime 'mysql:mysql-connector-java:5.1.22'
+        runtime 'mysql:mysql-connector-java:5.1.24'
         compile "com.googlecode.amelinium:amelinium-core:0.2-SNAPSHOT"
         compile "com.googlecode.amelinium:amelinium-plots:0.2-SNAPSHOT"
+		compile 'com.googlecode.flyway:flyway-core:2.2.1'
     }
 
     plugins {
@@ -52,14 +53,9 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.9.1"
         runtime ":resources:1.2"
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.5"
-
         build ":tomcat:$grailsVersion"
 
-        runtime ":database-migration:1.3.2"
+        runtime ":database-migration:1.3.8"
 
         compile ':cache:1.0.1'
 		compile ":jquery-ui:1.10.3"

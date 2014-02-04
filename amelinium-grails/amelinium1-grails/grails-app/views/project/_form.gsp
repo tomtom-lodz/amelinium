@@ -20,4 +20,16 @@
 		<g:message code="project.status.label" default="Status:" />
 	</label>
 	<g:select name="status" from="${projectInstance.constraints.status.inList}" value="${projectInstance.status}"/>
+	<label class="block" for="cumulative">
+		<g:message code="project.isCumulative.label" default="IsCumulative:" />
+	</label>
+	<g:select name="cumulative" from="${projectInstance.constraints.isCumulative.inList}" value="${projectInstance.isCumulative}"/>
+	<label class="block" for="multilineFeature">
+		<g:message code="project.multilineFeature.label" default="MultilineFeature:" />
+	</label>
+	<g:select name="multilineFeature" from="${projectInstance.constraints.multilineFeature.inList}" value="${projectInstance.multilineFeature}"/>
+	<label class="block" for="addNewFeatureGroups">
+		<g:message code="project.addNewFeatureGroups.label" default="AddNewFeatureGroups:" />
+	</label>
+	<g:select name="addNewFeatureGroups" from="${projectInstance.constraints.addNewFeatureGroups.inList}" value="${projectInstance.addNewFeatureGroups}"/>
 </div>

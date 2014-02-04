@@ -63,13 +63,14 @@ class CsvController {
         redirect(action: "show", id: projectInstance.id)
     }
 
-    def updateProject(Long id, Long version){
+    def updateProject(Long id){
         def projectInstance = Project.get(id)
         if (!projectInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
             redirect(controller:"project", action: "list")
             return
         }
+		
         projectInstance.sprintLength = params.sprintLength.toInteger()
         projectInstance.velocity = params.velocity.toInteger()
         projectInstance.scopeIncrease = params.scopeIncrease.toInteger()
@@ -79,7 +80,7 @@ class CsvController {
             return
         }
 
-        redirect(action: "plot", id: projectInstance.id)
+        redirect(action: "plotFromProject", id: projectInstance.id)
         return
     }
 
@@ -156,15 +157,7 @@ class CsvController {
         double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
         double dailyScopeIncrease = projectInstance.scopeIncrease*1.0/projectInstance.sprintLength
 
-        boolean isCumulative
-        if(params.cumulative){
-            isCumulative = params.cumulative
-        }
-        else {
-            isCumulative = false;
-        }
-
-        String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
+        String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, projectInstance.isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
 
         String newTable = "<table class=\"table\""+chartAndTable[1].substring(17);
         String chart1 = chartAndTable[0];
@@ -197,15 +190,7 @@ class CsvController {
 		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
 		double dailyScopeIncrease = projectInstance.scopeIncrease*1.0/projectInstance.sprintLength
 
-		boolean isCumulative
-		if(params.cumulative){
-			isCumulative = params.cumulative
-		}
-		else {
-			isCumulative = false;
-		}
-
-		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
+		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, projectInstance.isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
 
 		String newTable = "<table class=\"table\""+chartAndTable[1].substring(17);
 		String chart1 = chartAndTable[0];
@@ -223,14 +208,9 @@ class CsvController {
         }
         def backlogInstance = projectInstance.revision.backlog
         def csvInstance = projectInstance.revision.csv
-        String updatedJournal;
-        try {
-            updatedJournal =  coreService.recalculateCsv(backlogInstance.text, csvInstance.text, false, true, true, true);
-        } catch (IndexOutOfBoundsException e) {
-            updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, true, true, true, true);
-        }
-        println updatedJournal
-
+        String updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, projectInstance.isCumulative,
+										 projectInstance.addNewFeatureGroups, true, projectInstance.multilineFeature);
+									 
         projectService.updateCsv(projectInstance.id, updatedJournal, "Recalculated csv", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
         
         flash.message = message(code: 'default.recalculated.message', args: [
@@ -265,15 +245,7 @@ class CsvController {
 		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
 		double dailyScopeIncrease = projectInstance.scopeIncrease*1.0/projectInstance.sprintLength
 
-		boolean isCumulative
-		if(params.cumulative){
-			isCumulative = params.cumulative
-		}
-		else {
-			isCumulative = false;
-		}
-
-		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
+		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, projectInstance.isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
 
 		String chart1 = chartAndTable[0];
 		
@@ -298,15 +270,7 @@ class CsvController {
 		double dailyVelocity = projectInstance.velocity*1.0/projectInstance.sprintLength
 		double dailyScopeIncrease = projectInstance.scopeIncrease*1.0/projectInstance.sprintLength
 
-		boolean isCumulative
-		if(params.cumulative){
-			isCumulative = params.cumulative
-		}
-		else {
-			isCumulative = false;
-		}
-
-		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
+		String [] chartAndTable = coreService.createCsvChartAndTable(csvInstance.text, projectInstance.isCumulative, dailyVelocity, dailyScopeIncrease,"chart1")
 
 		String chart1 = chartAndTable[0];
 		
