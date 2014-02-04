@@ -37,6 +37,7 @@ class CsvController {
         [csvInstance: csvInstance, projectInstance: projectInstance]
     }
 
+	@Secured(['ROLE_USER'])
     def update(Long id, Long version) {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
@@ -62,7 +63,8 @@ class CsvController {
         ])
         redirect(action: "show", id: projectInstance.id)
     }
-
+	
+	@Secured(['ROLE_USER'])
     def updateProject(Long id){
         def projectInstance = Project.get(id)
         if (!projectInstance) {

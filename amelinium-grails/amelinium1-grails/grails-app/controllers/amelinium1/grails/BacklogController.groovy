@@ -40,7 +40,8 @@ class BacklogController {
 
         [backlogInstance: backlogInstance, projectInstance: projectInstance]
     }
-
+	
+	@Secured(['ROLE_USER'])
     def update(Long id, Long version) {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
@@ -67,6 +68,7 @@ class BacklogController {
         ])
         redirect(action: "show", id: projectInstance.id)
     }
+	
     @Secured(['ROLE_USER'])
     def restore(Long id) {
         def backlogInstance = Backlog.get(id)
@@ -89,7 +91,7 @@ class BacklogController {
 
         redirect(action: "show", id: projectInstance.id)
     }
-
+	
     def showRevision(Long id) {
         def backlogInstance = Backlog.get(id)
         if (!backlogInstance) {
@@ -109,7 +111,7 @@ class BacklogController {
 
         render(view:"show", model: [backlogInstance: backlogInstance, projectInstance: projectInstance, text:wiki]);
     }
-
+	
     def listRevision(Long id) {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
@@ -122,7 +124,8 @@ class BacklogController {
 
         redirect(controller: "Revision", action:"list", id:projectInstance.id, params:params)
     }
-
+	
+	@Secured(['ROLE_USER'])
     def recalculate(Long id){
 
         def projectInstance = Project.get(id)

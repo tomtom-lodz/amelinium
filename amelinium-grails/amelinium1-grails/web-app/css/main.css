@@ -261,6 +261,14 @@ span.cke_skin_kama {
 	text-indent: 30px;
 }
 
+.content>.show>.text>div.value>ul>li>ul>li{
+	text-indent: 60px;
+}
+
+.content>.show>.text>div.value>ul>li>ul>li>ul>li{
+	text-indent: 90px;
+}
+
 .content>.show>.comment>span.value {
 	display: block;
 }
