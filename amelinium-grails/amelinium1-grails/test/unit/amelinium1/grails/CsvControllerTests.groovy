@@ -51,7 +51,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("test", "test", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		controller.coreService = coreService
 		
@@ -77,7 +77,7 @@ class CsvControllerTests {
 		//given
         populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("test", "test", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 
 		//when
@@ -102,7 +102,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("test", "test", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		params.version = 0
 		
@@ -119,7 +119,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("test", "test", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		controller.projectService = projectService
 		controller.springSecurityService = springSecurityService
@@ -145,7 +145,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("test", "test", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		
 		//when
@@ -153,7 +153,7 @@ class CsvControllerTests {
 		
 		//then
 		assert params.id == project.id
-		assert response.redirectedUrl == '/csv/plot/1'
+		assert response.redirectedUrl == '/csv/plotFromProject/1'
 	}
 	
 	void testRestoreCsvNotFound(){
@@ -292,7 +292,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService();
-		Project project = service.createProject("aaa", "aaa", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		
 		//when
 		controller.plotFromProject()
@@ -307,7 +307,7 @@ class CsvControllerTests {
 		populateValidParams(params)
 		params["cumulative"] = true
 		ProjectService service = new ProjectService();
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = "test"
 		controller.coreService = coreService
 		
@@ -353,7 +353,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService();
-		Project project = service.createProject("aaa", "aaa", 0, 0, 0);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = ""
 		Project.metaClass.static.getProjectInstance = {query, map -> project}
 		
@@ -370,7 +370,7 @@ class CsvControllerTests {
 		populateValidParams(params)
 		params["cumulative"] = true
 		ProjectService service = new ProjectService();
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = "test"
 		controller.coreService = coreService
 		
@@ -399,7 +399,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService();
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1);
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		controller.projectService = projectService
 		controller.coreService = coreService
 		controller.springSecurityService = springSecurityService
@@ -466,7 +466,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = "test"
 		params["cumulative"] = true
 		controller.coreService = coreService
@@ -494,7 +494,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = ""
 		
 		//when
@@ -509,7 +509,7 @@ class CsvControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		project.revision.csv.text = "test"
 		params["cumulative"] = true
 		controller.coreService = coreService

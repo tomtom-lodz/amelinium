@@ -65,7 +65,7 @@
 								format="yyyy-MM-dd HH:mm" date="${csvInstance?.dateCreated}" />, by <b>
 								${csvInstance.editedBy}
 						</b></span>
-						<div class="value offset-top">
+						<div class="csv_value offset-top">
 							${text}
 						</div></li>
 				</ol>

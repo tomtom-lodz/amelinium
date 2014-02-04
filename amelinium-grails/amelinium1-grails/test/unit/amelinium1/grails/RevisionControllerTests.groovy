@@ -46,15 +46,15 @@ class RevisionControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		def project = service.createProject("test", "test", 0, 0, 0);
+		def project = service.createProject("test", "test", 0, 0, 0,true,true,true);
 		params.id = project.id
 		
 		//when
 		def model = controller.list()
 		
 		//then
-		assert model.revisionInstanceList.size() == 1
-		assert model.revisionInstanceTotal == 1
+		assert model.revisionInstanceList.size() == 0
+		assert model.revisionInstanceTotal == 0
 		assert model.projectInstance == project
 		assert model.display == "project"
 	}

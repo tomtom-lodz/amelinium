@@ -11,7 +11,7 @@ class ProjectServiceTests {
     @Test
     void testCreateProject() {
 		//when
-		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		def project = projectService.createProject("aa", "aa", 0, 0, 0,true,true,true)
 		
 		//then
 		assert Project.count() == 1
@@ -21,7 +21,7 @@ class ProjectServiceTests {
     @Test
     void testUpdateBacklogTwice() {
 		//given
-		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		def project = projectService.createProject("aa", "aa", 0, 0, 0,true,true,true)
 		
 		//when
 		projectService.updateBacklog(project.id, "text", "text", "Recalculated", "test")
@@ -38,7 +38,7 @@ class ProjectServiceTests {
     @Test
     void testUpdateCsvTwice() {
 		//given
-		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		def project = projectService.createProject("aa", "aa", 0, 0, 0,true,true,true)
 		
 		//when
 		projectService.updateCsv(project.id, "text", "text", "test")
@@ -54,7 +54,7 @@ class ProjectServiceTests {
     @Test
     void testUpdateBacklogCsvTwice() {
 		//given
-		def project = projectService.createProject("aa", "aa", 0, 0, 0)
+		def project = projectService.createProject("aa", "aa", 0, 0, 0,true,true,true)
 		
 		//when
 		projectService.updateBacklogAndCsv(project.id, "text", "text", "text", "Recalculated", "test")

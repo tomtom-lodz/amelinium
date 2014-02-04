@@ -33,6 +33,9 @@ class ProjectControllerTests
 		params["sort"] = "name"
 		params["id"] = 1
 		params["version"] = 1
+		params["cumulative"] = "true"
+		params["multilineFeature"] = "true"
+		params["addNewFeatureGroups"] = "true"
     }
 
     void testIndex() {
@@ -82,7 +85,7 @@ class ProjectControllerTests
     void testSave() {
 		//given
 		controller.springSecurityService = springSecurityService
-		controller.projectService = [createProject : {String a, String b, Integer c, Integer d, Integer e -> new Project()}] as ProjectService
+		controller.projectService = [createProject : {String a, String b, Integer c, Integer d, Integer e, boolean f, boolean g, boolean h -> new Project()}] as ProjectService
 		populateValidParams(params)
 		
 		//when
@@ -99,7 +102,7 @@ class ProjectControllerTests
 		Project project = new Project();
 		project.errors.rejectValue("name", null)
 		controller.springSecurityService = springSecurityService
-		controller.projectService = [createProject : {String a, String b, Integer c, Integer d, Integer e -> project}] as ProjectService
+		controller.projectService = [createProject : {String a, String b, Integer c, Integer d, Integer e, boolean f, boolean g, boolean h -> project}] as ProjectService
 		
 		//when
 		controller.save()
@@ -169,7 +172,7 @@ class ProjectControllerTests
 		populateValidParams(params)
 		controller.springSecurityService = springSecurityService
 		controller.projectService = new ProjectService();
-		def project = controller.projectService.createProject("red", "red", 0, 0, 0);
+		def project = controller.projectService.createProject("red", "red", 0, 0, 0,true,true,true);
 		params.id = project.id
 		params.version = 0
 		
@@ -186,7 +189,7 @@ class ProjectControllerTests
         populateValidParams(params)
 		controller.springSecurityService = springSecurityService
 		controller.projectService = new ProjectService();
-		def project = controller.projectService.createProject("red", "red", 0, 0, 0);
+		def project = controller.projectService.createProject("red", "red", 0, 0, 0,true,true,true);
 		params.id = project.id
         
 		//when
@@ -195,32 +198,6 @@ class ProjectControllerTests
 		//then
         assert response.redirectedUrl == "/project/list"
         assert flash.message != null
-    }
-
-    void testDeleteProjectNotFound() {
-		//when
-        controller.delete()
-        
-		//then
-		assert flash.message != null
-        assert response.redirectedUrl == '/project/list'
-    }
-	
-	void testDelete(){
-		//given
-        populateValidParams(params)
-        def project = new Project(params)
-        assert project.save() != null
-        assert Project.count() == 1
-        params.id = project.id
-
-		//when
-        controller.delete()
-
-		//then
-        assert Project.count() == 0
-        assert Project.get(project.id) == null
-        assert response.redirectedUrl == '/project/list'
     }
 	
 	void testListRevisionProjectNotFound(){
@@ -243,7 +220,7 @@ class ProjectControllerTests
 		controller.listRevision()
 		
 		//then
-		assert response.redirectedUrl == '/revision/list/1?name=My+app&status=Open&sprintLength=14&velocity=10&scopeIncrease=1&max=10&order=desc&sort=name&version=1&display=project'
+		assert response.redirectedUrl == '/revision/list/1?name=My+app&status=Open&sprintLength=14&velocity=10&scopeIncrease=1&max=10&order=desc&sort=name&version=1&cumulative=true&multilineFeature=true&addNewFeatureGroups=true&display=project'
 		assert params.display == 'project'
 	}
 }

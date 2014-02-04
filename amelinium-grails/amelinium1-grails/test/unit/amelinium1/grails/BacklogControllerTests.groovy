@@ -51,7 +51,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		controller.coreService = coreService
 		
@@ -77,7 +77,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		controller.coreService = coreService
 		
@@ -103,7 +103,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		params["version"] = 0
 
@@ -121,7 +121,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		params.id = project.id
 		controller.projectService = projectService
 		controller.springSecurityService = springSecurityService
@@ -163,7 +163,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		controller.projectService = projectService
 		controller.springSecurityService = springSecurityService
 		Project.metaClass.static.getProjectInstance = {query, map -> project}
@@ -204,7 +204,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		controller.coreService = coreService
 		Project.metaClass.static.getProjectInstance = {query, map -> project}
 		
@@ -231,7 +231,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		
 		//when
 		controller.listRevision()
@@ -253,7 +253,7 @@ class BacklogControllerTests {
 		//given
 		populateValidParams(params)
 		ProjectService service = new ProjectService()
-		Project project = service.createProject("aaa", "aaa", 1, 1, 1)
+		Project project = service.createProject("aaa", "aaa", 1, 1, 1,true,true,true)
 		controller.coreService = coreService
 		controller.projectService = projectService
 		controller.springSecurityService = springSecurityService
