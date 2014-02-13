@@ -116,6 +116,19 @@ public class BacklogAndJournalUpdater {
 		
 		return chunks;
 	}
+	//TODO: test this
+	public ArrayList<BacklogChunk> update(DateTime dateTime, BacklogModel backlogModel, String journalContent, boolean isCumulative, boolean addNewFeatureGroups, boolean overwriteExistingDate, boolean allowingMultilineFeatures) {
+
+		ArrayList<BacklogChunk> chunks = backlogJournalReader.readFromStringNullAllowed(journalContent);
+		
+		if(overwriteExistingDate) {
+			removeLastRowIfDateMatches(dateTime, chunks);
+		}
+
+		update(dateTime, backlogModel, chunks, isCumulative, addNewFeatureGroups);
+		
+		return chunks;
+	}
 
 	// TODO: test this
 	private void removeLastRowIfDateMatches(DateTime dateTime, ArrayList<BacklogChunk> chunks) {
