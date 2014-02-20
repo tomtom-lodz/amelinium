@@ -208,9 +208,12 @@ class CsvController {
             redirect(controller:"project", action: "list")
             return
         }
+		
         def backlogInstance = projectInstance.revision.backlog
         def csvInstance = projectInstance.revision.csv
-        String updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, projectInstance.isCumulative,
+		String requestUrl = request.requestURL
+		String backlogUrl = requestUrl.replaceFirst("grails/csv/recalculate.dispatch", "backlog/show/"+id);
+        String updatedJournal = coreService.recalculateCsv(backlogUrl, csvInstance.text, projectInstance.isCumulative,
 										 projectInstance.addNewFeatureGroups, true, projectInstance.multilineFeature);
 									 
         projectService.updateCsv(projectInstance.id, updatedJournal, "Recalculated csv", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))

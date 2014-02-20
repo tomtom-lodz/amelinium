@@ -56,6 +56,6 @@
 	</div>
 	<span class="for-footer"></span>
 	<g:javascript src="bg.js"/>
-	<g:javascript src="text-area.js"/>
+	<g:javascript src="csv-text-area.js"/>
 </body>
 </html>

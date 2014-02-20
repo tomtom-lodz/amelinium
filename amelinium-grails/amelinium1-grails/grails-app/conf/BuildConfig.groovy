@@ -43,8 +43,15 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         runtime 'mysql:mysql-connector-java:5.1.24'
-        compile "com.googlecode.amelinium:amelinium-core:0.2-SNAPSHOT"
-        compile "com.googlecode.amelinium:amelinium-plots:0.2-SNAPSHOT"
+        compile ("com.googlecode.amelinium:amelinium-core:0.2-SNAPSHOT"){
+			changing = true
+		}
+        compile ("com.googlecode.amelinium:amelinium-plots:0.2-SNAPSHOT"){
+			changing = true
+		}
+        compile ("ameliniummodel:builder:0.0.6-SNAPSHOT"){
+			changing = true
+		}
 		compile 'com.googlecode.flyway:flyway-core:2.2.1'
     }
 

@@ -23,9 +23,9 @@ class BacklogController {
         }
         def backlogInstance = projectInstance.revision.backlog
         
-        String wiki = coreService.serializeText(backlogInstance.text)
+        String wiki = coreService.serializeText(backlogInstance.text) // needed for transition from old model to new model
 
-        [backlogInstance: backlogInstance, projectInstance: projectInstance, text:wiki]
+        [backlogInstance: backlogInstance, projectInstance: projectInstance, text:backlogInstance.text]
     }
 
     @Secured(['ROLE_USER'])
@@ -137,10 +137,13 @@ class BacklogController {
         def backlogInstance = projectInstance.revision.backlog
         def csvInstance = projectInstance.revision.csv
 
+		String requestUrl = request.requestURL
+		String backlogUrl = requestUrl.replaceFirst("grails/backlog/recalculate.dispatch", "backlog/show/"+id);
+		
         String oldContent = backlogInstance.text + "\nBACKLOG END"
-        String newBacklog = coreService.recalculateBacklog(oldContent)
-        
-        String updatedJournal = coreService.recalculateCsv(backlogInstance.text, csvInstance.text, projectInstance.isCumulative,
+        String newBacklog = coreService.recalculateBacklog(backlogUrl)
+		
+        String updatedJournal = coreService.recalculateCsv(backlogUrl, csvInstance.text, projectInstance.isCumulative,
 										 projectInstance.addNewFeatureGroups, true, projectInstance.multilineFeature);
         
         projectService.updateBacklogAndCsv(projectInstance.id, newBacklog, updatedJournal, "Recalculate backlog and csv", "Recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))

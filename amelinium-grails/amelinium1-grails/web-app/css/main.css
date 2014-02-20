@@ -123,11 +123,15 @@ input:invalid:focus,select:invalid:focus,textarea:invalid:focus {
 }
 
 .wrapper {
-	margin: 25px 25px 25px 25px;
+	margin: 10px 25px 0px 25px;
 }
 
 .wrapper .breadcrumb, .content .breadcrumb{
 	padding: 8px 0px;
+}
+
+.edit-wrapper{
+	margin-top:10px;
 }
 
 .nav > li {
@@ -242,8 +246,8 @@ span.cke_skin_kama {
 }
 
 .content>.show>.text>div.value>h1, .content>.show>.text>div.value>h2, .content>.show>.text>div.value>h3{
-	margin-top: 20px;
-    margin-bottom: 10px;
+	margin-top: 20px !important;
+    margin-bottom: 20px !important;
     font-weight: bold;
 }
 
@@ -265,8 +269,23 @@ span.cke_skin_kama {
 	text-indent: 60px;
 }
 
+.content>.show>.text>div.value>ul>li>ul>li>table{
+	margin-left:60px;
+}
+.content>.show>.text>div.value>ul>li>ul>li>table,.content>.show>.text>div.value>ul>li>ul>li>table th,.content>.show>.text>div.value>ul>li>ul>li>table td{
+	border:1px dashed rgb(187, 187, 187);
+}
+
 .content>.show>.text>div.value>ul>li>ul>li>ul>li{
 	text-indent: 90px;
+}
+
+.content>.show>.text>div.value>ul>li>ul>li>ul>li>table{
+	margin-left:90px;
+}
+
+.content>.show>.text>div.value>ul>li>ul>li>ul>li>table, .content>.show>.text>div.value>ul>li>ul>li>ul>li>table th, .content>.show>.text>div.value>ul>li>ul>li>ul>li>table td{
+	border:1px dashed rgb(187, 187, 187);
 }
 
 .content>.show>.comment>span.value {
@@ -288,6 +307,7 @@ span.cke_skin_kama {
 	width: 100%;
 	height: 100%;
 	resize: none;
+	min-height: 300px;
     -moz-box-shadow: inset 0 8px 8px -8px rgb(112, 112, 112),
     inset 0 -8px 8px -8px rgb(112, 112, 112);
     -webkit-box-shadow: inset 0 8px 8px -8px rgb(112, 112, 112),
@@ -523,7 +543,7 @@ span.cke_skin_kama {
 /* Buttons */
 .buttons {
 	position: relative;
-	top: -52px;
+	top: -45px;
 	right: 0px;
 }
 
