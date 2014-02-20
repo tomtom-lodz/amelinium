@@ -19,8 +19,6 @@
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}"
 	type="text/css">
-	<link rel="stylesheet" href="${resource(dir: 'css/ui', file: 'jquery-ui.css')}"
-	type="text/css">
 <link rel="stylesheet"
 	href="${resource(dir: 'js/jqplot', file: 'jquery.jqplot.min.css')}"
 	type="text/css">

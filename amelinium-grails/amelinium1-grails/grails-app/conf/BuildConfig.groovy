@@ -49,7 +49,7 @@ grails.project.dependency.resolution = {
         compile ("com.googlecode.amelinium:amelinium-plots:0.2-SNAPSHOT"){
 			changing = true
 		}
-        compile ("ameliniummodel:builder:0.0.6-SNAPSHOT"){
+        compile ("ameliniummodel:builder:0.0.7-SNAPSHOT"){
 			changing = true
 		}
 		compile 'com.googlecode.flyway:flyway-core:2.2.1'
