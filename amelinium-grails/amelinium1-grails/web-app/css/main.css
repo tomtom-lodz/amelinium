@@ -28,7 +28,7 @@ body {
 	color: black;
 	font-size: 24px;
 	font-weight: normal;
-	line-height: 1.25;
+/* 	line-height: 1.25; */
 	margin-bottom: 15px;
 }
 
@@ -266,22 +266,24 @@ span.cke_skin_kama {
 }
 
 .content>.show>.text>div.value>ul>li>ul>li{
-	text-indent: 60px;
+	text-indent: -15px;
+	margin-left: 75px;
 }
 
 .content>.show>.text>div.value>ul>li>ul>li>table{
-	margin-left:60px;
+	margin-left:75px;
 }
 .content>.show>.text>div.value>ul>li>ul>li>table,.content>.show>.text>div.value>ul>li>ul>li>table th,.content>.show>.text>div.value>ul>li>ul>li>table td{
 	border:1px dashed rgb(187, 187, 187);
 }
 
 .content>.show>.text>div.value>ul>li>ul>li>ul>li{
-	text-indent: 90px;
+	text-indent: -15px;
+	margin-left: 105px;
 }
 
 .content>.show>.text>div.value>ul>li>ul>li>ul>li>table{
-	margin-left:90px;
+	margin-left: 105px;
 }
 
 .content>.show>.text>div.value>ul>li>ul>li>ul>li>table, .content>.show>.text>div.value>ul>li>ul>li>ul>li>table th, .content>.show>.text>div.value>ul>li>ul>li>ul>li>table td{
@@ -303,6 +305,10 @@ span.cke_skin_kama {
 	display: block;
 }
 
+.content>form>.form>.show>.text{
+	margin-bottom: 10px;
+}
+
 .content>form>.form>.show>.text>textarea {
 	width: 100%;
 	height: 100%;
@@ -321,8 +327,8 @@ span.cke_skin_kama {
 .content>form>.form>.show>.comment>textarea {
 	width: -moz-calc(100% - 200px);
     width: -webkit-calc(100% - 200px);
-    width: calc(100% - 200px);
-	height: 50px;
+    width: calc(100% - 250px);
+	height: 40px;
 	margin-left: 5px;
 	resize: none;
 	-webkit-box-shadow: inset 0 0 5px rgb(112, 112, 112);
@@ -549,8 +555,12 @@ span.cke_skin_kama {
 
 .form-buttons {
 	position: relative;
-	top: -42px;
+	top: -38px;
 	right: 10px;
+}
+
+.form-buttons>.btn-success {
+	width:80px;
 }
 
 /* BOOTSTRAP BUTTONS */

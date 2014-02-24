@@ -45,6 +45,8 @@
 					<g:render template="form" />
 				</fieldset>
 				<fieldset class="form-buttons pull-right">
+					<g:actionSubmit class="btn btn-success" action="save"
+						value="${message(code: 'default.button.save.label', default: 'Save')}" />
 					<g:actionSubmit class="btn btn-primary" action="update"
 						value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:link class="cancel" action="show" id="${projectInstance?.id}">
@@ -56,6 +58,11 @@
 	</div>
 	<span class="for-footer"></span>
 	<g:javascript src="bg.js"/>
-	<g:javascript src="csv-text-area.js"/>
+	<g:if test="${flash.message}">
+		<g:javascript src="csv-text-area-flash.js"/>
+	</g:if>
+	<g:else>
+		<g:javascript src="csv-text-area.js"/>
+	</g:else>
 </body>
 </html>

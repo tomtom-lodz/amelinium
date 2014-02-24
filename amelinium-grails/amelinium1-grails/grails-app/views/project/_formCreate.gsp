@@ -16,16 +16,17 @@
 		<g:message code="project.scope.increase.label" default="Scope increase:" />
 	</label>
 	<g:textField type="number" name="scopeIncrease" value="${projectInstance?.scopeIncrease}"/> per sprint
+	<p class="offset-top offset-bottom"><strong>Advanced options</strong></p>
 	<label class="block" for="cumulative">
-		<g:message code="project.isCumulative.label" default="IsCumulative:" />
+		<g:message code="project.isCumulative.label" default="IsCumulative -" /> Should release's points be cumulated in csv ?
 	</label>
 	<g:select name="cumulative" from="${projectInstance.constraints.isCumulative.inList}" value="${projectInstance.isCumulative}"/>
 	<label class="block" for="multilineFeature">
-		<g:message code="project.multilineFeature.label" default="MultilineFeature:" />
+		<g:message code="project.multilineFeature.label" default="MultilineFeature -" /> Features can be splited into multiple lines ?
 	</label>
 	<g:select name="multilineFeature" from="${projectInstance.constraints.multilineFeature.inList}" value="${projectInstance.multilineFeature}"/>
 	<label class="block" for="addNewFeatureGroups">
-		<g:message code="project.addNewFeatureGroups.label" default="addNewFeatureGroups:" />
+		<g:message code="project.addNewFeatureGroups.label" default="addNewFeatureGroups -" /> Add new feature groups while csv recalculation ?
 	</label>
 	<g:select name="addNewFeatureGroups" from="${projectInstance.constraints.addNewFeatureGroups.inList}" value="${projectInstance.addNewFeatureGroups}"/>
 </div>

@@ -56,6 +56,8 @@ class ProjectController {
 
     @Secured(['ROLE_USER'])
     def create() {
+		params.multilineFeature = true
+		params.addNewFeatureGroups = true
         [projectInstance: new Project(params)]
     }
 

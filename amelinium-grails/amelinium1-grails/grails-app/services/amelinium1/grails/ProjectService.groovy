@@ -8,7 +8,7 @@ class ProjectService {
 
 	def createProject(String projectName, String userName, Integer sprintLength, Integer velocity, Integer scopeIncrease, boolean isCumulative, boolean multilineFeature, boolean addNewFeatureGroups) {
 
-		def backlog = new Backlog(ver:1,text:"BACKLOG - do not remove this line (needed for automatic recalculation)", state:"Recalculated", editedBy:userName)
+		def backlog = new Backlog(ver:1,text:"", state:"Recalculated", editedBy:userName)
 		if (!backlog.save(flush: true)) {
 			backlog.errors.each { println it }
 		}

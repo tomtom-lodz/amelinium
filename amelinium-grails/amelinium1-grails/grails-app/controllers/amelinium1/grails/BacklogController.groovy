@@ -22,8 +22,6 @@ class BacklogController {
             return
         }
         def backlogInstance = projectInstance.revision.backlog
-        
-        String wiki = coreService.serializeText(backlogInstance.text) // needed for transition from old model to new model
 
         [backlogInstance: backlogInstance, projectInstance: projectInstance, text:backlogInstance.text]
     }
@@ -40,6 +38,35 @@ class BacklogController {
 
         [backlogInstance: backlogInstance, projectInstance: projectInstance]
     }
+	
+	@Secured(['ROLE_USER'])
+	def save(Long id, Long version){
+		def projectInstance = Project.get(id)
+		if (!projectInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
+			redirect(controller:"project", action: "list")
+			return
+		}
+		def backlogInstance = projectInstance.revision.backlog
+		if (version != null) {
+			if (projectInstance.revision.ver > version) {
+				backlogInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						[message(code: 'backlog.label', default: 'Backlog')] as Object[],
+						"Another user has updated this Backlog while you were editing")
+				render(view: "edit", model: [backlogInstance: backlogInstance, projectInstance: projectInstance])
+				return
+			}
+		}
+		
+		projectService.updateBacklog(projectInstance.id, params.text, params.comment, "Not recalculated", springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
+		
+		flash.message = message(code: 'default.saved.message', args: [
+			message(code: 'backlog.label', default: 'Backlog'),
+			"of project \""+projectInstance.name+"\""
+		])
+		
+		redirect(action: "edit", id: projectInstance.id)
+	}
 	
 	@Secured(['ROLE_USER'])
     def update(Long id, Long version) {
@@ -106,10 +133,8 @@ class BacklogController {
             redirect(controller:"project", action: "list")
             return
         }
-        
-        String wiki = coreService.serializeText(backlogInstance.text)
 
-        render(view:"show", model: [backlogInstance: backlogInstance, projectInstance: projectInstance, text:wiki]);
+        render(view:"show", model: [backlogInstance: backlogInstance, projectInstance: projectInstance, text:backlogInstance.text]);
     }
 	
     def listRevision(Long id) {

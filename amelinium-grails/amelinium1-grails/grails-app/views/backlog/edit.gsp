@@ -19,13 +19,40 @@
         menubar : false,
         plugins: "code table link preview",
         tools: "inserttable",
-        toolbar : "undo redo | italic strikethrough | bullist table outdent indent | link cut copy paste | code preview",
+        toolbar : "undo redo | header1 paragraph | bullist outdent indent | italic strikethrough | link table | code preview | helpme",
+        setup: function(editor) {
+        editor.addButton('header1', {
+            text: 'Release',
+            icon: false,
+            onclick: function() {
+                editor.execCommand('FormatBlock', false, 'h1');
+            }
+        });
+        editor.addButton('paragraph', {
+            text: 'Feature',
+            icon: false,
+            onclick: function() {
+                editor.execCommand('FormatBlock', false, 'p');
+            }
+        });
+        editor.addButton('helpme', {
+            text: 'I HAVE NO IDEA WHAT IM DOING!',
+            icon: false,
+            onclick: function() {
+                editor.windowManager.open({
+    				title: "Help",
+    				url: '../../static/help/help.html',
+    				width: 800,
+    				height: 600
+				});
+            }
+        });
+    	},
         theme: "modern",
+        statusbar : false,
+        fix_list_elements : true,
         plugin_preview_width : "800",
-        plugin_preview_height : "600",
-        plugin_code_width : "800",
-        plugin_code_height : "600"
-        
+        plugin_preview_height : "600"
     });
 </r:script>
 </head>
@@ -64,6 +91,8 @@
 				<g:render template="form" />
 			</fieldset>
 			<fieldset class="form-buttons pull-right">
+				<g:actionSubmit class="btn btn-success" action="save"
+					value="${message(code: 'default.button.save.label', default: 'Save')}" />
 				<g:actionSubmit class="btn btn-primary" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				<g:link class="cancel" action="show" id="${projectInstance?.id}">
@@ -74,6 +103,11 @@
 	</div>
 	<span class="for-footer"></span>
 	<g:javascript src="bg.js"/>
-	<g:javascript src="text-area.js"/>
+	<g:if test="${flash.message}">
+		<g:javascript src="text-area-flash.js"/>
+	</g:if>
+	<g:else>
+		<g:javascript src="text-area.js"/>
+	</g:else>
 </body>
 </html>

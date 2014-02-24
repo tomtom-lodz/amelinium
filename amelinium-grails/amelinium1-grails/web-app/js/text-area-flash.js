@@ -10,7 +10,7 @@ function jqUpdateSize(){
     }
     else
     {
-    	heightT = height - 308;
+    	heightT = height - 348;
     	width = '100%';
     }
     ed.theme.resizeTo(width, heightT);

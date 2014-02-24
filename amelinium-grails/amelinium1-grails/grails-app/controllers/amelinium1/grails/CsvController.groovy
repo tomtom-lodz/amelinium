@@ -36,7 +36,34 @@ class CsvController {
 
         [csvInstance: csvInstance, projectInstance: projectInstance]
     }
+	
+	@Secured(['ROLE_USER'])
+	def save(Long id, Long version){
+		def projectInstance = Project.get(id)
+		if (!projectInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
+			redirect(controller:"project", action: "list")
+			return
+		}
+		def csvInstance = projectInstance.revision.csv
+		if (version != null) {
+			if (projectInstance.revision.ver > version) {
+				csvInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						[message(code: 'csv.label', default: 'Csv')] as Object[],
+						"Another user has updated this Csv while you were editing")
+				render(view: "edit", model: [csvInstance: csvInstance, projectInstance: projectInstance])
+				return
+			}
+		}
+		projectService.updateCsv(projectInstance.id, params.text, params.comment, springSecurityService.getPrincipal().getDn().split(",")[0].substring(3))
 
+		flash.message = message(code: 'default.saved.message', args: [
+			message(code: 'csv.label', default: 'Csv'),
+			"of project \""+projectInstance.name+"\""
+		])
+		redirect(action: "edit", id: projectInstance.id)
+	}
+	
 	@Secured(['ROLE_USER'])
     def update(Long id, Long version) {
         def projectInstance = Project.get(id)
