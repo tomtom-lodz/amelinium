@@ -2,7 +2,6 @@ package amelinium.model;
 
 public class Story extends ModelElement{
 	private String infoHtml;
-	private boolean currentlyWorkedOn;
 	private int points;
 
 	public Story(){
@@ -18,13 +17,6 @@ public class Story extends ModelElement{
 		this.points = points;
 	}
 
-	public boolean isCurrentlyWorkedOn() {
-		return currentlyWorkedOn;
-	}
-
-	public void setCurrentlyWorkedOn(boolean currentlyWorkedOn) {
-		this.currentlyWorkedOn = currentlyWorkedOn;
-	}
 
 	public String getInfoHtml() {
 		return infoHtml;
@@ -35,7 +27,7 @@ public class Story extends ModelElement{
 
 	@Override
 	public String toString() {
-		return "Story:\n"+super.getContent()+"\nInformations: \n"+infoHtml+"\nCurrently worked on:"+ currentlyWorkedOn+"\nFinished :" +isStrikeThrough()+"\n\n";
+		return "Story:\n"+super.getContent()+"\nInformations: \n"+infoHtml+"\n\n";
 	}
-	
+
 }

@@ -13,16 +13,17 @@ public class ModelToHtmlSerializerImpl implements ModelToHtmlSerializer {
 	public String serializeModelToHtml(Project project) {
 		String html = "";
 		for (Release release : project.getReleases()) {
-			if (release.isStrikeThrough())
-				html += "<" + release.getTagName() + "><del>"
-						+ release.getContent() + "</del></"
-						+ release.getTagName() + ">\n";
-			else
-				html += "<" + release.getTagName() + ">" + release.getContent()
+			if (release.isStrikeThrough() && !release.getContent().contains("<del>")) {
+				release.setContent("<del>"+release.getContent()+"</del>");
+			} else if(!release.isStrikeThrough() && release.getContent().contains("<del>")){
+				String newContent = release.getContent().replaceFirst("<del>", "").replaceFirst("</del>", "");
+				release.setContent(newContent);
+			}
+			html += "<" + release.getTagName() + ">" + release.getContent()
 						+ "</" + release.getTagName() + ">\n";
 			html = serializeFeaturesToHtml(html, release.getFeatures());
 		}
-		html +="\n<p>BACKLOG END</p>\n"+project.getAfterBacklogHtml();
+		html += "\n<p>BACKLOG END</p>\n" + project.getAfterBacklogHtml();
 
 		return html;
 	}
@@ -30,12 +31,13 @@ public class ModelToHtmlSerializerImpl implements ModelToHtmlSerializer {
 	private String serializeFeaturesToHtml(String html, List<Feature> features) {
 
 		for (Feature feature : features) {
-
-			if (feature.isStrikeThrough() && feature.getContent() != "")
-				html += "<" + feature.getTagName() + "><del>"
-						+ feature.getContent() + "<del></"
-						+ feature.getTagName() + ">\n";
-			else if (feature.getContent() != "")
+			if (feature.isStrikeThrough() && !feature.getContent().contains("<del>")&&feature.getContent() != "") {
+				feature.setContent("<del>"+feature.getContent()+"</del>");
+			} else if(!feature.isStrikeThrough() && feature.getContent().contains("<del>")){
+				String newContent = feature.getContent().replaceFirst("<del>", "").replaceFirst("</del>", "");
+				feature.setContent(newContent);
+			}
+			if (feature.getContent() != "")
 				html += "<" + feature.getTagName() + ">" + feature.getContent()
 						+ "</" + feature.getTagName() + ">\n";
 			html = serializeStoriesToHtml(html, feature.getStories());
@@ -55,18 +57,8 @@ public class ModelToHtmlSerializerImpl implements ModelToHtmlSerializer {
 	}
 
 	private String serializeStoryToHtml(String html, Story story) {
-		if (story.isCurrentlyWorkedOn())
-			html += "<" + story.getTagName() + "><em>" + story.getContent()
-					+ "</em>\n";
-		else if (story.isStrikeThrough())
-			html += "<" + story.getTagName() + "><del>" + story.getContent()
-					+ "</del>\n";
-		else
-			html += "<" + story.getTagName() + ">" + story.getContent();
-		if (story.getInfoHtml() != "")
-			html += story.getInfoHtml() + "\n</" + story.getTagName() + ">\n";
-		else
-			html += "</" + story.getTagName() + ">\n";
+		html += "<" + story.getTagName() + ">" + story.getContent()
+				+ story.getInfoHtml() + "</" + story.getTagName() + ">\n";
 
 		return html;
 	}

@@ -1,8 +1,6 @@
 package amelinium.builder;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,8 +13,7 @@ import amelinium.model.Story;
 import amelinium.model.Feature;
 
 public class ModelBuilderImpl implements ModelBuilder {
-	private Pattern pattern = Pattern.compile("\\s*-\\s*(\\d|\\?)+sp");
-	
+
 	public Project generateProjectModel(String address) {
 		Project project = new Project();
 		try {
@@ -56,7 +53,7 @@ public class ModelBuilderImpl implements ModelBuilder {
 				case "p":
 					if (el.text().matches("BACKLOG END")) {
 						backlogEnd = true;
-					} else if(project.getLastRelease()!=null){
+					} else if (project.getLastRelease() != null) {
 						extractFeature(project, el);
 						inFeature = true;
 					}
@@ -104,18 +101,11 @@ public class ModelBuilderImpl implements ModelBuilder {
 			boolean inFeature, Element el) {
 		for (Element st : el.children()) {
 			Story story = new Story();
-			story.setStrikeThrough(checkIfElementIsStrikeThrough(st));
-			Matcher matcher = pattern.matcher(st.text());
-			if (matcher.find())
-				story.setContent(extractContent(st));
-			else
-				story.setContent(extractContent(st) + " - 0sp");
 			story.setTagName(st.tagName());
-			if (st.children().size() > 0 && st.child(0).tagName() == "em")
-				story.setCurrentlyWorkedOn(true);
-
-			extractInfo(st, story);
-
+			
+			extractContentFromStory(st, story);
+			story.setStrikeThrough(checkIfElementIsStrikeThrough(st));
+			
 			if (inFeature)
 				project.getLastRelease().getLastFeature().addStory(story);
 			else if (inRelease) {
@@ -129,56 +119,45 @@ public class ModelBuilderImpl implements ModelBuilder {
 		return project;
 	}
 
-	private Story extractInfo(Element st, Story story) {
-		Elements children = st.children();
-		if (children.size() > 0) {
-			if (children.get(0).tagName() == "del"
-					|| children.get(0).tagName() == "a"
-					|| children.get(0).tagName() == "em")
-				children.remove(0);
-			String infoHtml = getHtmlInfo(children);
-
-			story.setInfoHtml(infoHtml);
-
+	private String extractContentFromStory(Element st, Story story) {
+		boolean br = st.html().contains("<br />");
+		boolean ul = st.html().contains("<ul>");
+		int brIndex = st.html().indexOf("<br />");
+		int ulIndex = st.html().indexOf("<ul>");
+		if (br&&brIndex<ulIndex) {
+			String content = st.html().replaceAll("\n", "").split("<br />")[0];
+			story.setContent(content.replaceAll("&nbsp;", " "));
+			String descriptionAndInfo = st.html().replaceFirst(content, "");
+			story.setInfoHtml(descriptionAndInfo.replaceAll("&nbsp;", " "));
+		} else if(ul&&ulIndex<brIndex){
+			String content = st.html().replaceAll("\n", "").split("<ul>")[0];
+			story.setContent(content.replaceAll("&nbsp;", " "));
+			String descriptionAndInfo = st.html().replaceFirst(content, "").replaceFirst("\n", "");
+			story.setInfoHtml(descriptionAndInfo.replaceAll("&nbsp;", " "));
+		} else {
+			story.setContent(st.html().replaceAll("\n", ""));
+			
 		}
-		return story;
+		
+		return story.getContent();
 	}
 
-	private String getHtmlInfo(Elements children) {
-		String htmlInfo = "";
-		for (Element el : children) {
-			htmlInfo += "<" + el.tagName() + ">" + el.html() + "</"
-					+ el.tagName() + ">";
+	private String extractContent(Element el) {
+		String content;
+		if (el.html().contains("<br />")) {
+			content = el.html().replaceAll("\n", "").split("<br />")[0];
+			return content.replaceAll("&nbsp;", " ");
 		}
-		return htmlInfo;
+		else {
+			return el.html();
+		}
 	}
-
+	
 	private boolean checkIfElementIsStrikeThrough(Element el) {
-		if (el.children().size() > 0 && el.child(0).tagName() == "del")
+		if (el.children().size() > 0 && (el.child(0).tagName() == "del"||(el.child(0).children().size()>0&&el.child(0).child(0).tagName()=="del")))
 			return true;
 		else
 			return false;
 	}
 
-	private String extractContent(Element el) {
-			return extractContentWithoutDescription(el);
-	}
-
-	private String extractContentWithoutDescription(Element el) {
-		if (el.children().size() > 0 && el.child(0).children().size() > 0
-				&& el.child(0).child(0).tagName() == "a") {
-			return el.child(0).html().replaceAll("&nbsp;", " ");
-		} else if (el.children().size() > 0 && el.child(0).tagName() == "a") {
-			String[] ownContent = el.ownText().replaceAll("&nbsp;", " ").split(" - ");
-			Element link = el.select("a[href]").first();
-			String linkHtml = link.outerHtml();
-			return ownContent[0] + " " + linkHtml + " - " + ownContent[1];
-		} else if (el.children().size() > 0 && el.child(0).tagName() == "del") {
-			return el.child(0).ownText().replaceAll("&nbsp;", " ");
-		} else if (el.children().size() > 0 && el.child(0).tagName() == "ul") {
-			return el.ownText().replaceAll("&nbsp;", " ");
-		} else {
-			return el.text().replaceAll("&nbsp;", " ");
-		}
-	}
 }

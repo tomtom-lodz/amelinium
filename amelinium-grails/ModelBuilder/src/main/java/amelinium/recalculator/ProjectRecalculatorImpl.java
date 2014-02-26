@@ -10,7 +10,7 @@ import amelinium.model.Release;
 import amelinium.model.Story;
 
 public class ProjectRecalculatorImpl implements ProjectRecalculator {
-	private Pattern pattern = Pattern.compile("\\s*-\\s*(\\d|\\?)+sp");
+	private Pattern pattern = Pattern.compile("(\\d|\\?)+sp");
 	
 	@Override
 	public Project recalculateProject(Project project) {
@@ -19,7 +19,7 @@ public class ProjectRecalculatorImpl implements ProjectRecalculator {
 		recalculatedProject.setReleases(project.getReleases());
 
 		recalculateReleases(recalculatedProject.getReleases());
-
+		
 		return recalculatedProject;
 	}
 
@@ -29,7 +29,6 @@ public class ProjectRecalculatorImpl implements ProjectRecalculator {
 			release.setContent(recalculateFeatures(release,
 					release.getFeatures()));
 		}
-
 	}
 
 	private String recalculateFeatures(Release release, List<Feature> features) {
@@ -48,6 +47,8 @@ public class ProjectRecalculatorImpl implements ProjectRecalculator {
 			}
 			if (newValues[0] == newValues[1])
 				feature.setStrikeThrough(true);
+			else
+				feature.setStrikeThrough(false);
 			feature.setTotalPoints(newValues[1]);
 			feature.setDonePoints(newValues[0]);
 			feature.setContent(featureContent);
@@ -60,6 +61,9 @@ public class ProjectRecalculatorImpl implements ProjectRecalculator {
 				"\\s+-{1}\\s+(\\d|\\?)+/(\\d|\\?)+sp", appEnd));
 		if (calculatedPoints == allPoints)
 			release.setStrikeThrough(true);
+		else
+			release.setStrikeThrough(false);
+		
 		release.setTotalPoints(allPoints);
 		release.setDonePoints(calculatedPoints);
 
