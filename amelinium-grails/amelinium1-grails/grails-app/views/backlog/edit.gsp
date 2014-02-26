@@ -91,10 +91,10 @@
 				<g:render template="form" />
 			</fieldset>
 			<fieldset class="form-buttons pull-right">
-				<g:actionSubmit class="btn btn-success" action="save"
-					value="${message(code: 'default.button.save.label', default: 'Save')}" />
 				<g:actionSubmit class="btn btn-primary" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
+				<g:actionSubmit class="btn btn-success" action="save"
+					value="${message(code: 'default.button.save.label', default: 'Save')}" />
 				<g:link class="cancel" action="show" id="${projectInstance?.id}">
 					<g:message code="default.button.cancel.label" default="Cancel" />
 				</g:link>

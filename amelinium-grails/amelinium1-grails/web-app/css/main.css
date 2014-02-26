@@ -262,7 +262,7 @@ span.cke_skin_kama {
 }
 
 .content>.show>.text>div.value>ul>li{
-	text-indent: 30px;
+	margin-left:35px !important;
 }
 
 .content>.show>.text>div.value>ul>li>ul>li{

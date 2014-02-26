@@ -165,7 +165,6 @@ class BacklogController {
 		String requestUrl = request.requestURL
 		String backlogUrl = requestUrl.replaceFirst("grails/backlog/recalculate.dispatch", "backlog/show/"+id);
 		
-        String oldContent = backlogInstance.text + "\nBACKLOG END"
         String newBacklog = coreService.recalculateBacklog(backlogUrl)
 		
         String updatedJournal = coreService.recalculateCsv(backlogUrl, csvInstance.text, projectInstance.isCumulative,
