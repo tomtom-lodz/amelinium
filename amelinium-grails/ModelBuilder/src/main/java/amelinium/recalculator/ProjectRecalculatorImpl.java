@@ -94,8 +94,6 @@ public class ProjectRecalculatorImpl implements ProjectRecalculator {
 					.substring(matcher.start(), matcher.end())
 					.replaceAll("sp", "");
 			if (points.matches("\\?+")) {
-				story.setContent(story.getContent().replaceFirst(
-						"(\\d|\\?)+sp", "0sp"));
 				return 0;
 			}
 		} else {

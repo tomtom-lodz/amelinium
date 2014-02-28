@@ -21,6 +21,7 @@ public class NewToLegacyModelConverterImpl implements NewToLegacyModelConverter 
 		ArrayList<FeatureGroup> featureGroups = new ArrayList<FeatureGroup>();
 		int cumulativePoints = 0;
 		int totalPoints = 0;
+		//Set all fields for featureGroups, not providing one of them may cause failure in graph painting.
 		for (Release release : project.getReleases()) {
 			cumulativePoints += release.getDonePoints();
 			totalPoints += release.getTotalPoints();
@@ -44,8 +45,8 @@ public class NewToLegacyModelConverterImpl implements NewToLegacyModelConverter 
 			subProject.setDone(true);
 		else
 			subProject.setDone(false);
-		subProject.setDonePoints(totalPoints);
-		subProject.setPoints(cumulativePoints);
+		subProject.setDonePoints(cumulativePoints);
+		subProject.setPoints(totalPoints);
 
 		ArrayList<SubProject> subProjects = new ArrayList<SubProject>();
 		subProjects.add(subProject);

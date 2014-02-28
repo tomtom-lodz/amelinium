@@ -11,9 +11,12 @@ import amelinium.model.Release;
 import amelinium.model.Project;
 import amelinium.model.Story;
 import amelinium.model.Feature;
+import amelinium.recalculator.ProjectRecalculatorImpl;
+import amelinium.serializer.ModelToHtmlSerializer;
+import amelinium.serializer.ModelToHtmlSerializerImpl;
 
 public class ModelBuilderImpl implements ModelBuilder {
-
+	
 	public Project generateProjectModel(String address) {
 		Project project = new Project();
 		try {
@@ -102,10 +105,10 @@ public class ModelBuilderImpl implements ModelBuilder {
 		for (Element st : el.children()) {
 			Story story = new Story();
 			story.setTagName(st.tagName());
-			
+
 			extractContentFromStory(st, story);
 			story.setStrikeThrough(checkIfElementIsStrikeThrough(st));
-			
+
 			if (inFeature)
 				project.getLastRelease().getLastFeature().addStory(story);
 			else if (inRelease) {
@@ -120,25 +123,26 @@ public class ModelBuilderImpl implements ModelBuilder {
 	}
 
 	private String extractContentFromStory(Element st, Story story) {
-		boolean br = st.html().contains("<br />");
-		boolean ul = st.html().contains("<ul>");
+		boolean brExists = st.html().contains("<br />");
+		boolean ulExists = st.html().contains("<ul>");
 		int brIndex = st.html().indexOf("<br />");
 		int ulIndex = st.html().indexOf("<ul>");
-		if (br&&brIndex<ulIndex) {
+		if (brExists && brIndex < ulIndex) {
 			String content = st.html().replaceAll("\n", "").split("<br />")[0];
 			story.setContent(content.replaceAll("&nbsp;", " "));
 			String descriptionAndInfo = st.html().replaceFirst(content, "");
 			story.setInfoHtml(descriptionAndInfo.replaceAll("&nbsp;", " "));
-		} else if(ul&&ulIndex<brIndex){
+		} else if (ulExists && ulIndex < brIndex) {
 			String content = st.html().replaceAll("\n", "").split("<ul>")[0];
 			story.setContent(content.replaceAll("&nbsp;", " "));
-			String descriptionAndInfo = st.html().replaceFirst(content, "").replaceFirst("\n", "");
+			String descriptionAndInfo = st.html().replaceFirst(content, "")
+					.replaceFirst("\n", "");
 			story.setInfoHtml(descriptionAndInfo.replaceAll("&nbsp;", " "));
 		} else {
-			story.setContent(st.html().replaceAll("\n", ""));
-			
+			story.setContent(st.html().replaceAll("\n", "").replaceAll("&nbsp;", " "));
+
 		}
-		
+
 		return story.getContent();
 	}
 
@@ -147,14 +151,15 @@ public class ModelBuilderImpl implements ModelBuilder {
 		if (el.html().contains("<br />")) {
 			content = el.html().replaceAll("\n", "").split("<br />")[0];
 			return content.replaceAll("&nbsp;", " ");
-		}
-		else {
+		} else {
 			return el.html();
 		}
 	}
-	
+
 	private boolean checkIfElementIsStrikeThrough(Element el) {
-		if (el.children().size() > 0 && (el.child(0).tagName() == "del"||(el.child(0).children().size()>0&&el.child(0).child(0).tagName()=="del")))
+		if (el.children().size() > 0
+				&& (el.child(0).tagName() == "del" || (el.child(0).children()
+						.size() > 0 && el.child(0).child(0).tagName() == "del")))
 			return true;
 		else
 			return false;
