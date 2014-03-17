@@ -20,14 +20,14 @@ class Project {
 	static mappedBy = [revisions: 'project']
 	
     static constraints = {
-		name size: 2..100, blank: false, unique: true
+		name size: 1..200, blank: false, unique: true
 		revision nullable: true
 		status nullable: true, inList: ["Open","Closed"]
-        sprintLength nullable:true, blank: false, min:1, max:99
-        velocity nullable:true, blank: false, min:1, max:99
-        scopeIncrease nullable:true, blank: false, min:1, max:99
-        createdBy nullable:true, size:2..100
-        editedBy nullable:true, size:2..100
+        sprintLength nullable:true, blank: false, min:1
+        velocity nullable:true, blank: false, min:1
+        scopeIncrease nullable:true, blank: false, min:0
+        createdBy nullable:true, size:1..200
+        editedBy nullable:true, size:1..200
 		isCumulative nullable: true, inList: [true,false]
 		multilineFeature nullable: true, inList: [true,false]
 		addNewFeatureGroups nullable: true, inList: [true,false]

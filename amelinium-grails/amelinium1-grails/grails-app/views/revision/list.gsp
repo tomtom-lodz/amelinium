@@ -24,7 +24,8 @@
 				</g:link></li>
 				</g:elseif>
 				<g:else>
-					<li><g:link controller="csv" action="show" id="${projectInstance?.id}">
+					<li><g:link controller="csv" action="show"
+							id="${projectInstance?.id}">
 							${projectInstance?.name} - csv
 				</g:link></li>
 				</g:else>
@@ -32,7 +33,8 @@
 			</ol>
 			<g:if test="${display=='project'}">
 				<div class="buttons">
-					<g:link class="btn btn-primary pull-right" url="${createLink(uri: '/')}">
+					<g:link class="btn btn-primary pull-right"
+						url="${createLink(uri: '/')}">
 						<g:message code="default.go.back.label" default="Go back" />
 					</g:link>
 				</div>
@@ -55,8 +57,8 @@
 			</g:if>
 			<g:if test="${display=='csv'}">
 				<div class="buttons">
-					<g:link class="btn btn-primary pull-right" controller="csv" action="show"
-						id="${projectInstance.id}">
+					<g:link class="btn btn-primary pull-right" controller="csv"
+						action="show" id="${projectInstance.id}">
 						<g:message code="default.go.back.label" default="Go back" />
 					</g:link>
 				</div>
@@ -88,13 +90,16 @@
 											default="Project / Backlog revision" /></th>
 								</g:else>
 								<th><g:message code="revision.date.label" default="Created" /></th>
-								<th><g:message code="revision.date.label" default="Changed By" /></th>
-								<th><g:message code="revision.operation.label" default="Operations" /></th>
+								<th><g:message code="revision.date.label"
+										default="Changed By" /></th>
+								<th><g:message code="revision.operation.label"
+										default="Operations" /></th>
 							</tr>
 						</thead>
 						<tbody>
 							<g:if test="${display=='project'}">
-								<g:each in="${revisionInstanceList}" status="i" var="revisionInstance">
+								<g:each in="${revisionInstanceList}" status="i"
+									var="revisionInstance">
 									<tr>
 										<g:if test="${i==0}">
 											<td>
@@ -118,27 +123,31 @@
 										</td>
 										<g:if test="${i==0}">
 											<td><g:link controller="backlog" action="show"
-													id="${projectInstance.id}">View Current backlog</g:link> | <g:link
-													controller="csv" action="show" id="${projectInstance.id}">View Current csv</g:link>
-											</td>
+													id="${projectInstance.id}">View Current backlog</g:link> |
+												<g:link controller="csv" action="show"
+													id="${projectInstance.id}">View Current csv</g:link></td>
 										</g:if>
 										<g:else>
 											<td><g:link controller="backlog" action="showRevision"
-													id="${revisionInstance.backlog.id}">View backlog</g:link> | <g:link
-													controller="backlog" action="restore"
+													id="${revisionInstance.backlog.id}">View backlog</g:link> |
+												<g:link controller="backlog" action="restore"
 													id="${revisionInstance.backlog.id}"
 													onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Restore backlog</g:link>
 												</br> <g:link controller="csv" action="showRevision"
 													id="${revisionInstance.csv.id}">View csv</g:link> | <g:link
-													controller="csv" action="restore" id="${revisionInstance.csv.id}"
+													controller="csv" action="restore"
+													id="${revisionInstance.csv.id}"
 													onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Restore csv</g:link>
+												| <g:link controller="csv" action="plotFromCsv"
+													id="${revisionInstance.csv.id}">Plot from revision</g:link>
 											</td>
 										</g:else>
 									</tr>
 								</g:each>
 							</g:if>
 							<g:if test="${display=='csv'}">
-								<g:each in="${revisionInstanceList}" status="i" var="revisionInstance">
+								<g:each in="${revisionInstanceList}" status="i"
+									var="revisionInstance">
 									<tr>
 										<g:if test="${i==0}">
 											<td>
@@ -166,19 +175,24 @@
 										<g:else>
 											<td><g:link controller="csv" action="showRevision"
 													id="${revisionInstance.csv.id}">View</g:link> | <g:link
-													controller="csv" action="restore" id="${revisionInstance.csv.id}"
+													controller="csv" action="restore"
+													id="${revisionInstance.csv.id}"
 													onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Restore</g:link>
+												| <g:link controller="csv" action="plotFromCsv"
+													id="${revisionInstance.csv.id}">Plot from revision</g:link>
 											</td>
 										</g:else>
 									</tr>
 								</g:each>
 							</g:if>
 							<g:if test="${display=='backlog'}">
-								<g:each in="${revisionInstanceList}" status="i" var="revisionInstance">
+								<g:each in="${revisionInstanceList}" status="i"
+									var="revisionInstance">
 									<tr>
 										<g:if test="${i==0}">
 											<td>
-												${revisionInstance.ver} / ${revisionInstance.backlog.ver} (CURRENT)
+												${revisionInstance.ver} / ${revisionInstance.backlog.ver}
+												(CURRENT)
 											</td>
 										</g:if>
 										<g:else>

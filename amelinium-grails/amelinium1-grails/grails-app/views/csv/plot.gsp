@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<g:set var="entityName" value="${message(code: 'csv.label', default: 'Csv')}" />
+<g:set var="entityName"
+	value="${message(code: 'csv.label', default: 'Csv')}" />
 <g:set var="projectName"
 	value="${message(code: 'project.label', default: 'Project')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
@@ -22,7 +23,8 @@
 					<li></li>
 				</ol>
 				<div class="buttons">
-					<button class="button-reset-zoom-chart1 button-reset-zoom-chart2 btn btn-primary pull-right">ResetZoom</button>
+					<button
+						class="button-reset-zoom-chart1 button-reset-zoom-chart2 btn btn-primary pull-right">ResetZoom</button>
 					<g:link class="btn btn-primary pull-right offset-right"
 						controller="backlog" action="show" id="${projectInstance?.id}">
 						<g:message code="default.button.backlog.label" default="Backlog" />
@@ -35,11 +37,19 @@
 			</div>
 			<div class="content">
 				<g:if test="${flash.message}">
-					<div class="message" role="status">
-						${flash.message}
-					</div>
+					<g:if test="${flash.message.contains('Cannot update')}">
+						<div class="errors" role="status">
+							${flash.message}
+						</div>
+					</g:if>
+					<g:else>
+						<div class="message" role="status">
+							${flash.message}
+						</div>
+					</g:else>
 				</g:if>
-				<g:if test="${projectInstance?.revision.backlog.state!='Recalculated'}">
+				<g:if
+					test="${projectInstance?.revision.backlog.state!='Recalculated'}">
 					<div class="errors" role="status">
 						<ul>
 							<li>Backlog is not recalculated</li>

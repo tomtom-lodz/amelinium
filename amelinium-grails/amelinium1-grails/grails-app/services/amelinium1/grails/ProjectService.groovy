@@ -17,15 +17,15 @@ class ProjectService {
 		if (!csv.save(flush: true)) {
 			csv.errors.each { println it }
 		}
-
-		def project=new Project(ver:1, name:projectName, status:"Open")
-		if (!project.save(flush: true)) {
-			project.errors.each { println it }
-		}
 	
 		def revision = new Revision(ver:1,backlog:backlog,csv:csv,comment:"Project creation",changedBy:userName)
 		if (!revision.save(flush: true)) {
 			revision.errors.each { println it }
+		}
+		
+		def project = new Project(ver:1, name:projectName, status:"Open")
+		if (!project.save(flush: true)) {
+			project.errors.each { println it }
 		}
 
 		project.revision = revision
@@ -37,10 +37,11 @@ class ProjectService {
 		project.isCumulative = isCumulative
 		project.multilineFeature = multilineFeature
 		project.addNewFeatureGroups = addNewFeatureGroups
-
+		
 		if (!project.save(flush: true)) {
 			project.errors.each { println it }
 		}
+		
 		project
 	}
 

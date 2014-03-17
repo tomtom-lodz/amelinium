@@ -13,7 +13,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <g:layoutHead />
 <r:require modules="bootstrap" />
-<r:require module="jquery-ui"/>
 <r:layoutResources />
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
 	type="text/css">

@@ -5,7 +5,8 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'project.label', default: 'Project')}" />
-<title><g:message code="default.create.label" args="[entityName]" /></title>
+<title><g:message code="default.create.label"
+		args="[entityName]" /></title>
 </head>
 <body>
 	<div class="wrapper">
@@ -23,9 +24,16 @@
 		</h1>
 		<div class="content">
 			<g:if test="${flash.message}">
-				<div class="message" role="status">
-					${flash.message}
-				</div>
+				<g:if test="${flash.message.contains('Cannot create')}">
+					<div class="errors" role="status">
+						${flash.message}
+					</div>
+				</g:if>
+				<g:else>
+					<div class="message" role="status">
+						${flash.message}
+					</div>
+				</g:else>
 			</g:if>
 			<g:hasErrors bean="${projectInstance}">
 				<ul class="errors" role="alert">

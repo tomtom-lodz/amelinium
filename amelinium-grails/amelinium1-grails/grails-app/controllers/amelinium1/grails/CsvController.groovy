@@ -2,6 +2,9 @@ package amelinium1.grails
 
 import grails.plugin.springsecurity.annotation.Secured;
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern;
+
 import org.springframework.dao.DataIntegrityViolationException;
 
 class CsvController {
@@ -11,6 +14,8 @@ class CsvController {
     def ProjectService projectService
     def springSecurityService
     def CoreService coreService
+	
+	def Pattern digit = Pattern.compile("\\d+")
 
     def show(Long id) {
         def projectInstance = Project.get(id)
@@ -96,9 +101,25 @@ class CsvController {
         def projectInstance = Project.get(id)
         if (!projectInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), id])
-            redirect(controller:"project", action: "list")
+            redirect(action: "plotFromProject", id: projectInstance.id)
             return
         }
+		
+		Matcher sprintLength = digit.matcher(params.sprintLength)
+		Matcher velocity = digit.matcher(params.velocity)
+		Matcher scopeIncrease = digit.matcher(params.scopeIncrease)
+		
+		if(!sprintLength.find()||!velocity.find()||!scopeIncrease.find()) {
+			flash.message = message(code: 'default.invalid.params', default: 'Cannot update project parameters with non-digits!')
+			redirect(action: "plotFromProject", id: projectInstance.id)
+			return
+		}
+		else if(params.sprintLength.toInteger()<1||params.velocity.toInteger()<1||params.scopeIncrease.toInteger()<0)
+		{
+			flash.message = message(code: 'default.invalid.params', default: 'Cannot update project parameters with invalid values!')
+			redirect(action: "plotFromProject", id: projectInstance.id)
+			return
+		}
 		
         projectInstance.sprintLength = params.sprintLength.toInteger()
         projectInstance.velocity = params.velocity.toInteger()
@@ -154,6 +175,7 @@ class CsvController {
 
         render(view:"show", model: [csvInstance: csvInstance, projectInstance: projectInstance, text:text]);
     }
+	
 
     def listRevision(Long id) {
         def projectInstance = Project.get(id)
@@ -167,6 +189,7 @@ class CsvController {
 
         redirect(controller: "Revision", action:"list", id:projectInstance.id, params:params)
     }
+	
     @Secured(['ROLE_USER'])
     def plotFromProject(Long id){
         def projectInstance = Project.get(id)

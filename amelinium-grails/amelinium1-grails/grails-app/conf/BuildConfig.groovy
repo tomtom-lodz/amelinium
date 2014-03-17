@@ -49,7 +49,7 @@ grails.project.dependency.resolution = {
         compile ("com.googlecode.amelinium:amelinium-plots:0.2-SNAPSHOT"){
 			changing = true
 		}
-        compile ("ameliniummodel:builder:0.1.9-SNAPSHOT"){
+        compile ("ameliniummodel:builder:0.2.0-SNAPSHOT"){
 			changing = true
 		}
 		compile 'com.googlecode.flyway:flyway-core:2.2.1'
@@ -65,7 +65,6 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
 
         compile ':cache:1.0.1'
-		compile ":jquery-ui:1.10.3"
         compile ":twitter-bootstrap:3.0.3"
         compile ":lesscss-resources:1.3.3"
         compile ':spring-security-core:2.0-RC2'

@@ -1,24 +1,14 @@
 <html>
 
 <head>
-    <title><g:message code="default.contact.title"/></title>
+    <title>System info</title>
     <meta name="layout" content="main">
 </head>
 
 <body>
 <div class="wrapper">
-	<content tag="header">
-		<header id="Header" class="jumbotron masthead">
-			<div class="inner">
-				<div class="container">
-					<h1 class="title">Technical Info about ${meta(name:'app.name')}</h1>
-					<p class="lead">This page presents some information about the ${meta(name:'app.name')} system.</p>
-				</div>
-			</div>
-		</header>
-	</content>
 	
-	<section id="resources">
+	<section id="layout">
 	    <h1><g:message code="default.systeminfo.resources"/></h1>
 	    <ul class="list-group offset-top">
 			<li class="list-group-item">Web Layout: <a href ="http://twitter.github.com/bootstrap/">Bootstrap</a>, from Twitter 
@@ -48,7 +38,7 @@
 	     </ul>
 	</section>
 	
-	<section id="resources">
+	<section id="plugins">
 	     <h1><g:message code="default.systeminfo.plugins"/></h1>
 	     <ul class="list-group offset-top">
 	         <g:set var="pluginManager"
