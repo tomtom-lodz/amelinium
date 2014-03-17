@@ -21,14 +21,23 @@ public class NewToLegacyModelConverterImpl implements NewToLegacyModelConverter 
 		ArrayList<FeatureGroup> featureGroups = new ArrayList<FeatureGroup>();
 		int cumulativePoints = 0;
 		int totalPoints = 0;
-		//Set all fields for featureGroups, not providing one of them may cause failure in graph painting.
+		// Set all fields for featureGroups, not providing one of them may cause
+		// failure in graph painting.
 		for (Release release : project.getReleases()) {
 			cumulativePoints += release.getDonePoints();
 			totalPoints += release.getTotalPoints();
 			FeatureGroup releaseGroup = new FeatureGroup();
 			releaseGroup.setColumns(new ArrayList<Column>());
-			releaseGroup.setContentLeft(release.getContent().replaceFirst(
-					"(\\d|\\?)+/(\\d|\\?)+sp", ""));
+
+			if (release.getContent().contains("<del>")
+					|| release.getContent().contains("<em>")) {
+				releaseGroup.setContentLeft(removeHtmlFromContent(release
+						.getContent().replaceFirst(
+								"\\s\\-\\s(\\d|\\?)+/(\\d|\\?)+sp", "")));
+			} else {
+				releaseGroup.setContentLeft(release.getContent().replaceFirst(
+						"\\s\\-\\s(\\d|\\?)+/(\\d|\\?)+sp", ""));
+			}
 			releaseGroup.setContentMiddle(release.getDonePoints() + "sp/"
 					+ release.getTotalPoints() + "sp");
 			releaseGroup.setContentRight("");
@@ -56,6 +65,26 @@ public class NewToLegacyModelConverterImpl implements NewToLegacyModelConverter 
 		legacyModel.setOverallBurnedStoryPoints(cumulativePoints);
 
 		return legacyModel;
+	}
+
+	// <em><del>dsadsadsadsa</del></em>
+	private String removeHtmlFromContent(String content) {
+		if (content.contains("<em>") && content.contains("<del>")) {
+			return subContent(8, content);
+		} else if (content.contains("<del>")) {
+			return subContent(4, content);
+		} else if (content.contains("<em>")) {
+			return subContent(3, content);
+
+		} else {
+			return content;
+		}
+
+	}
+
+	private String subContent(int startIndex, String content) {
+		int endIndex = content.indexOf("</");
+		return content.substring(8, endIndex);
 	}
 
 }

@@ -41,7 +41,7 @@ public class NewToLegacyModelConverterImplTest {
 		BacklogModel model = converter.convertToLegacyModel(project, allowingMultilineFeatures);
 		
 		//then
-		assertEquals(model.getLastSubProject().getFeatureGroups().get(0).getContentLeft(), "Release - ");
+		assertEquals(model.getLastSubProject().getFeatureGroups().get(0).getContentLeft(), "Release");
 		assertEquals(model.getLastSubProject().getFeatureGroups().get(0).getContentMiddle(), "10sp/20sp");
 		assertEquals(model.getLastSubProject().getFeatureGroups().get(0).getDonePoints(), 10);
 		assertEquals(model.getLastSubProject().getFeatureGroups().get(0).getPoints(), 20);

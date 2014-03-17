@@ -7,6 +7,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.tomtom.amelinium.backlogservice.model.BacklogModel;
+import com.tomtom.amelinium.backlogservice.model.FeatureGroup;
+
+import amelinium.converter.NewToLegacyModelConverter;
+import amelinium.converter.NewToLegacyModelConverterImpl;
 import amelinium.model.Release;
 import amelinium.model.Project;
 import amelinium.model.Story;
@@ -16,6 +21,19 @@ import amelinium.serializer.ModelToHtmlSerializer;
 import amelinium.serializer.ModelToHtmlSerializerImpl;
 
 public class ModelBuilderImpl implements ModelBuilder {
+	
+	public static void main(String... args) {
+		ModelBuilder builder = new ModelBuilderImpl();
+		Project project = builder
+				.generateProjectModel("http://localhost:8080/amelinium1-grails/backlog/show/23");
+		NewToLegacyModelConverter converter = new NewToLegacyModelConverterImpl();
+		BacklogModel legacyModel = converter.convertToLegacyModel(project, true);
+		for(FeatureGroup f :legacyModel.getLastSubProject().getFeatureGroups())
+		{
+			System.out.println(f.getContentLeft());
+		}
+
+	}
 	
 	public Project generateProjectModel(String address) {
 		Project project = new Project();
